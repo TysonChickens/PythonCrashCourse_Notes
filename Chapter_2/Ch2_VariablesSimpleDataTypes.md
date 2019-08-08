@@ -37,7 +37,9 @@ When using variables in Python, there are a few rules and guidelines to follow. 
 * Spaces are not allowed in variable names, but underscores can be used to separate words in variable names. For example, *greeting_message* works, but *greeting message* will cause errors.
 
 * Avoid using Python keywords and function names as variable names. Python has words reserved for particular programmatic purpose, such as the word `print`.
-  * Here is a list: (https://1drv.ms/u/s!AlFmSsTjQCEN-WdDnATbRbY55KOO) IMAGE LINK
+  * Here is a list:
+  
+    ![Python Functions](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/PythonKeywordFunctions.png)
 
 * Variable names should be short but descriptive. For example, *name* is better than *n, student_name* is better than *s_n*, and *name_length* is better than *length_of_persons_name*.
 
@@ -68,7 +70,8 @@ Many programming languages are strict, but they disregard good and bad spelling.
 ---
 
 ## Strings
-Most programs define and gather some sort of data, and then do something useful with it, it helps to classify different types of data. The first data type we'll look at is string. Strings are simple at first glance, but you can use them in many different ways. 
+
+Most programs define and gather some sort of data, and then do something useful with it, it helps to classify different types of data. The first data type we'll look at is string. Strings are simple at first glance, but you can use them in many different ways.
 
 A *string* is a series of characters. Anything inside quotes is considered a string in Python, and you can use single or double quotes around your strings like this:
 
@@ -87,7 +90,7 @@ This flexibility allows you to use quotes and apostrophes within your strings:
 
 ## Changing Case in a String with Methods
 
-One of the simplest tasks to do with strings is change the case of the words in a string. 
+One of the simplest tasks to do with strings is change the case of the words in a string.
 
 ``` python
 name = "ada lovelace"
@@ -126,7 +129,7 @@ full_name = f"{first_name} {last_name}"
 print(full_name)
 ```
 
-To insert a variable's value into a string, place the letter *f* immediately before the opening quotation mark. Put braces around the name or names of any variable you want to use inside the string. Python will replace each variable with its value when the string is displayed. These strings are called *f-strings* where *f* stands for *format*, because Python formats the string by replacing the name of any variable in braces with its value. The output from previous code is: 
+To insert a variable's value into a string, place the letter *f* immediately before the opening quotation mark. Put braces around the name or names of any variable you want to use inside the string. Python will replace each variable with its value when the string is displayed. These strings are called *f-strings* where *f* stands for *format*, because Python formats the string by replacing the name of any variable in braces with its value. The output from previous code is:
 
 `ada lovelace`
 
@@ -185,7 +188,7 @@ Newlines and tabs will be useful in the next two chapters when you start to prod
 
 Extra whitespace can be confusing in programs. `"python"` and `"python "` may look the same, but to a program, they are two different strings. Python detects the extra space in `"python "` and considers it significant unless tell it otherwise.
 
-It is important to think about whitespace, because often to compare two strings to determine whether they are the same. For example, checking people's usernames when log in to a website. Fortunately, Python makes it easy to eliminate extraneous whitespace from data that people enter. 
+It is important to think about whitespace, because often to compare two strings to determine whether they are the same. For example, checking people's usernames when log in to a website. Fortunately, Python makes it easy to eliminate extraneous whitespace from data that people enter.
 
 Python can look for extra whitespace on the right and left sides of a string. To remove whitespace from the right end of a string, use the `rstrip()` method.
 
@@ -236,26 +239,15 @@ Syntax errors are also the least specific kind of error, so they can be difficul
 
 * **2-3. Personal Message**: Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”
 
-* **2-4. Name Cases**: Use a variable to represent a person’s name, and then print
-that person’s name in lowercase, uppercase, and title case.
+* **2-4. Name Cases**: Use a variable to represent a person’s name, and then print that person’s name in lowercase, uppercase, and title case.
 
-* **2-5. Famous Quote**: Find a quote from a famous person you admire. Print the
-quote and the name of its author. Your output should look something like the
-following, including the quotation marks:
-Albert Einstein once said, “A person who never made a
-mistake never tried anything new.”
+* **2-5. Famous Quote**: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following, including the quotation marks: Albert Einstein once said, “A person who never made a mistake never tried anything new.”
 
-* **2-6. Famous Quote 2**: Repeat Exercise 2-5, but this time, represent the
-famous person’s name using a variable called famous_person . Then compose
-your message and represent it with a new variable called message . Print your
+* **2-6. Famous Quote 2**: Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person . Then compose your message and represent it with a new variable called message . Print your
 message.
 
-* **2-7. Stripping Names**: Use a variable to represent a person’s name, and include
-some whitespace characters at the beginning and end of the name. Make sure
-you use each character combination, "\t" and "\n" , at least once.
-Print the name once, so the whitespace around the name is displayed.
-Then print the name using each of the three stripping functions, lstrip() ,
-rstrip() , and strip() 
+* **2-7. Stripping Names**: Use a variable to represent a person’s name, and include some whitespace characters at the beginning and end of the name. Make sure you use each character combination, "\t" and "\n" , at least once.
+Print the name once, so the whitespace around the name is displayed. Then print the name using each of the three stripping functions, lstrip(), rstrip(), and strip().
 
 ---
 
@@ -280,7 +272,7 @@ You can add (+), subtract (-), multiply (*), and divide (/) integers in Python.
 
 Python also supports the order of operations, so you can use multiple operations in one expression. You can also use parentheses to modify the order of operations so Python can evaluate expression in the order you specify. For example:
 
-``` python 
+``` python
 >>> 2 + 3*4
 14
 >>> (2 + 3) * 4
@@ -291,7 +283,7 @@ Python also supports the order of operations, so you can use multiple operations
 
 Python calls any number with a decimal point a *float*. This term is used in most programming languages, and it refers that a decimal point can appear at any position in a number. Every programming language must be carefully designed to properly manage decimal numbers so numbers behave appropriately.
 
-In Python, you can use decimals without worrying about how they behave. Simply enter the numbers you want to use, and Python will most likely do what you expect: 
+In Python, you can use decimals without worrying about how they behave. Simply enter the numbers you want to use, and Python will most likely do what you expect:
 
 ``` python
 >>> 0.1 + 0.1
@@ -346,7 +338,7 @@ When printing a number with underscores, Python will print only the digits:
 
 To Python, 1000 is the same as 1_000, which is the same as 10_00. Python ignores the underscores when storing these kinds of values. This feature only works for integers and floats and only available in Python 3.6 and later.
 
-## Multiple Assignments 
+## Multiple Assignments
 
 You can assign values to more than one variable using just a single line. This can help shorten programs and make them easier to read; a technique used most often when initializing a set of numbers. For example, here is how you can initialize multiple variables:
 
