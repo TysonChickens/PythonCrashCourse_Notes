@@ -1,12 +1,12 @@
 # Python Crash Course Chapter * 3: Introducing Lists
 
-## What Is a List?
+## What Is a List
 
 A *list* is a collection of items in a particular order. A list consist of letters of the alphabet, the digits from 0-9, or the names of all the people in a family. Any thing can be entered into a list, and items in the list don't have to be related in any particular way. It is good practice to make the name of the list plural, such as **letters**, **digits**, or **names**.
 
 In Python, square brackets `[]` indicate a list, and individual ements in the list are separated by commas.
 
-``` python 
+``` python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 print(bicycles)
 ```
@@ -24,7 +24,7 @@ print(bicycles[0])
 
 Python will return just the element at that position `trek`.
 
-The use of string methods will work on any element in the list to have a clean, neatly formatted output by using the `title()` method. 
+The use of string methods will work on any element in the list to have a clean, neatly formatted output by using the `title()` method.
 
 `print(bicycles[0].title())` will capitalize the word to `Trek`.
 
@@ -44,7 +44,7 @@ This convention also extends to other negative index values as well. At index -2
 
 You can use individual values from a list just as you would with any other variable. For example, use f-strings to create a message based ona a value from a list.
 
-``` python 
+``` python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 message = f"My first bicycle was a {bicycles[0].title()}."
 
@@ -98,7 +98,7 @@ You might want to add a new element to a list for many reasons. For example, mak
 
 ## Appending Elements to End of a List
 
-The simplest way to add a new element to a list is to `append` the item to the list. When an item is append to a list, the new element is added to the end of the list. 
+The simplest way to add a new element to a list is to `append` the item to the list. When an item is append to a list, the new element is added to the end of the list.
 
 ``` python
 motorcycles = ['honda', 'yamaha', 'suzuki']
@@ -133,7 +133,7 @@ Building lists this way is very common, because you often won't know the data us
 
 ## Inserting Elements into a List
 
-You can add a new element at any position in a list by using the `insert()` method. This is achieved by specifying the index of the new element and the value of the new item. 
+You can add a new element at any position in a list by using the `insert()` method. This is achieved by specifying the index of the new element and the value of the new item.
 
 ``` python
 motorcycles = ['honda', 'yamaha', 'suzuki']
@@ -175,7 +175,7 @@ You can remove an item from any position in a list using the `del` statement if 
 
 Sometimes, you will want to use the value of an item after you remove it from a list. For example, get the x and y position of an alien that was just shot down to draw an explosion at that position. In a web application, you might want to remove a user from a list of active members and then add that user to a list of inactive members.
 
-The `pop()` method removes the last item in the list, but allows to work with that item after removing it. The term comes from thinking of a list as a stack of items and popping one item off the top of the stack. In this case, the top of the stack refers to the end of the list. 
+The `pop()` method removes the last item in the list, but allows to work with that item after removing it. The term comes from thinking of a list as a stack of items and popping one item off the top of the stack. In this case, the top of the stack refers to the end of the list.
 
 ``` python
 motorcycles = ['honda', 'yamaha', 'suzuki']
@@ -194,7 +194,7 @@ last_owned = motorcycles.pop()
 print(f"The last motorcycle I owned was a {last_owned.title()}.")
 ```
 
-`The last motorcycle I owned was a Suzuki.` A simple sentence about the most recent motorcycle we owned. 
+`The last motorcycle I owned was a Suzuki.` A simple sentence about the most recent motorcycle we owned.
 
 ## Popping Items from any Position in a List
 
@@ -207,11 +207,11 @@ first_owned = motorcycles.pop(0)
 print(f"The first motorcycle I owned was a {first_owned.title()}.")
 ```
 
-`The first motorcycle I owned was a Honda.` By popping the first motorcycle in the list, then print a message about first motorcycle ever owned. 
+`The first motorcycle I owned was a Honda.` By popping the first motorcycle in the list, then print a message about first motorcycle ever owned.
 
-Remember, each time `pop()` is used, the item is no longer stored in the list. 
+Remember, each time `pop()` is used, the item is no longer stored in the list.
 
-If unsure whether to use `del` statement or `pop()` method, use `del` when to delete an item from a list and not use that item in any way. If you want to use an item as you remove it, use the `pop()` method instead. 
+If unsure whether to use `del` statement or `pop()` method, use `del` when to delete an item from a list and not use that item in any way. If you want to use an item as you remove it, use the `pop()` method instead.
 
 ## Removing an Item by Value
 
@@ -241,7 +241,7 @@ print(f"\nA {too_expensive.title()} is too expensive for me.")
 
 `A Ducati is too expensive for me.`
 
-We used the `too_expensive` variable and assigned to `'ducati'` with a reason to remove from the list. The value is still accessible through the variable despite being removed from the motorcycles list. 
+We used the `too_expensive` variable and assigned to `'ducati'` with a reason to remove from the list. The value is still accessible through the variable despite being removed from the motorcycles list.
 
 ***The `remove()` method deletes only the first occurrence of the value you specify. If there’s
 a possibility the value appears more than once in the list, you’ll need to use a loop
@@ -251,20 +251,19 @@ to make sure all occurrences of the value are removed.***
 
 ### TRY IT YOURSELF: Modifying Lists
 
-
 * **3-4. Guest List**: If you could invite anyone, living or deceased, to dinner, who
 would you invite? Make a list that includes at least three people you’d like to invite to dinner. Then use your list to print a message to each person, inviting them to dinner.
 
 * **3-5. Changing Guest List**: You just heard that one of your guests can’t make the dinner, so you need to send out a new set of invitations. You’ll have to think of someone else to invite.
 
-  * Start with your program from Exercise * 3-4. Add a print() call at the end
+  * Start with your program from *Exercise 3-4*. Add a print() call at the end
 of your program stating the name of the guest who can’t make it.
   * Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
   * Print a second set of invitation messages, one for each person who is still in your list.
 
 * **3-6. More Guests**: You just found a bigger dinner table, so now more space is
 available. Think of three more guests to invite to dinner.
-  * Start with your program from Exercise * 3-4 or Exercise * 3-5. Add a print() call to the end of your program informing people that you found a bigger dinner table.
+  * Start with your program from *Exercise 3-4 or Exercise 3-5*. Add a print() call to the end of your program informing people that you found a bigger dinner table.
 
   * Use insert() to add one new guest to the beginning of your list.
   * Use insert() to add one new guest to the middle of your list.
@@ -285,7 +284,7 @@ Often, list will be created in an unpredicatable order, because it is not possib
 
 ## Sorting a List Permanently with the sort() Method
 
-Python's `sort()` method makes it relatively easy to sort a list. Imagine a list of cars and want to change the order of list to store them alphabetically. To keep the task simple, let's assume that all the values in the list are lowercase. 
+Python's `sort()` method makes it relatively easy to sort a list. Imagine a list of cars and want to change the order of list to store them alphabetically. To keep the task simple, let's assume that all the values in the list are lowercase.
 
 ``` python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
@@ -293,7 +292,7 @@ cars.sort()
 print(cars)
 ```
 
-`['audi', 'bmw', 'subaru', 'toyota'] `. 
+`['audi', 'bmw', 'subaru', 'toyota']`
 
 The sort() method changes the order ofthe list permanently in alphabetical order, and can no longer revert to the original order. This can also be sorted in reverse alphabetical order by passing the argument `reverse = True` to the `sort()` method.
 
@@ -346,7 +345,7 @@ Notice `reverse()` doesn't sort backward alphabetically; it simply reverse the o
 ['subaru', 'toyota', 'audi', 'bmw']
 ```
 
-The method changes the order of a list permanently, but can revert to the original order anytime by applying `reverse()` to the same list a second time. 
+The method changes the order of a list permanently, but can revert to the original order anytime by applying `reverse()` to the same list a second time.
 
 ## Finding the Length of a List
 
@@ -364,7 +363,6 @@ Finding the length will be usefil when to identify the number of aliens that sti
 ---
 
 ### TRY IT YOURSELF: Organizing a List
-
 
 * **3-8. Seeing the World**: Think of at least five places in the world you’d like to visit.
 
