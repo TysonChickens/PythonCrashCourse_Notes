@@ -1,4 +1,4 @@
-# Python Crash Course Chapter * 3: Introducing Lists
+# Python Crash Course Chapter 3: Introducing Lists
 
 ## What Is a List
 
