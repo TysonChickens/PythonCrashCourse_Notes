@@ -44,7 +44,7 @@ for magician in magicians:
 
 The only difference in this code is where we compose a message to each magician, starting with that magician's name. The output shows a personalized message in a `for` loop each magician in the list starting from the first value of *alice* until the last value of *carolina*.
 
-``` python
+``` markdown
 Alice, that was a great trick!
 David, that was a great trick!
 Carolina, that was a great trick!
@@ -83,3 +83,86 @@ When processing data using a `for` loop, this is a good way to summarize an oper
 
 ## Avoiding Indentation Errors
 
+Python uses indentation to determine how a line, or group of lines, is related to the rest of the program. In the previous examples, the lines that printed messages to individual magicians were part of the `for` lopp because they were indented. Python's use of indentation makes code very easy to read. It uses whitespace to force to write neatly formatted code with a clear visual structure. The indentation levels help gain a general sense of the overall program's organization.
+
+When code written relies on proper indentation, we need to watch for a few common ***indentation errors***. For example, people sometimes indent lines of code that don't need to be indented or forget to indent lines that need to be indented. Here are some examples of these errors to avoid them in the future and correct them when they do appear in programs.
+
+## Forgetting to Indent
+
+Always indent the line after the `for` statement in a loop. If you forget, Python will remind you:
+
+``` python
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:
+print(magician)
+```
+
+The call to `print()` should be indented, but it's not. When Python expects an indented block and doesn't find one, it lets you know which line it had a problem with.
+
+``` python
+File "magicians.py", line 3
+print(magician)
+^
+IndentationError: expected an indented block
+```
+
+This can usually be resolved by indenting the line or lines immediately after the `for` statement.
+
+## Forgetting to Indent Additional Lines
+
+Sometimes a loop will run without any erros but won't produce the expected result. This can happen when trying to do several taks in a loop and forget to indent some of its lines.
+
+This is what happens when we forget to indent the second line in the loop that tells each magician we're looking forward to their next trick:
+
+``` python
+magicians = ['alice', 'david', 'carolina']
+for magician in magicians:
+    print(f"{magician.title()}, that was a great trick!")
+print(f"I can't wait to see your next trick, {magician.title()}.\n")
+```
+
+The last line with the call `print()` is supposed to be indented, but Python finds at least one indented line after the `for` statement, and does not report an error. As a result, the first `print()` call is executed once for each name in the list because it is indented as expected. The second `print()` call is not indented, so it is executed only once after the loop has finished running. Since the final value associated with magician is *carolina*, she is the only one who receives the "looking forward to the next trick" message:
+
+``` markdown
+Alice, that was a great trick!
+David, that was a great trick!
+Carolina, that was a great trick!
+I can't wait to see your next trick, Carolina.
+```
+
+This is a *logical error*. The syntax is valid Python code, but the code does not produce the desired result because a problem occurs in its logic.
+
+## Indenting Unnecessarily
+
+If you accidentally indent a line that doesn't need to be indented, Python will inform you about the unexpected indent:
+
+``` python
+message = "Hello Python World!"
+    print(message)
+```
+
+There is no need to indent the `print()` call, because it is not part of a loop. Therefore, Python reports an error:
+
+`IndentationError: unexpected indent`
+
+Avoid indentation errors by indenting only when there is a specific reason to do so. At this point, the only lines to indent are actions to be repeated for each item in a `for` loop.
+
+## Forgetting the Colon
+
+The colon at the end of a `for` statement tells Python to interpret the next line as the start of a loop. If the colon is missing, there will be a syntax error because Python does not understand.
+
+---
+
+### TRY IT YOURSELF: Looping Through Lists
+
+* **4-1. Pizzas**: Think of at least three kinds of your favorite pizza. Store these pizza names in a list, and then use a for loop to print the name of each pizza.
+
+  * Modify your for loop to print a sentence using the name of the pizza instead of printing just the name of the pizza. For each pizza you should have one line of output containing a simple statement like *I like pepperoni pizza*.
+  * Add a line at the end of your program, outside the for loop, that states how much you like pizza. The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, such as *I really love pizza!*
+
+* **4-2. Animals**: Think of at least three different animals that have a common characteristic. Store the names of these animals in a list, and then use a for loop to print out the name of each animal.
+  
+  * Modify your program to print a statement about each animal, such as *A dog would make a great pet*.
+  * Add a line at the end of your program stating what these animals have in common. You could print a sentence such as Any of these animals would make a great pet!
+
+---
