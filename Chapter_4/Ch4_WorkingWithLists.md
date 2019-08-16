@@ -166,3 +166,101 @@ The colon at the end of a `for` statement tells Python to interpret the next lin
   * Add a line at the end of your program stating what these animals have in common. You could print a sentence such as Any of these animals would make a great pet!
 
 ---
+
+## Making Numerical Lists
+
+Many reasons exist to store a set of numbers. For example, it is sometimes necessary to keep track of the position of each character in a game, and to keep track of a player's high scores as well. In data visualizations, you will almost always work with sets of numbers, such as temperatures, distances, population sizes, or latitude and longitude values, among other types of numerical sets.
+
+Lists are ideal for storing sets of numbers, and Python provides a variety of tools to help work efficiently.
+
+## Using the range() Function
+
+Python's `range()` function makes it easy to generate a series of numbers like this:
+
+``` python
+for value in range(1, 5):
+    print(value)
+```
+
+Although this code looks like it should print the numbers from 1 to 5, it doesn't print the number 5:
+
+``` markdown
+1
+2
+3
+4
+```
+
+In this example, it only prints numbers 1 through 4. This is a result of the off-by-one behavior often seen in programming languages. The `range()` function starts counting at the first value, and it stops when it reaches the second value provided. The output will never contain the end value or the second value given.
+
+To print the numbers from 1 to 5, a `range(1, 6)` is used. This time the output start at 1 and ends at 5:
+
+``` markdown
+1
+2
+3
+4
+5
+```
+
+If the output is different than expected, try adjusting the end value by 1. The `range()` argument can also pass one argument, and it will start the sequence of numbers at 0. For example, `range(6)` would return the numbers from 0 to 5.
+
+## Using range() to Make a List of Numbers
+
+To make a list of numbers, convert the results of `range()` directly into a list using the `list()` function. The `list()` around a call to the `range()` function will output a list of numbers.
+
+``` python
+numbers = list(range(1, 6))
+print(numbers)
+```
+
+This is the result:
+
+``` markdown
+[1, 2, 3, 4, 5]
+```
+
+We can also use the `range()` function to tell Python to skip numbers in a given range. If a third argument to `range()` is given, Python uses that value as a step size when generating numbers.
+
+For example, here's how to list the even numbers between 1 and 10.
+
+``` python
+even_numbers = list(range(2, 11, 2))
+print(even_numbers)
+```
+
+In this example, the `range()` function starts with a value of 2 and then adds 2 to that value. It adds 2 repeatedly until it reaches or passes the end value of 11.
+
+``` markdown
+[2, 4, 6, 8, 10]
+```
+
+Almost any set of numbers can be created using the `range()` function. For example, consider how to make a list of the first 10 square numbers. In Python, two asterisks (**) represent exponents. Here is how to put the first 10 square numbers into a list:
+
+``` python
+squares = []
+for value in range (1, 11):
+    square = value ** 2
+    squares.append(square)
+
+print(squares)
+```
+
+First, we start with an empty list called *squares*. Python loops through each value from 1 to 10 using the `range()` function. Inside the loop, the current value is raised to the second power and assigned to the variable *square*. Next, each new value of *square* is appended to the empty list of *squares*. Finally, when the loop has finished running, the list of *squares* is printed:
+
+``` markdown
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+For more concise code, omit the temporary variable *square* and append each new value directly to the list:
+
+``` python
+squares = []
+for value in range(1, 11):
+    squares.append(value ** 2)
+
+print(squares)
+```
+
+The code does the same work as the previous example. Sometimes using a temporary variable makes code easier to read; other times it makes the code unnecessarily long. Focus first on writing code that is easy to understand and works properly. Then look for more efficient approaches when review over code.
+
+## Simple Statistics with a List of Numbers
