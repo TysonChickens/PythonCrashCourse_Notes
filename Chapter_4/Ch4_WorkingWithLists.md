@@ -314,3 +314,69 @@ The result is:
 * **4-9. Cube Comprehension**: Use a list comprehension to generate a list of the first 10 cubes.
 
 ---
+
+## Working with Part of a List
+
+In chapter 3, we learned how to access single elements in a list, and will now learn how to work through all the elemtents in a list. In Python, there is something called a *slice* to work with a specific group of items in a list.
+
+## Slicing a List
+
+To make a slice, specify the index of the first and last elements to work with similar to the `range()` function. When slicing, Python stops one item before the second index specified. To output the first three elements in a list, indices 0 through 3 would return elements 0, 1, and 2.
+
+The following example involves a list of players on a team:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[0:3])
+```
+
+The code prints a slice of this list, which includes just the first three players. The output retains the structure of the list and includes the first three players in the list:
+
+``` markdown
+['charles', 'martina', 'michael']
+```
+
+Any subset of a list can be generated. For example, the second, third, and fourth items in a list can be extracted with a start slice at index 1 and end at index 4:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[1:4])
+```
+
+This time the slice starts with *martina* and ends with *florence*:
+
+
+`['martina', 'michael', 'florence']`
+
+If the first index is omitted, Python automatically starts the slice at the beginning of the list:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[:4])
+```
+
+Without a start index, Python starts at the beginning of the list:
+
+`['charles', 'martina', 'michael', 'florence']`
+
+A similar syntax works when wanting to slice that includes the end of a list. For example, all items from the third item through the last item starts with an index 2 and omit the second index:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[2:])
+```
+
+Python returns all items from the third item through the end of the list:
+
+`['michael', 'florence', 'eli']`
+
+This syntax allows to output all of the elements from any point in a list regardless of the length of the list. Recall that a negative index returns an element a certain distance from the end of a list; therefore, can output any slice from the end of a list. For example, to output the last three players on the roster, slice players[-3]:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[-3:])
+```
+
+This prints the names of the last three palyers and would continue to work as the list of players change in size.
+
+***When slicing, a third value can be included in the brackets. If a third value is included, this tells Python how many items to skip between items in the specified range.***
