@@ -239,7 +239,7 @@ Almost any set of numbers can be created using the `range()` function. For examp
 
 ``` python
 squares = []
-for value in range (1, 11):
+for value in range(1, 11):
     square = value ** 2
     squares.append(square)
 
@@ -251,6 +251,7 @@ First, we start with an empty list called *squares*. Python loops through each v
 ``` markdown
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
+
 For more concise code, omit the temporary variable *square* and append each new value directly to the list:
 
 ``` python
@@ -264,3 +265,52 @@ print(squares)
 The code does the same work as the previous example. Sometimes using a temporary variable makes code easier to read; other times it makes the code unnecessarily long. Focus first on writing code that is easy to understand and works properly. Then look for more efficient approaches when review over code.
 
 ## Simple Statistics with a List of Numbers
+
+A few Python functions are helpful when working with lists of numbers. For example, you can easily find the minimum, maximum, and sum of a list of numbers:
+
+``` python
+>>> digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+>>> min(digits)
+0
+>>> max(digits)
+9
+>>> sum(digits)
+45
+```
+
+## List Comprehension
+
+Earlier, we generated the list *squares* using three or four lines of code. A *list comprehension* allows to generate the same list in just one line of code. A *list comprehension* combines a `for` loop and the creation of new elements into one line, and automatically appends each new element.
+
+The following example builds the same list of square numbers but uses a list comprehension:
+
+``` python
+squares = [value**2 for value in range(1, 11)]
+print(squares)
+```
+
+The open set of square brackets and define the expression for the values to store in the new list. In this example, the expression is *value**2*, which raises the value to the second power. Then, write a `for` loop to generate the numbers to feed into the expression and close the square brackets. In this case, the `for` loop is `for value in range(1, 11)`, which feeds the values 1 through 10 into the expression *value**2*. Notice there is no colon used at the end of the `for` statement.
+
+The result is:
+
+`[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]`
+
+---
+
+### TRY IT YOURSELF: Making Numerical Lists
+
+* **4-3. Counting to Twenty**: Use a for loop to print the numbers from 1 to 20, inclusive.
+
+* **4-4. One Million**: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. (If the output is taking too long, stop it by pressing ctrl -C or by closing the output window.)
+
+* **4-5. Summing a Million**: Make a list of the numbers from one to one million, and then use min() and max() to make sure your list actually starts at one and ends at one million. Also, use the sum() function to see how quickly Python can add a million numbers.
+
+* **4-6. Odd Numbers**: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. Use a for loop to print each number.
+
+* **4-7. Threes**: Make a list of the multiples of 3 from 3 to 30. Use a for loop to print the numbers in your list.
+
+* **4-8. Cubes**: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.
+
+* **4-9. Cube Comprehension**: Use a list comprehension to generate a list of the first 10 cubes.
+
+---
