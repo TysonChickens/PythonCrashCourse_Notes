@@ -380,3 +380,79 @@ print(players[-3:])
 This prints the names of the last three palyers and would continue to work as the list of players change in size.
 
 ***When slicing, a third value can be included in the brackets. If a third value is included, this tells Python how many items to skip between items in the specified range.***
+
+## Looping Through a Slice
+
+Use a slice in a `for` loop if want to loop through a subset of the elements in a list. In the next example, we loop through the first players and print their names as part of a simple roster:
+
+``` python
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+
+print("Here are the first three players on my team:")
+
+for player in players[:3]:
+    print(player.title())
+```
+
+Instead of looping through the entire list of players, Python loops through the only the first three names:
+
+``` markdown
+Here are the first three players on my team:
+Charles
+Martina
+Michael
+```
+
+Slices are very useful in a number of situations. For instance, when creating a game, adding a player's final score to a list every time that player finishes playing. Then retrive a top a player's top three scores by sorting the list in decreasing order and taking a slice that includes just the first three scores. When working with data, the use of slices to process data in chunks of specific size to display appropriate amount of information.
+
+## Copying a List
+
+Often, starting with an existing list and making an entirely new list based on the first one is useful in situations.
+
+To copy a list, make a slice that includes the entire original list by omitting the first index and the second index (`[:]`). This tells Python to make a slice that starts at the first item and ends with the last item, producing a copy of the entire list.
+
+For example, imagine we have a list of our favorite foods and want to make a separate list of foods that a friend likes. This friend likes everything in our list so far, so we can create their list by copying ours:
+
+``` python
+my_foods = ['pizza', 'falafel', 'carrot cake']
+friend_foods = my_foods[:]
+
+print("My favorite foods are:")
+print(my_foods)
+
+print("\nMy friend's favorite foods are:")
+print(friend_foods)
+```
+
+We make a copy of *my_foods* list to make a new list called *friend_foods*. When we print each list, they both contain the same foods:
+
+``` markdown
+My favorite foods are:
+['pizza', 'falafel', 'carrot cake']
+
+My friend's favorite foods are:
+['pizza', 'falafel', 'carrot cake']
+```
+
+If we assign *friend_foods* equal to *my_foods*, both variables will point to the same list. As a result, any changes made to *my_foods* will also appear in *friend_foods*.
+
+***When trying to copy a list, slice the list.***
+
+---
+
+### TRY IT YOURSELF: Copying a List
+
+* **4-10. Slices**: Using one of the programs you wrote in this chapter, add several lines to the end of the program that do the following:
+
+  * Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
+  * Print the message Three items from the middle of the list are:. Use a slice to print three items from the middle of the list.
+  * Print the message The last three items in the list are:. Use a slice to print the last three items in the list.
+
+* **4-11. My Pizzas, Your Pizzas**: Start with your program from Exercise 4-1 (page 56). Make a copy of the list of pizzas, and call it friend_pizzas. Then, do the following:
+
+  * Add a new pizza to the original list.
+  * Add a different pizza to the list friend_pizzas .
+  * Prove that you have two separate lists. *Print the message My favorite pizzas are:*, and then use a for loop to print the first list. Print the message *My friend’s favorite pizzas are:*, and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list.
+
+* **4-12. More Loops**: All versions of foods.py in this section have avoided using for loops when printing to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
+
