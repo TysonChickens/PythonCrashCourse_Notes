@@ -547,3 +547,15 @@ When compared with lists, tuples are simple data structures. Use tuples when to 
   * The restaurant changes its menu, replacing two of the items with different foods. Add a line that rewrites the tuple, and then use a for loop to print each of the items on the revised menu.
 
 ---
+
+## Summary
+
+What we learned in this chapter:
+
+  * How to work efficiently with the elements in a list.
+  * Work through a list using a `for` loop.
+  * How Python uses indentation to structure a program.
+  * Make simple numerical lists.
+  * Slice a list to work with a subset of items and how to copy lists properly with a slice.
+  * How tuples provide a degree of protection to a set of values that shouldn't change.
+  
