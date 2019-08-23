@@ -457,3 +457,9 @@ If we assign *friend_foods* equal to *my_foods*, both variables will point to th
 * **4-12. More Loops**: All versions of foods.py in this section have avoided using for loops when printing to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
 
 ---
+
+## Define a Tuple
+
+Lists work well for storing collections of items that can change throughout the life of a program. The ability to modify lists can be important when working with a list of users on a website or a list of characters in a game. However, sometimes a list of items that cannot change is wanted. Tuples allows Python to refer values that cannot change as *immutable*, and an immutable list is called a *tuple*.
+
+A tuple looks just like a list except except with parentheses instead of square brackets. Once a tuple is defined, each individual elements can still be accessed at each item's index just like a list.
