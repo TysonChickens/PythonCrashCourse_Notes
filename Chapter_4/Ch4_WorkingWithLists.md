@@ -345,7 +345,6 @@ print(players[1:4])
 
 This time the slice starts with *martina* and ends with *florence*:
 
-
 `['martina', 'michael', 'florence']`
 
 If the first index is omitted, Python automatically starts the slice at the beginning of the list:
@@ -463,3 +462,35 @@ If we assign *friend_foods* equal to *my_foods*, both variables will point to th
 Lists work well for storing collections of items that can change throughout the life of a program. The ability to modify lists can be important when working with a list of users on a website or a list of characters in a game. However, sometimes a list of items that cannot change is wanted. Tuples allows Python to refer values that cannot change as *immutable*, and an immutable list is called a *tuple*.
 
 A tuple looks just like a list except except with parentheses instead of square brackets. Once a tuple is defined, each individual elements can still be accessed at each item's index just like a list.
+
+For example, there is a specific type of rectangle that should always be a certain size by putting the dimensions into a tuple:
+
+``` python
+dimensions = (200, 50)
+print(dimensions[0])
+print(dimensions[1])
+```
+
+The tuple is defined at *dimensions* using parentheses instead of square brackets. Then we print each element in the tuple individually using the same syntax to access elements in a list:
+
+``` markdown
+200
+50
+```
+
+Let's see what happens when trying to change of the items in the tuple dimensions:
+
+``` python
+dimensions = (200, 50)
+dimensions[0] = 250
+```
+
+The code tries to change the value of the first dimension, but Python returns a type error. Python tells us it is not possible to assign a new value to an item in a tuple, which is not possible to that type of object. This is beneficial because Python helps identify an error when a line of code tries to change the dimensions of a rectangle.
+
+***Tuples are technically defined by the presence of a comma; the parentheses make them look neater and more readable. If we want to define a tuple with one element, a trailing comma is included:***
+
+`my_t = (3,)`
+
+***It doesn't often make sense to build a tuple with one element, but this can happen when tuples are generated automatically.***
+
+## Looping Through All Values in a Tuple
