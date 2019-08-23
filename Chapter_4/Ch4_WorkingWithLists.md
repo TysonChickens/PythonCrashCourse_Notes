@@ -494,3 +494,56 @@ The code tries to change the value of the first dimension, but Python returns a 
 ***It doesn't often make sense to build a tuple with one element, but this can happen when tuples are generated automatically.***
 
 ## Looping Through All Values in a Tuple
+
+Like a list, a `for` loop can be used to loop over all the values in a tuple:
+
+``` python
+dimensions = (200, 50)
+
+for dimension in dimensions:
+    print(dimension)
+```
+
+Python returns all the elements in the tuple: `200` `50`.
+
+## Writing over a Tuple
+
+Even though a tuple can't be modified, it is possible to assign a new value to a variable that represents a tuple. To change our dimensions, redfine the entire tuple:
+
+``` python
+dimensions = (200, 50)
+print("Original dimensions:")
+for dimension in dimensions:
+    print(dimension)
+
+dimensions = (400, 100)
+print("\nModified dimensions:")
+for dimension in dimensions:
+    print(dimension)
+```
+
+The first few lines define the original tuple and and print the initial dimensions. The second *dimensions* is a new tuple that with modified values. Python does not raise any errors because reassigning a variable is valid:
+
+``` markdown
+Original dimensions:
+200
+50
+
+Modified dimensions:
+400
+100
+```
+
+When compared with lists, tuples are simple data structures. Use tuples when to store a set of values that should not be changed throughout the life of a program.
+
+---
+
+## TRY IT YOURSELF: Tuples
+
+* **4-13. Buffet**: A buffet-style restaurant offers only five basic foods. Think of five simple foods, and store them in a tuple.
+
+  * Use a for loop to print each food the restaurant offers.
+  * Try to modify one of the items, and make sure that Python rejects the change.
+  * The restaurant changes its menu, replacing two of the items with different foods. Add a line that rewrites the tuple, and then use a for loop to print each of the items on the revised menu.
+
+---
