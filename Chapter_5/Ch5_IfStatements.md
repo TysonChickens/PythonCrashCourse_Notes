@@ -109,3 +109,33 @@ False
 
 Each mathematical comparison can be used as part of an `if` statement, which can help detect exact conditions of interest.
 
+## Checking Multiple Conditions
+
+It is possible to check for multiple conditions at the same time. Sometimes, a program might need two conditions to be `True` to take action. Other times, one condition being `True` is good enough. The keywords `and` and `or` can help in these situations.
+
+## Using and to Check Multiple Conditions
+
+To check whether two conditions are both `True` simultaneously, use the keyword `and` to combine the two conditional tests; if each test passes, the overall expression evaluates to `True`. If either test fails or if both tests fail, the expression evaluates to `False`. 
+
+A check whether two people are both over 21:
+
+``` python
+>>> age_0 = 22
+>>> age_1 = 18
+>>> age_0 >= 21 and age_1 >= 21
+False
+
+>>> age_1 = 22
+>>> age_0 >= 21 and age_1 >= 21
+True
+```
+
+In the first part of the code, one test passes, but the other test fails and the overall expression evaluates to `False`. When *age_1* is changed to 22, both individual tests pass causing the overall conditional expression to evaluate as `True` since age is now greater than 21.
+
+To improve readability, the use of parentheses around the individual tests, but they are not required. The test would look like this using parentheses:
+
+``` python
+(age_0 >= 21) and (age_1 >= 21)
+```
+
+## 
