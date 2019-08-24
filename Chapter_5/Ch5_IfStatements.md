@@ -156,3 +156,32 @@ False
 ```
 
 ## Checking Whether a Value Is in a List
+
+To find out whether a particular value is already in a list, use the keyword `in`. For a pizzeria, we will make a list of toppings a customer has requested for a pizza and then check whether certain toppings are in the list.
+
+``` python
+>>> requested_toppings = ['mushrooms', 'onions', 'pineapple']
+>>> 'mushrooms' in requested_toppings
+True
+
+>>> 'pepperoni' in requested_toppings
+False
+```
+
+They keyword `in` tells Python to check for the existence of *'mushrooms'* and *'pepperoni'* in the list of *requested_toppings*. This technique is helpful because it can easily check whether the value being tested matches one of the values in the list.
+
+## Checking Whether a Value is Not in a List
+
+Other times, it is important to know if a value does not appear in a list. The keyword to use is `not` in this situation. For example, consider a list of users who are banned from commenting in a forum. This can check if a user has been banned before allowing that person to submit a comment:
+
+``` python
+banned_users = ['andrew', 'carolina', 'david']
+user = 'marie'
+
+if user not in banned_users:
+    print(f"{user.title()}, you can post a response if you wish.")
+```
+
+If the value of *user* is not in the list of *banned_users*, Python returns `True` and executes the indented line. Therefore, the user *'marie'* is not in the list *banned_users*, so she sees a message inviting her to post a response:
+
+`Marie, you can post a response if you wish.`
