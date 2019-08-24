@@ -93,7 +93,7 @@ The conditional test passes, because the value of *answer (17)* is not equal to 
 
 `That is not the correct answer. Please try again!`
 
-Various mathematical comparisons in conditional statements can be included as well. 
+Various mathematical comparisons in conditional statements can be included as well.
 
 ``` python
 >>> age = 19
@@ -115,7 +115,7 @@ It is possible to check for multiple conditions at the same time. Sometimes, a p
 
 ## Using and to Check Multiple Conditions
 
-To check whether two conditions are both `True` simultaneously, use the keyword `and` to combine the two conditional tests; if each test passes, the overall expression evaluates to `True`. If either test fails or if both tests fail, the expression evaluates to `False`. 
+To check whether two conditions are both `True` simultaneously, use the keyword `and` to combine the two conditional tests; if each test passes, the overall expression evaluates to `True`. If either test fails or if both tests fail, the expression evaluates to `False`.
 
 A check whether two people are both over 21:
 
@@ -138,4 +138,21 @@ To improve readability, the use of parentheses around the individual tests, but 
 (age_0 >= 21) and (age_1 >= 21)
 ```
 
-## 
+## Using or to Check Multiple Conditions
+
+The keyword `or` allows to check multiple conditions when it passes either or both of the individual tests. An `or` expression fails only when both individual tests fail.
+
+Let's consider two ages again, but only one person has to be over 21:
+
+``` python
+>>> age_0 = 22
+>>> age_1 = 18
+>>> age_0 >= 21 or age_1 >= 21
+True
+
+>>> age_0 = 18
+>>> age_0 >= 21 or age_1 >= 21
+False
+```
+
+## Checking Whether a Value Is in a List
