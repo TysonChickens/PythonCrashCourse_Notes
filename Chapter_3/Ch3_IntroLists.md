@@ -4,7 +4,7 @@
 
 A *list* is a collection of items in a particular order. A list consist of letters of the alphabet, the digits from 0-9, or the names of all the people in a family. Any thing can be entered into a list, and items in the list don't have to be related in any particular way. It is good practice to make the name of the list plural, such as **letters**, **digits**, or **names**.
 
-In Python, square brackets `[]` indicate a list, and individual ements in the list are separated by commas.
+In Python, square brackets `[]` indicate a list, and individual elements in the list are separated by commas.
 
 ``` python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
@@ -32,7 +32,7 @@ The use of string methods will work on any element in the list to have a clean, 
 
 Python considers the first item in a list to be at position 0, not position 1. This is true for most programming languages because of how list operations are implemented at a lower level.
 
-The second item in a list has an index of 1. Using this counting system, you can retrieve any elemnt you want from a list by substracting one from its position in the list. If you want the fourth item in a list, you can request the item at index * 3.
+The second item in a list has an index of 1. Using this counting system, you can retrieve any element you want from a list by subtracting one from its position in the list. If you want the fourth item in a list, you can request the item at index * 3.
 
 Python has a special syntax for accessing the last element in a list. At index -1, Python always returns the last item in the list:
 
@@ -42,7 +42,7 @@ This convention also extends to other negative index values as well. At index -2
 
 ## Using Individual Values from a List
 
-You can use individual values from a list just as you would with any other variable. For example, use f-strings to create a message based ona a value from a list.
+You can use individual values from a list just as you would with any other variable. For example, use f-strings to create a message based on a value from a list.
 
 ``` python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
@@ -148,7 +148,7 @@ The code inserts the value `ducati` at the beginning of the list. The `insert()`
 
 ## Removing Elements from a List
 
-Often, you will want to remove an item or a set of items from a list. For example, when a player shotos down an alien from the sky, most likely want to remove it from the list of active aliens. Or when a user decides to cancel their account on a web application, you will want to remove that user from the list of active users. You can remove an item according to its position in the list or according to its position in the list or according to its value.
+Often, you will want to remove an item or a set of items from a list. For example, when a player shoots down an alien from the sky, most likely want to remove it from the list of active aliens. Or when a user decides to cancel their account on a web application, you will want to remove that user from the list of active users. You can remove an item according to its position in the list or according to its position in the list or according to its value.
 
 ## Removing an Item Using the del Statement
 
@@ -162,7 +162,7 @@ del motorcycles[0]
 print(motorcycles
 ```
 
-The code uses `del` to remoev the first item, `honda`, from the list of motorcycles:
+The code uses `del` to remove the first item, `honda`, from the list of motorcycles:
 
 ``` python
 ['honda', 'yamaha', 'suzuki']
@@ -225,7 +225,7 @@ motorcycles.remove('ducati')
 print(motorcycles)
 ```
 
-`['honda', 'yamaha', 'suzuki']`. Python figures out wher 'ducati' appears in the list and removes that element.
+`['honda', 'yamaha', 'suzuki']`. Python figures out where 'ducati' appears in the list and removes that element.
 
 The `remove()` method can also be used to work with a value that's being removed from a list. Let's remove the value 'ducati' and print a reason for removing it from the list:
 
@@ -256,31 +256,31 @@ would you invite? Make a list that includes at least three people you’d like t
 
 * **3-5. Changing Guest List**: You just heard that one of your guests can’t make the dinner, so you need to send out a new set of invitations. You’ll have to think of someone else to invite.
 
-  * Start with your program from *Exercise 3-4*. Add a print() call at the end
+* Start with your program from *Exercise 3-4*. Add a print() call at the end
 of your program stating the name of the guest who can’t make it.
-  * Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
-  * Print a second set of invitation messages, one for each person who is still in your list.
+* Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
+* Print a second set of invitation messages, one for each person who is still in your list.
 
 * **3-6. More Guests**: You just found a bigger dinner table, so now more space is
 available. Think of three more guests to invite to dinner.
-  * Start with your program from *Exercise 3-4 or Exercise 3-5*. Add a print() call to the end of your program informing people that you found a bigger dinner table.
+* Start with your program from *Exercise 3-4 or Exercise 3-5*. Add a print() call to the end of your program informing people that you found a bigger dinner table.
 
-  * Use insert() to add one new guest to the beginning of your list.
-  * Use insert() to add one new guest to the middle of your list.
-  * Use append() to add one new guest to the end of your list.
-  * Print a new set of invitation messages, one for each person in your list.
+* Use insert() to add one new guest to the beginning of your list.
+* Use insert() to add one new guest to the middle of your list.
+* Use append() to add one new guest to the end of your list.
+* Print a new set of invitation messages, one for each person in your list.
 
 * **3-7. Shrinking Guest List**: You just found out that your new dinner table won’t arrive in time for the dinner, and you have space for only two guests.
-  * Start with your program from Exercise * 3-6. Add a new line that prints a message saying that you can invite only two people for dinner.
-  * Use pop() to remove guests from your list one at a time until only two names remain in your list. Each time you pop a name from your list, print a message to that person letting them know you’re sorry you can’t invite them to dinner.
-  * Print a message to each of the two people still on your list, letting them know they’re still invited.
- Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure you actually have an empty list at the end of your program.
+* Start with your program from Exercise * 3-6. Add a new line that prints a message saying that you can invite only two people for dinner.
+* Use pop() to remove guests from your list one at a time until only two names remain in your list. Each time you pop a name from your list, print a message to that person letting them know you’re sorry you can’t invite them to dinner.
+* Print a message to each of the two people still on your list, letting them know they’re still invited.
+Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure you actually have an empty list at the end of your program.
 
 ---
 
 ## Organizing a List
 
-Often, list will be created in an unpredicatable order, because it is not possible to always control the order in which users provide their data. Sometimes, information is best presented in a particular order or preserve the original order of the list. Other times, changing the original order is useful. Python provides a number of different ways to organize a list, depending on the situation.
+Often, list will be created in an unpredictable order, because it is not possible to always control the order in which users provide their data. Sometimes, information is best presented in a particular order or preserve the original order of the list. Other times, changing the original order is useful. Python provides a number of different ways to organize a list, depending on the situation.
 
 ## Sorting a List Permanently with the sort() Method
 
@@ -294,7 +294,7 @@ print(cars)
 
 `['audi', 'bmw', 'subaru', 'toyota']`
 
-The sort() method changes the order ofthe list permanently in alphabetical order, and can no longer revert to the original order. This can also be sorted in reverse alphabetical order by passing the argument `reverse = True` to the `sort()` method.
+The sort() method changes the order of the list permanently in alphabetical order, and can no longer revert to the original order. This can also be sorted in reverse alphabetical order by passing the argument `reverse = True` to the `sort()` method.
 
 ``` python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
@@ -356,9 +356,9 @@ cars = ['bmw', 'audi', 'toyota', 'subaru']
 len(cars)
 ```
 
-Finding the length will be usefil when to identify the number of aliens that still need be to be shot down in a game, determine the amount of data to manage in visualization, or figure out the number of registered users on a website, among other tasks.
+Finding the length will be useful when to identify the number of aliens that still need be to be shot down in a game, determine the amount of data to manage in visualization, or figure out the number of registered users on a website, among other tasks.
 
-***Python counts the items in a list starting with one, so there shouldn't be any off-by-one erros when determining the length of a list.***
+***Python counts the items in a list starting with one, so there shouldn't be any off-by-one errors when determining the length of a list.***
 
 ---
 
@@ -366,17 +366,17 @@ Finding the length will be usefil when to identify the number of aliens that sti
 
 * **3-8. Seeing the World**: Think of at least five places in the world you’d like to visit.
 
-  * Store the locations in a list. Make sure the list is not in alphabetical order.
-  * Print your list in its original order. Don’t worry about printing the list neatly, just print it as a raw Python list.
-  * Use sorted() to print your list in alphabetical order without modifying the actual list.
-  * Show that your list is still in its original order by printing it.
-  * Use sorted() to print your list in reverse alphabetical order without changing the order of the original list.
-  * Show that your list is still in its original order by printing it again.
-  * Use reverse() to change the order of your list. Print the list to show that its order has changed.
-  * Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
-  * Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
-  * Use sort() to change your list so it’s stored in reverse alphabetical order.
-  * Print the list to show that its order has changed.
+* Store the locations in a list. Make sure the list is not in alphabetical order.
+* Print your list in its original order. Don’t worry about printing the list neatly, just print it as a raw Python list.
+* Use sorted() to print your list in alphabetical order without modifying the actual list.
+* Show that your list is still in its original order by printing it.
+* Use sorted() to print your list in reverse alphabetical order without changing the order of the original list.
+* Show that your list is still in its original order by printing it again.
+* Use reverse() to change the order of your list. Print the list to show that its order has changed.
+* Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
+* Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
+* Use sort() to change your list so it’s stored in reverse alphabetical order.
+* Print the list to show that its order has changed.
 
 * **3-9. Dinner Guests**: Working with one of the programs from Exercises 3-4 through 3-7 (page 42), use len() to print a message indicating the number of people you are inviting to dinner.
 
@@ -425,3 +425,4 @@ What we learned in this chapter:
 * Sort lists permanently and temporarily for display purposes.
 
 * Find the length of a list and how to avoid index errors.
+
