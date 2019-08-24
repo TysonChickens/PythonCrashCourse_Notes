@@ -9,7 +9,7 @@ We have a list of magicians' names, and we want to print out each name in the li
 ``` python
 magicians = ['alice', 'david', 'carolina']
 for magician in magicians:
-    print(magician)
+print(magician)
 ```
 
 Inside the `for` loop, we tell Python to pull a name from the list of *magicians*, and associate it with the variable *magician*. Lastly, print the name just assigned to *magician*. Python then repeats each name once in the list. The output is a simple print of each name in the list:
@@ -39,7 +39,7 @@ You can do just about anything with each item in a `for` loop. Let's build on th
 ``` python
 magicians = ['alice', 'david', 'carolina']
 for magician in magicians:
-    print(f'{magician.title()}, that was a great trick!')
+print(f'{magician.title()}, that was a great trick!')
 ```
 
 The only difference in this code is where we compose a message to each magician, starting with that magician's name. The output shows a personalized message in a `for` loop each magician in the list starting from the first value of *alice* until the last value of *carolina*.
@@ -54,15 +54,15 @@ There can be many lines of code inside the `for` loop. Every indented line follo
 
 ## Doing Something After a for Loop
 
-What happens once a `for` loop has finishing executing? Usually, it is best to summarize the block of output or move on to other work that the progam must accomplish.
+What happens once a `for` loop has finishing executing? Usually, it is best to summarize the block of output or move on to other work that the program must accomplish.
 
-Any lines of code after the `for` loop that are not indented are executed once without repetition. Let's write a thank you to the group of magicians as a whole, thanking them for putting on an excellent show. To display this group message after all of the individual messages have been printed, we place the thank y ou message after the `for` loop without indentation:
+Any lines of code after the `for` loop that are not indented are executed once without repetition. Let's write a thank you to the group of magicians as a whole, thanking them for putting on an excellent show. To display this group message after all of the individual messages have been printed, we place the thank you message after the `for` loop without indentation:
 
 ``` python
 magicians = ['alice', 'david', 'carolina']
 for magician in magicians:
-    print(f"{magician.title()}, that was a great trick!")
-    print(f"I can't wait to see your next trick, {magician.title()}.\n")
+print(f"{magician.title()}, that was a great trick!")
+print(f"I can't wait to see your next trick, {magician.title()}.\n")
 
 print("Thank you, everyone. That was a great magic show!")
 ```
@@ -83,7 +83,7 @@ When processing data using a `for` loop, this is a good way to summarize an oper
 
 ## Avoiding Indentation Errors
 
-Python uses indentation to determine how a line, or group of lines, is related to the rest of the program. In the previous examples, the lines that printed messages to individual magicians were part of the `for` lopp because they were indented. Python's use of indentation makes code very easy to read. It uses whitespace to force to write neatly formatted code with a clear visual structure. The indentation levels help gain a general sense of the overall program's organization.
+Python uses indentation to determine how a line, or group of lines, is related to the rest of the program. In the previous examples, the lines that printed messages to individual magicians were part of the `for` loop because they were indented. Python's use of indentation makes code very easy to read. It uses white space to force to write neatly formatted code with a clear visual structure. The indentation levels help gain a general sense of the overall program's organization.
 
 When code written relies on proper indentation, we need to watch for a few common ***indentation errors***. For example, people sometimes indent lines of code that don't need to be indented or forget to indent lines that need to be indented. Here are some examples of these errors to avoid them in the future and correct them when they do appear in programs.
 
@@ -110,14 +110,14 @@ This can usually be resolved by indenting the line or lines immediately after th
 
 ## Forgetting to Indent Additional Lines
 
-Sometimes a loop will run without any erros but won't produce the expected result. This can happen when trying to do several taks in a loop and forget to indent some of its lines.
+Sometimes a loop will run without any errors but won't produce the expected result. This can happen when trying to do several tasks in a loop and forget to indent some of its lines.
 
 This is what happens when we forget to indent the second line in the loop that tells each magician we're looking forward to their next trick:
 
 ``` python
 magicians = ['alice', 'david', 'carolina']
 for magician in magicians:
-    print(f"{magician.title()}, that was a great trick!")
+print(f"{magician.title()}, that was a great trick!")
 print(f"I can't wait to see your next trick, {magician.title()}.\n")
 ```
 
@@ -138,7 +138,7 @@ If you accidentally indent a line that doesn't need to be indented, Python will 
 
 ``` python
 message = "Hello Python World!"
-    print(message)
+print(message)
 ```
 
 There is no need to indent the `print()` call, because it is not part of a loop. Therefore, Python reports an error:
@@ -157,13 +157,12 @@ The colon at the end of a `for` statement tells Python to interpret the next lin
 
 * **4-1. Pizzas**: Think of at least three kinds of your favorite pizza. Store these pizza names in a list, and then use a for loop to print the name of each pizza.
 
-  * Modify your for loop to print a sentence using the name of the pizza instead of printing just the name of the pizza. For each pizza you should have one line of output containing a simple statement like *I like pepperoni pizza*.
-  * Add a line at the end of your program, outside the for loop, that states how much you like pizza. The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, such as *I really love pizza!*
+* Modify your for loop to print a sentence using the name of the pizza instead of printing just the name of the pizza. For each pizza you should have one line of output containing a simple statement like *I like pepperoni pizza*.
+* Add a line at the end of your program, outside the for loop, that states how much you like pizza. The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, such as *I really love pizza!*
 
 * **4-2. Animals**: Think of at least three different animals that have a common characteristic. Store the names of these animals in a list, and then use a for loop to print out the name of each animal.
-  
-  * Modify your program to print a statement about each animal, such as *A dog would make a great pet*.
-  * Add a line at the end of your program stating what these animals have in common. You could print a sentence such as Any of these animals would make a great pet!
+* Modify your program to print a statement about each animal, such as *A dog would make a great pet*.
+* Add a line at the end of your program stating what these animals have in common. You could print a sentence such as Any of these animals would make a great pet!
 
 ---
 
@@ -179,7 +178,7 @@ Python's `range()` function makes it easy to generate a series of numbers like t
 
 ``` python
 for value in range(1, 5):
-    print(value)
+print(value)
 ```
 
 Although this code looks like it should print the numbers from 1 to 5, it doesn't print the number 5:
@@ -240,8 +239,8 @@ Almost any set of numbers can be created using the `range()` function. For examp
 ``` python
 squares = []
 for value in range(1, 11):
-    square = value ** 2
-    squares.append(square)
+square = value ** 2
+squares.append(square)
 
 print(squares)
 ```
@@ -257,7 +256,7 @@ For more concise code, omit the temporary variable *square* and append each new 
 ``` python
 squares = []
 for value in range(1, 11):
-    squares.append(value ** 2)
+squares.append(value ** 2)
 
 print(squares)
 ```
@@ -301,7 +300,7 @@ The result is:
 
 * **4-3. Counting to Twenty**: Use a for loop to print the numbers from 1 to 20, inclusive.
 
-* **4-4. One Million**: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. (If the output is taking too long, stop it by pressing ctrl -C or by closing the output window.)
+* **4-4. One Million**: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. (If the output is taking too long, stop it by pressing Ctrl-C or by closing the output window.)
 
 * **4-5. Summing a Million**: Make a list of the numbers from one to one million, and then use min() and max() to make sure your list actually starts at one and ends at one million. Also, use the sum() function to see how quickly Python can add a million numbers.
 
@@ -317,7 +316,7 @@ The result is:
 
 ## Working with Part of a List
 
-In chapter 3, we learned how to access single elements in a list, and will now learn how to work through all the elemtents in a list. In Python, there is something called a *slice* to work with a specific group of items in a list.
+In chapter 3, we learned how to access single elements in a list, and will now learn how to work through all the elements in a list. In Python, there is something called a *slice* to work with a specific group of items in a list.
 
 ## Slicing a List
 
@@ -376,7 +375,7 @@ players = ['charles', 'martina', 'michael', 'florence', 'eli']
 print(players[-3:])
 ```
 
-This prints the names of the last three palyers and would continue to work as the list of players change in size.
+This prints the names of the last three players and would continue to work as the list of players change in size.
 
 ***When slicing, a third value can be included in the brackets. If a third value is included, this tells Python how many items to skip between items in the specified range.***
 
@@ -390,7 +389,7 @@ players = ['charles', 'martina', 'michael', 'florence', 'eli']
 print("Here are the first three players on my team:")
 
 for player in players[:3]:
-    print(player.title())
+print(player.title())
 ```
 
 Instead of looping through the entire list of players, Python loops through the only the first three names:
@@ -402,7 +401,7 @@ Martina
 Michael
 ```
 
-Slices are very useful in a number of situations. For instance, when creating a game, adding a player's final score to a list every time that player finishes playing. Then retrive a top a player's top three scores by sorting the list in decreasing order and taking a slice that includes just the first three scores. When working with data, the use of slices to process data in chunks of specific size to display appropriate amount of information.
+Slices are very useful in a number of situations. For instance, when creating a game, adding a player's final score to a list every time that player finishes playing. Then retrieve a top a player's top three scores by sorting the list in decreasing order and taking a slice that includes just the first three scores. When working with data, the use of slices to process data in chunks of specific size to display appropriate amount of information.
 
 ## Copying a List
 
@@ -443,15 +442,15 @@ If we assign *friend_foods* equal to *my_foods*, both variables will point to th
 
 * **4-10. Slices**: Using one of the programs you wrote in this chapter, add several lines to the end of the program that do the following:
 
-  * Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
-  * Print the message Three items from the middle of the list are:. Use a slice to print three items from the middle of the list.
-  * Print the message The last three items in the list are:. Use a slice to print the last three items in the list.
+* Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
+* Print the message Three items from the middle of the list are:. Use a slice to print three items from the middle of the list.
+* Print the message The last three items in the list are:. Use a slice to print the last three items in the list.
 
 * **4-11. My Pizzas, Your Pizzas**: Start with your program from Exercise 4-1 (page 56). Make a copy of the list of pizzas, and call it friend_pizzas. Then, do the following:
 
-  * Add a new pizza to the original list.
-  * Add a different pizza to the list friend_pizzas .
-  * Prove that you have two separate lists. *Print the message My favorite pizzas are:*, and then use a for loop to print the first list. Print the message *My friend’s favorite pizzas are:*, and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list.
+* Add a new pizza to the original list.
+* Add a different pizza to the list friend_pizzas .
+* Prove that you have two separate lists. *Print the message My favorite pizzas are:*, and then use a for loop to print the first list. Print the message *My friend’s favorite pizzas are:*, and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list.
 
 * **4-12. More Loops**: All versions of foods.py in this section have avoided using for loops when printing to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
 
@@ -501,25 +500,25 @@ Like a list, a `for` loop can be used to loop over all the values in a tuple:
 dimensions = (200, 50)
 
 for dimension in dimensions:
-    print(dimension)
+print(dimension)
 ```
 
 Python returns all the elements in the tuple: `200` `50`.
 
 ## Writing over a Tuple
 
-Even though a tuple can't be modified, it is possible to assign a new value to a variable that represents a tuple. To change our dimensions, redfine the entire tuple:
+Even though a tuple can't be modified, it is possible to assign a new value to a variable that represents a tuple. To change our dimensions, redefine the entire tuple:
 
 ``` python
 dimensions = (200, 50)
 print("Original dimensions:")
 for dimension in dimensions:
-    print(dimension)
+print(dimension)
 
 dimensions = (400, 100)
 print("\nModified dimensions:")
 for dimension in dimensions:
-    print(dimension)
+print(dimension)
 ```
 
 The first few lines define the original tuple and and print the initial dimensions. The second *dimensions* is a new tuple that with modified values. Python does not raise any errors because reassigning a variable is valid:
@@ -542,9 +541,9 @@ When compared with lists, tuples are simple data structures. Use tuples when to 
 
 * **4-13. Buffet**: A buffet-style restaurant offers only five basic foods. Think of five simple foods, and store them in a tuple.
 
-  * Use a for loop to print each food the restaurant offers.
-  * Try to modify one of the items, and make sure that Python rejects the change.
-  * The restaurant changes its menu, replacing two of the items with different foods. Add a line that rewrites the tuple, and then use a for loop to print each of the items on the revised menu.
+* Use a for loop to print each food the restaurant offers.
+* Try to modify one of the items, and make sure that Python rejects the change.
+* The restaurant changes its menu, replacing two of the items with different foods. Add a line that rewrites the tuple, and then use a for loop to print each of the items on the revised menu.
 
 ---
 
