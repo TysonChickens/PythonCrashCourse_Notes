@@ -11,17 +11,17 @@ In every `if` statement, there is an expression that can be evaluated as `True` 
 Most conditional statements compare the current value of a variable specific value of interest. The simplest conditional test checks whether the value of a variable is equal to the value of interest:
 
 ``` python
-car = 'bmw'
-car == 'bmw'
-> True
+>>> car = 'bmw'
+>>> car == 'bmw'
+True
 ```
 
 The second line checks whether the value of car is *'bmw'* using a double equal sign (==). This *equality operator* returns `True` if the values on the left and right side of the operator match, and `False` if they don't match. When the value of car is anything other other than *'bmw'*, the test returns `False`:
 
 ``` python
-car = 'audi'
-car =='bmw'
-> False
+>>> car = 'audi'
+>>> car =='bmw'
+False
 ```
 
 A single equal sign is a statement to assign a value. With a double equal sign, is almost asking a question to double check if the value exists. Most programming languages use equal signs in this way.
@@ -31,20 +31,20 @@ A single equal sign is a statement to assign a value. With a double equal sign, 
 Testing for equality is case sensitive in Python. For example, two values with different capitalization are not considered equal:
 
 ``` python
-car = 'Audi'
-car == 'audi'
-> False
+>>> car = 'Audi'
+>>> car == 'audi'
+False
 ```
 
 If case matters, this behavior is advantageous. But if case does not matter and instead want to test the value of variable, convert the variable's value to lowercase before doing the comparison:
 
 ``` python
-car = 'Audi'
-car.lower() == 'audi'
-> True
+>>> car = 'Audi'
+>>> car.lower() == 'audi'
+True
 
-print(car)
-> 'Audi'
+>>> car
+'Audi'
 ```
 
 The variable *car* is converted to all lowercase and compare the lowercase value to the string *'audi*'. The two strings match, so Python returns `True`. In the last line, the original variable value has not been affected by the `lower()` method.
@@ -69,3 +69,43 @@ Because the value of *requested_topping* is not *'anchovies'*, the `print()` fun
 `Hold the anchovies!`
 
 Most conditional expressions will test for equality, but sometimes it is more efficient to test for inequality.
+
+## Numerical Comparisons
+
+Testing numerical values is straightforward. For example, the following code checks whether a person is 18 years old:
+
+``` python
+>>age = 18
+>>age == 18
+True
+```
+
+Also test to see if two numbers are not equal. For example, the following code prints a message if the given answer is not correct:
+
+``` python
+answer = 17
+
+if answer != 42:
+    print("That is not the correct answer. Please try again!")
+```
+
+The conditional test passes, because the value of *answer (17)* is not equal to *42*. Because the test passes, the indented code block is executed:
+
+`That is not the correct answer. Please try again!`
+
+Various mathematical comparisons in conditional statements can be included as well. 
+
+``` python
+>>> age = 19
+>>> age < 21
+True
+>>> age <= 21
+True
+>>> age > 21
+False
+>>> age >= 21
+False
+```
+
+Each mathematical comparison can be used as part of an `if` statement, which can help detect exact conditions of interest.
+
