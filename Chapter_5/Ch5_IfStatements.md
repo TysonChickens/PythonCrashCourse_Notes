@@ -28,7 +28,7 @@ A single equal sign is a statement to assign a value. With a double equal sign, 
 
 ## Ignoring Case When Checking for Equality
 
-Testing for equality is case sensitive in Python. For exmaple, two values with different capitalization are not considered equal:
+Testing for equality is case sensitive in Python. For example, two values with different capitalization are not considered equal:
 
 ``` python
 car = 'Audi'
@@ -51,3 +51,21 @@ The variable *car* is converted to all lowercase and compare the lowercase value
 
 Websites enforce certain rules for the data that users enter in a manner similar to this. For example, a site might use a conditional test to ensure that every user has a truly unique username, not just a variation on the capitalization of another person's username. When someone submits a new username, that new username is converted to lowercase and compared to the lowercase versions of all existing usernames. During this check, a username like 'John' will be rejected if any variation of 'john' is already in use.
 
+## Checking for Inequality
+
+To determine whether two value are not equal, combine an exclamation point and an equal sign (!=). The exclamation point represents *not*, as it does in many programming languages.
+
+Let's use another `if` statement to examine how to use the inequality operator. In a variable, store a requested pizza topping and then print a message if the person did not order anchovies:
+
+``` python
+requested_topping = 'mushrooms'
+
+if requested_topping != 'anchovies':
+print("Hold the anchovies!")
+```
+
+Because the value of *requested_topping* is not *'anchovies'*, the `print()` function is executed. If the two values match, Python returns `False` and does not run the code following the `if` statement. If these two values do not match, Python returns `True` and executes the code following the `if` statement.
+
+`Hold the anchovies!`
+
+Most conditional expressions will test for equality, but sometimes it is more efficient to test for inequality.
