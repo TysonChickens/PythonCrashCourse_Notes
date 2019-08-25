@@ -203,8 +203,7 @@ Boolean values provide an efficient way to track the state of a program or a par
 
 ## TRY IT YOURSELF: Conditional Tests
 
-**5-1. Conditional Tests**: Write a series of conditional tests. Print a statement describing each test and your prediction for 
-the results of each test. Your code should look something like this:
+**5-1. Conditional Tests**: Write a series of conditional tests. Print a statement describing each test and your prediction for the results of each test. Your code should look something like this:
 
 ``` python
 car = 'subaru'
