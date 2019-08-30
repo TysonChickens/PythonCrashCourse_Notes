@@ -277,3 +277,31 @@ Have you registered to vote yet?
 ```
 
 If the value of *age* is less than 18, this program would produce no output.
+
+## if-else Statements
+
+Often, we will want to take one action when a conditional test passes and a different action in all other cases. Python's `if-else` syntax makes this possible. An `if-else` block is similar to a simple `if` statement, but the `else` statement allows to define an action or set of actions that are executed when the conditional test fails.
+
+Now add a message for anyone who is not old enough to vote:
+
+``` python
+age = 17
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+else:
+    print("Sorry, you are too young to vote.")
+    print("Please register to vote as soon as you turn 18!")
+```
+
+Because *age* is less than this time, the conditional test fails with `False` and the code in the `else` block is executed:
+
+``` markdown
+Sorry, you are too young to vote.
+Please register to vote as soon as you turn 18!
+```
+
+This code works because it has only two possible solutions to evaluate: a person it either old enough to vote or not old enough to vote. The `if-else` structure works well in situations in where Python will always execute one of two possible actions.
+
+## The if-else Chain
+
