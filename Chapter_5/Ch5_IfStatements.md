@@ -230,3 +230,50 @@ less than, greater than or equal to, and less than or equal to
 * Test whether an item is not in a list
 
 ---
+
+## if Statements
+
+With knowledge of conditional tests, it is time to write `if` statements. Several different kinds of `if` statements exist to use depends on the number of conditions to test.
+
+## Simple if Statments
+
+The simplest kind of `if` statement has one test and one action:
+
+``` python
+if conditional_test:
+    do something
+```
+
+Any conditional test in the first line and about any action in the indented block following the test can be used. If the conditional test evaluates to `True`, Python executes the following `if` statement. If the test evaluates to `False`, Python ignores the code following the `if` statement.
+
+The following code tests whether the person's age is old enough to vote:
+
+``` python
+age = 19
+if age >= 18:
+    print("You are old enough to vote!")
+```
+
+Python checks to see whether the value of *age* is greater than or equal to 18. Therefore, Python executes the indented `print()` call:
+
+`You are old enough to vote!`
+
+Indentation plays the same role in `if` statements as it did in `for` loops. All indented lines after an `if` statement will be executed if the test passes, and the entire block of indented lines will be ignored if the test does not pass.
+
+There can be as many lines of code in the block following the `if` statement. Let's add another line of output if the person is old enough to vote, asking if the individual has registered to vote yet:
+
+``` python
+age = 19
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?)
+```
+
+The conditional tests passes, and both `print()` calls are indented, so both lines are printed:
+
+``` markdown
+You are old enough to vote!
+Have you registered to vote yet?
+```
+
+If the value of *age* is less than 18, this program would produce no output.
