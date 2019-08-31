@@ -394,3 +394,58 @@ The extra `elif` block near the end assigns a price of $20 when the person is 65
 The `else` block is a catchall statement to match any condition that wasn't matched by a specific `if` or `elif` statement. If there is a specific final condition to test for, consider using an `elif` block and omit the `else` block. This will add extra confidence that the code will run only under the correct conditions.
 
 ## Testing Multiple Conditions
+
+The `if-elif-else` chain is powerful, but only appropriate to use when only one test is required to pass. As soon as Python finds one test that passes, it skips the rest of the tests. This behavior is beneficial because it's efficeint and allows to test for one specific condition.
+
+Sometimes, it is important to check all of the conditions. In this case, use a series of simple `if` statements with no `elif` or `else` blocks. This technique makes sense when more than one condition could be `True`, and want to act on every condition that is `True`.
+
+Let's reconsider the pizzera example. If someone requests a two-topping pizza, be sure to include both toppings on their pizza:
+
+``` python
+requested_topping = ['mushrooms', 'extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+
+print("\nFinished making your pizza!")
+```
+
+We start with a list containing the requested toppings. The `if` statement checks to see whether the person requested mushrooms on their pizza. If so, a message is printed confirming that topping. The test for pepperoni is another simple `if` statement, not an `elif` or `else` statement, so this test is run regardless of whether the previous test passed or not. The last `if` statement checks whether extra cheese was requested regardless of the results from the first two tests. These three independent tests are executed every time this program is run.
+
+Because every condition is evaluated, both mushrooms and extra cheese are added to the pizza:
+
+``` markdown
+Adding mushrooms.
+Adding extra cheese.
+
+Finished making your pizza!
+```
+
+This code will not work properly if used with `if-elif-else` block, because the code would stop running after only one test passes.
+
+``` python
+requested_toppings = ['mushrooms', 'extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+elif 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+elif 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+
+print("\nFinished making your pizza!")
+```
+
+The test for *mushrooms* is the first test to pass, so mushrooms are added to the pizza. The rest of the code is not checked by Python because doesn't run any tests beyond the first test that passes in an `if-elif-else` chain. The first topping will be added, but all other toppings will be missed:
+
+``` markdown
+Adding mushrooms.
+
+Finished making your pizza!
+```
+
+In summary, use an `if-elif-else` chain to run only one block of code. If more than one block of code needs to run, use a series of independent `if` statements.
