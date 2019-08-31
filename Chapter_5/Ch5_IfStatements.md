@@ -348,3 +348,25 @@ print(f"Your admission price is ${price}.")
 ```
 
 The code produces the same output as the previous example, but the purpose of the `if-elif-else` chain is narrower. Instead of determining a price and displaying a message, it simply determines the admission price. This approach is more efficient and easier to modify than the original approach. To change the text of the output message, the only need to change is one `print()` call rather than three separate `print()` calls.
+
+## Using Multiple elif Blocks
+
+There can be as many `elif` blocks in a piece of code. For example, if the amusement part were to implement a discount for seniors, it is possible to add one more conditional test to the code to determine if someone qualified for the senior discount. Let's say anyone 65 or older pays half the regular admission, or $20:
+
+``` python
+age = 12
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+elif age < 65:
+    price = 40
+else:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+```
+
+Most of the code is unchanged. Now there is a second `elif` block that checks to make sure a person is less than age 65 before assigning them full admission rate of $40. Notice the value assigned to the `else` block needs to be changed to $20, because the only ages that make it to this block are people 65 or older.
+
