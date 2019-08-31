@@ -454,8 +454,7 @@ In summary, use an `if-elif-else` chain to run only one block of code. If more t
 
 ## TRY IT YOURSELF: if Statements
 
-**5-3. Alien Colors #1**: Imagine an alien was just shot down in a game. Create a variable called alien_color and assign it a value of 
-'green' , 'yellow' , or 'red' .
+**5-3. Alien Colors #1**: Imagine an alien was just shot down in a game. Create a variable called alien_color and assign it a value of 'green' , 'yellow' , or 'red' .
 
 * Write an if statement to test whether the alien’s color is green. If it is, print a message that the player just earned 5 points.
 * Write one version of this program that passes the if test and another that fails. (The version that fails will have no output.)
@@ -488,3 +487,151 @@ In summary, use an `if-elif-else` chain to run only one block of code. If more t
 * Write five if statements. Each should check whether a certain kind of fruit is in your list. If the fruit is in your list, the if block should print a statement, such as You really like bananas!
 
 ---
+
+## Using if Statements with Lists
+
+Interesting work can be done when lists and `if` statements are used together. You can be manage changing conditions efficiently, such as the availability of certain items in a restaurant throughout a shift. Also begin to prove that code works as you expect it to in all possible situations.
+
+## Checking for Special Items
+
+Let's take a look at how you can watch for special values in a list and handle those values appropriately.
+
+With the pizzeria example, the pizzeria displays a message whenever a topping is added to your pizza being made. The code for this action can be written very efficiently by making a list of toppings the customer has requested and using a loop to announce each topping added to the pizza:
+
+``` python
+requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    print(f"Adding {requested_topping}.")
+
+print("\nFinished making your pizza!")
+```
+
+The output is straightforward:
+
+``` markdown
+Adding mushrooms.
+Adding green peppers.
+Adding extra cheese.
+
+Finished making your pizza!
+```
+
+What if the pizzeria runs of green peppers? An `if` statement inside for `for` loop can handle this situation appropriately:
+
+``` python
+requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping == 'green peppers':
+        print("Sorrym we are of green peppers right now.")
+    else:
+        print(f"Adding {requested_topping}.")
+
+print("\nFinished making your pizza!")
+```
+
+This time we check each requested item before adding it to the pizza.  The code checks to see if the person requested green peppers, and displays a message informing them they can't have green peppers. The `else` block ensures all other toppings will be added to the pizza.
+
+``` markdown
+Adding mushrooms.
+Sorry, we are out of green peppers right now.
+Adding extra cheese.
+
+Finished making your pizza!
+```
+
+## Checking That a List Is Not Empty
+
+So far, we assumed that each list has at least one item in it. It is useful to check whether a list is empty before running a `for` loop.
+
+As an example, let's check whether the list of requested toppings is empty before building the pizza. If the list is empty, we'll prompt the user and make sure they want a plain pizza. If the list is not empty, build the pizza just as we did in the previous examples:
+
+``` python
+requested_toppings = []
+
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        print(f"Adding {requested_topping}.")
+    print("\nFinished making your pizza!")
+else:
+    print("Are you sure you want a plain pizza?")
+```
+
+Python returns `False` because it is an empty list. Since the conditional test fails, we print a message asking the customer if they really want a plain pizza. If *requested_toppings* passes the conditional test, we run the same `for` loop in the previous example.
+
+The list is empty, so the output asks if the user really wants a plain pizza:
+
+`Are you sure you want a plain pizza?`
+
+If the list is not empty, the output will show each requested topping being added to the pizza.
+
+## Using Multiple Lists
+
+What if a customer actually wants french fries on their pizza? You can use lists and `if` statements to make sure input makes sense bfore you act on it.
+
+Let's watch out for unusual topping requests before we build a pizza. The following example defines two lists. The first is a list of available toppings at the pizzeria, and the second is the list of toppings that the user has requested. This time, each item in *requested_toppings* is checked against the list of available toppings before it's added to the pizza:
+
+``` python
+available_toppings = ['mushrooms', 'olives', 'green peppers', 'pepperoni', 'pineapple', 'extra cheese']
+
+requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}.")
+    else:
+        print(f"Sorry, we don't have {requested_topping}.")
+
+print("\nFinished making your pizza!")
+```
+
+This code syntax produces clean, informative output:
+
+``` markdown
+Adding mushrooms.
+Sorry, we don't have french fries.
+Adding extra cheese.
+
+Finished making your pizza!
+```
+
+In just a few lines of code, we’ve managed a real-world situation pretty effectively!
+
+---
+
+## TRY IT YOURSELF: Using if Statements with Lists
+
+**5-8. Hello Admin**: Make a list of five or more usernames, including the name 'admin' . Imagine you are writing code that will print a greeting to each user after they log in to a website. Loop through the list, and print a greeting to each user:
+
+* If the username is 'admin' , print a special greeting, such as Hello admin, would you like to see a status report?
+* Otherwise, print a generic greeting, such as Hello Jaden, thank you for logging in again.
+
+**5-9. No Users**: Add an if test to hello_admin.py to make sure the list of users is not empty.
+
+* If the list is empty, print the message We need to find some users!
+* Remove all of the usernames from your list, and make sure the correct message is printed.
+
+**5-10. Checking Usernames**: Do the following to create a program that simulates how websites ensure that everyone has a unique username.
+
+* Make a list of five or more usernames called current_users.
+* Make another list of five usernames called new_users. Make sure one or two of the new usernames are also in the current_users list.
+* Loop through the new_users list to see if each new username has already been used. If it has, print a message that the person will need to enter a new username. If a username has not been used print a message saying that the username is available.
+* Make sure your comparison is case insensitive. If 'John' has been used, 'JOHN' should not be accepted. (To do this, you’ll need to make a copy of current_users containing the lowercase versions of all existing users.)
+
+**5-11. Ordinal Numbers**: Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in *th*, except 1, 2, and 3.
+
+* Store the numbers 1 through 9 in a list.
+* Loop through the list.
+* Use an if - elif - else chain inside the loop to print the proper ordinal ending for each number. Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th" , and each result should be on a separate line.
+
+---
+
+## Summary
+
+What we learned in this chapter:
+
+* Write conditional tests, which always evaluate to `True` or `False`.
+* Write simple `if` statements, `if-else` chains, and `if-elif-else` chains.
+* Identify particular conditions needed to test and known when those conditions have been met in programs.
+* Handle certain items in a list differently than all other items while continuing to utilize the efficiency of a `for` loop.
