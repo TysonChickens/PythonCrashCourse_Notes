@@ -370,3 +370,27 @@ print(f"Your admission cost is ${price}.")
 
 Most of the code is unchanged. Now there is a second `elif` block that checks to make sure a person is less than age 65 before assigning them full admission rate of $40. Notice the value assigned to the `else` block needs to be changed to $20, because the only ages that make it to this block are people 65 or older.
 
+## Omitting the else Block
+
+Python does not require en `else` block at the end of an `if-elif` chain. sometimes an `else` block is useful; sometimes it is clearer to use an additional `elif` statement that catches the specific condition of interest:
+
+``` python
+age = 12
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+elif age < 65:
+    price = 40
+elif age >= 65:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+```
+
+The extra `elif` block near the end assigns a price of $20 when the person is 65 or older, which is a bit clearer than the general `else` block. With the new change, every block of code must pass a specific test in order to be executed.
+
+The `else` block is a catchall statement to match any condition that wasn't matched by a specific `if` or `elif` statement. If there is a specific final condition to test for, consider using an `elif` block and omit the `else` block. This will add extra confidence that the code will run only under the correct conditions.
+
+## Testing Multiple Conditions
