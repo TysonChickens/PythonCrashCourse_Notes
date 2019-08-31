@@ -325,3 +325,26 @@ elif age < 18:
 else:
     print("Your admission cost is $40.")
 ```
+
+In this example, the test evaluates to `False`, so the first code block is not executed. However, the second test evaluates to `True` (12 is less than 18) so its code is executed. The output is one sentence, informing the user of the admission cost:
+
+ `Your admission cost is $25.`
+
+Any age greather than 17 would cause the first two tests fail. In these situations, the `else` block would be executed and the admission price would be $40.
+
+It would be more concise to set just the price inside the `if-elif-else` chain and then have a simple `print()` call that runs after the chain has been evaluated:
+
+``` python
+age = 12
+
+if age < 4 :
+    price = 0
+elif age < 18:
+    price = 25
+else:
+    price = 40
+
+print(f"Your admission price is ${price}.")
+```
+
+The code produces the same output as the previous example, but the purpose of the `if-elif-else` chain is narrower. Instead of determining a price and displaying a message, it simply determines the admission price. This approach is more efficient and easier to modify than the original approach. To change the text of the output message, the only need to change is one `print()` call rather than three separate `print()` calls.
