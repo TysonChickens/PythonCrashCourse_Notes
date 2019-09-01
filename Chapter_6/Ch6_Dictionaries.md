@@ -119,7 +119,7 @@ Typically, empty dictionaries are used when storing user-supplied data in a dict
 
 ## Modifying Values in a Dictionary
 
-To modify a value in a dictionary, give the name of the dictionary with the key in square brackets and then the new value associated with that key. For exmaple, consider an alien that changes from green to yellow as a game progresses:
+To modify a value in a dictionary, give the name of the dictionary with the key in square brackets and then the new value associated with that key. For example, consider an alien that changes from green to yellow as a game progresses:
 
 ``` python
 alien_0 = {'color': 'green'}
@@ -145,12 +145,12 @@ print(f"Original x-position: {alien_0['x_position']}")
 # Move the alien to the right.
 # Determine how far to move the alien based on its current speed.
 if alien_0['speed'] == 'slow':
-    x_increment = 1
+x_increment = 1
 elif alien_0['speed'] == 'medium':
-    x_increment = 2
+x_increment = 2
 else:
-    # This must be a fast alien.
-    x_increment = 3
+# This must be a fast alien.
+x_increment = 3
 
 # The new position is the old position plus the increment.
 alien_0['x_position'] = alien_0['x_position'] + x_increment
@@ -174,3 +174,112 @@ The `if-elif-else` block would then assign a larger value to *x_increment* the n
 
 ## Removing Key-Value Pairs
 
+When a piece of information is no longer needed in a dictionary, use the `del` statement to completely remove a key-value pair. All `del` needs is the name of the dictionary and the key to remove.
+
+For example, remove the key 'points' from the *alien_0* dictionary along with its value:
+
+``` python
+alien_0 = {'color': 'green', 'points': 5}
+print(alien_0)
+
+del alien_0['points']
+print(alien_0)
+```
+
+The `del` statement deletes the key 'points' from the dictionary *alien_0* and the value associated with that key as well. The rest of the dictionary is unaffected:
+
+``` markdown
+{'color': 'green', 'points': 5}
+{'color': 'green'}
+```
+
+***Be aware that deleted key-value pair is removed permanently.***
+
+## A Dictionary of Similar Objects
+
+A dictionary can also store information about many objects. For example, a poll of number of people and ask them what their favorite programming language is. A dictionary is useful for storing the results of a simple poll:
+
+``` python
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python'
+}
+```
+
+To use this dictionary, given the name of a person who took the poll, we can easily look up their favorite language:
+
+``` python
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+language = favorite_languages['sarah'].title()
+print(f"Sarah's favorite language is {language}.")
+```
+
+To see which language Sarah chose, we ask the value at:
+
+`favorite_languages['sarah']`
+
+We use this syntax to pull Sarah's favorite language from the dictionary and assign it to the variable *language*. Creating a new variable makes a cleaner `print()` call. The output shows Sarah's favorite language:
+
+`Sarah's favorite language is C.`
+
+This same syntax can be used for any individual represented in the dictionary.
+
+## Using get() to Access Values
+
+Using keys in square brackets to retrieve the value from a dictionary might cause one potential problem: if the key doesn't exist, an error will occur.
+
+Let's see what happens when we ask for the point value of an alien that doesn't have a point value set:
+
+``` python
+alien_0 = {'color': 'green', 'speed': 'slow'}
+print(alien_0['points'])
+```
+
+This results in a traceback, showing a *KeyError*:
+
+``` markdown
+Traceback (most recent call last):
+File "alien_no_points.py", line 2, in <module>
+print(alien_0['points'])
+KeyError: 'points'
+```
+
+For dictionaries, use the `get()` method to set a default value that will be returned if the requested key doesn't exist.
+
+The `get()` method requires a *key* as a first argument. As a second optional argument, we can pass the value to be returned if the key does not exist:
+
+``` python
+alien_0 = {'color': 'green', 'speed': 'slow'}
+
+point_value = alien_0.get('points', 'No point value assigned.')
+print(point_value)
+```
+
+If the key 'points' exists in the dictionary, it will return the corresponding value. If it doesn't, the default value is printed. In this case, *points* does not exist, and we get a clean message instead of an error:
+
+`No point value assigned.`
+
+***If the second argument in the call of `get()` and the key does not exist, Python will return the value *None*. This is not an error: it's a special value meant to indicate the absence of a value, "no value exists."***
+
+---
+
+## TRY IT YOURSELF: Working with Dictionaries
+
+**6-1. Person**: Use a dictionary to store information about a person you know. Store their first name, last name, age, and the city in which they live. You should have keys such as first_name , last_name , age , and city . Print each piece of information stored in your dictionary.
+
+**6-2. Favorite Numbers**: Use a dictionary to store people’s favorite numbers. Think of five names, and use them as keys in your dictionary. Think of a favorite number for each person, and store each as a value in your dictionary. Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
+
+**6-3. Glossary**: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+
+* Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+* Print each word and its meaning as neatly formatted output. You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. Use the newline character ( \n ) to insert a blank line between each word-meaning pair in your output.
+
+---
