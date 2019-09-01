@@ -635,4 +635,3 @@ What we learned in this chapter:
 * Write simple `if` statements, `if-else` chains, and `if-elif-else` chains.
 * Identify particular conditions needed to test and known when those conditions have been met in programs.
 * Handle certain items in a list differently than all other items while continuing to utilize the efficiency of a `for` loop.
-
