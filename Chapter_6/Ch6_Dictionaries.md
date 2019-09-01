@@ -201,10 +201,10 @@ A dictionary can also store information about many objects. For example, a poll 
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python'
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python'
 }
 ```
 
@@ -212,10 +212,10 @@ To use this dictionary, given the name of a person who took the poll, we can eas
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
 }
 
 language = favorite_languages['sarah'].title()
@@ -283,3 +283,77 @@ If the key 'points' exists in the dictionary, it will return the corresponding v
 * Print each word and its meaning as neatly formatted output. You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. Use the newline character ( \n ) to insert a blank line between each word-meaning pair in your output.
 
 ---
+
+## Looping Through a Dictionary
+
+A single Python dictionary can contain just a few key-value pairs or millions of pairs. Python lets us loop through a dictionary with large amounts of data. We can loop through all of a dictionary's key-values pairs, through its keys, or through its values.
+
+## Looping Through All Key-Value Pairs
+
+Let's consider a new dictionary designed to store information about a user on a website. The following dictionary would store one person's username, first name, and last name:
+
+``` python
+user_0 = {
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi'
+}
+```
+
+If we wanted to see everything stored in this user's dictionary, loop through the dictionary using a `for` loop:
+
+``` python
+user_0 = {
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi',
+}
+
+for key, value in user_0.items():
+    print(f"\nKey: {key}")
+    print(f"Value: {value}")
+```
+
+To write a `for` loop for a dictionary, create names for the two variables that will hold the key and value in each key-value pair. Any names can be used for these two variables. This code would work just as well if we used abbreviations for variable names:
+
+`for k, v in user_0.items()`
+
+The second half of the `for` statement includes the name of the dictionary followed by the method `items()`, which returns a list of key-value pairs. The `for` loop then assigns each of these pairs to the two variables provided. In the preceding example, we use the variables to print each key followed by the associated value. The "\n" in the first `print()` call ensures that a blank line is inserted before each key-value pair in the output:
+
+``` markdown
+Key: last
+Value: fermi
+
+Key: first
+Value: enrico
+
+Key: username
+Value: efermi
+```
+
+Looping through all key-value pairs works well for dictionaries in a previous example to store each person name and their favorite programming language. The keys always refer to a person's name and the value is always a language. We will use the variables *name* and *language* in the loop instead of *key* and *value*. This will make it easier to follow what is happening inside the loop:
+
+``` python
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+}
+
+for name, language in favorite_languages.items():
+    print(f"{name.title()}'s favorite language is {language.title()}.")
+```
+
+The code tells Python to loop through each key-value pair in the dictionary. As it works through each pair the key is assigned to the variable *name*, and the value is assigned to the variable *language*.
+
+``` markdown
+Jen's favorite language is Python.
+Sarah's favorite language is C.
+Edward's favorite language is Ruby.
+Phil's favorite language is Python.
+```
+
+Looping would work even if our dictionary stored the results from polling a thousand or even a million people.
+
+
