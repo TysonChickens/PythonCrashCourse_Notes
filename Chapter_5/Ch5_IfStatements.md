@@ -86,7 +86,7 @@ Also test to see if two numbers are not equal. For example, the following code p
 answer = 17
 
 if answer != 42:
-    print("That is not the correct answer. Please try again!")
+print("That is not the correct answer. Please try again!")
 ```
 
 The conditional test passes, because the value of *answer (17)* is not equal to *42*. Because the test passes, the indented code block is executed:
@@ -179,7 +179,7 @@ banned_users = ['andrew', 'carolina', 'david']
 user = 'marie'
 
 if user not in banned_users:
-    print(f"{user.title()}, you can post a response if you wish.")
+print(f"{user.title()}, you can post a response if you wish.")
 ```
 
 If the value of *user* is not in the list of *banned_users*, Python returns `True` and executes the indented line. Therefore, the user *'marie'* is not in the list *banned_users*, so she sees a message inviting her to post a response:
@@ -235,13 +235,13 @@ less than, greater than or equal to, and less than or equal to
 
 With knowledge of conditional tests, it is time to write `if` statements. Several different kinds of `if` statements exist to use depends on the number of conditions to test.
 
-## Simple if Statments
+## Simple if Statements
 
 The simplest kind of `if` statement has one test and one action:
 
 ``` python
 if conditional_test:
-    do something
+do something
 ```
 
 Any conditional test in the first line and about any action in the indented block following the test can be used. If the conditional test evaluates to `True`, Python executes the following `if` statement. If the test evaluates to `False`, Python ignores the code following the `if` statement.
@@ -251,7 +251,7 @@ The following code tests whether the person's age is old enough to vote:
 ``` python
 age = 19
 if age >= 18:
-    print("You are old enough to vote!")
+print("You are old enough to vote!")
 ```
 
 Python checks to see whether the value of *age* is greater than or equal to 18. Therefore, Python executes the indented `print()` call:
@@ -265,8 +265,8 @@ There can be as many lines of code in the block following the `if` statement. Le
 ``` python
 age = 19
 if age >= 18:
-    print("You are old enough to vote!")
-    print("Have you registered to vote yet?)
+print("You are old enough to vote!")
+print("Have you registered to vote yet?)
 ```
 
 The conditional tests passes, and both `print()` calls are indented, so both lines are printed:
@@ -287,11 +287,11 @@ Now add a message for anyone who is not old enough to vote:
 ``` python
 age = 17
 if age >= 18:
-    print("You are old enough to vote!")
-    print("Have you registered to vote yet?")
+print("You are old enough to vote!")
+print("Have you registered to vote yet?")
 else:
-    print("Sorry, you are too young to vote.")
-    print("Please register to vote as soon as you turn 18!")
+print("Sorry, you are too young to vote.")
+print("Please register to vote as soon as you turn 18!")
 ```
 
 Because *age* is less than this time, the conditional test fails with `False` and the code in the `else` block is executed:
@@ -307,30 +307,30 @@ This code works because it has only two possible solutions to evaluate: a person
 
 To test more than two possible situations, and to evaluate these by the use of Python's `if-elif-else` syntax. Python executes only one block in an `if-elif-else` chain. It runs each conditional test in order until one passes. When a test passes, the code following that test is executed and Python skips the rest of the tests.
 
-Many real-world situations involve more than two possible conditions. For example, consider an amusement park that charges different rrates for different age groups:
+Many real-world situations involve more than two possible conditions. For example, consider an amusement park that charges different rates for different age groups:
 
 * Admission for anyone under age 4 is free.
 * Admission for anyone between the ages of 4 and 18 is $25.
 * Admission for anyone age 18 or older is $40.
 
-The foloowing code tests for the age group of a person and then prints an admission price message:
+The following code tests for the age group of a person and then prints an admission price message:
 
 ``` python
 age = 12
 
 if age < 4:
-    print("Your admission cost is $0.")
+print("Your admission cost is $0.")
 elif age < 18:
-    print("Your admission cost is $25.")
+print("Your admission cost is $25.")
 else:
-    print("Your admission cost is $40.")
+print("Your admission cost is $40.")
 ```
 
 In this example, the test evaluates to `False`, so the first code block is not executed. However, the second test evaluates to `True` (12 is less than 18) so its code is executed. The output is one sentence, informing the user of the admission cost:
 
- `Your admission cost is $25.`
+`Your admission cost is $25.`
 
-Any age greather than 17 would cause the first two tests fail. In these situations, the `else` block would be executed and the admission price would be $40.
+Any age greater than 17 would cause the first two tests fail. In these situations, the `else` block would be executed and the admission price would be $40.
 
 It would be more concise to set just the price inside the `if-elif-else` chain and then have a simple `print()` call that runs after the chain has been evaluated:
 
@@ -338,11 +338,11 @@ It would be more concise to set just the price inside the `if-elif-else` chain a
 age = 12
 
 if age < 4 :
-    price = 0
+price = 0
 elif age < 18:
-    price = 25
+price = 25
 else:
-    price = 40
+price = 40
 
 print(f"Your admission price is ${price}.")
 ```
@@ -357,13 +357,13 @@ There can be as many `elif` blocks in a piece of code. For example, if the amuse
 age = 12
 
 if age < 4:
-    price = 0
+price = 0
 elif age < 18:
-    price = 25
+price = 25
 elif age < 65:
-    price = 40
+price = 40
 else:
-    price = 20
+price = 20
 
 print(f"Your admission cost is ${price}.")
 ```
@@ -378,13 +378,13 @@ Python does not require en `else` block at the end of an `if-elif` chain. someti
 age = 12
 
 if age < 4:
-    price = 0
+price = 0
 elif age < 18:
-    price = 25
+price = 25
 elif age < 65:
-    price = 40
+price = 40
 elif age >= 65:
-    price = 20
+price = 20
 
 print(f"Your admission cost is ${price}.")
 ```
@@ -395,21 +395,21 @@ The `else` block is a catchall statement to match any condition that wasn't matc
 
 ## Testing Multiple Conditions
 
-The `if-elif-else` chain is powerful, but only appropriate to use when only one test is required to pass. As soon as Python finds one test that passes, it skips the rest of the tests. This behavior is beneficial because it's efficeint and allows to test for one specific condition.
+The `if-elif-else` chain is powerful, but only appropriate to use when only one test is required to pass. As soon as Python finds one test that passes, it skips the rest of the tests. This behavior is beneficial because it's efficient and allows to test for one specific condition.
 
 Sometimes, it is important to check all of the conditions. In this case, use a series of simple `if` statements with no `elif` or `else` blocks. This technique makes sense when more than one condition could be `True`, and want to act on every condition that is `True`.
 
-Let's reconsider the pizzera example. If someone requests a two-topping pizza, be sure to include both toppings on their pizza:
+Let's reconsider the pizzeria example. If someone requests a two-topping pizza, be sure to include both toppings on their pizza:
 
 ``` python
 requested_topping = ['mushrooms', 'extra cheese']
 
 if 'mushrooms' in requested_toppings:
-    print("Adding mushrooms.")
+print("Adding mushrooms.")
 if 'pepperoni' in requested_toppings:
-    print("Adding pepperoni.")
+print("Adding pepperoni.")
 if 'extra cheese' in requested_toppings:
-    print("Adding extra cheese.")
+print("Adding extra cheese.")
 
 print("\nFinished making your pizza!")
 ```
@@ -431,11 +431,11 @@ This code will not work properly if used with `if-elif-else` block, because the 
 requested_toppings = ['mushrooms', 'extra cheese']
 
 if 'mushrooms' in requested_toppings:
-    print("Adding mushrooms.")
+print("Adding mushrooms.")
 elif 'pepperoni' in requested_toppings:
-    print("Adding pepperoni.")
+print("Adding pepperoni.")
 elif 'extra cheese' in requested_toppings:
-    print("Adding extra cheese.")
+print("Adding extra cheese.")
 
 print("\nFinished making your pizza!")
 ```
@@ -502,7 +502,7 @@ With the pizzeria example, the pizzeria displays a message whenever a topping is
 requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
 
 for requested_topping in requested_toppings:
-    print(f"Adding {requested_topping}.")
+print(f"Adding {requested_topping}.")
 
 print("\nFinished making your pizza!")
 ```
@@ -523,15 +523,15 @@ What if the pizzeria runs of green peppers? An `if` statement inside for `for` l
 requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
 
 for requested_topping in requested_toppings:
-    if requested_topping == 'green peppers':
-        print("Sorrym we are of green peppers right now.")
-    else:
-        print(f"Adding {requested_topping}.")
+if requested_topping == 'green peppers':
+print("Sorry we are of green peppers right now.")
+else:
+print(f"Adding {requested_topping}.")
 
 print("\nFinished making your pizza!")
 ```
 
-This time we check each requested item before adding it to the pizza.  The code checks to see if the person requested green peppers, and displays a message informing them they can't have green peppers. The `else` block ensures all other toppings will be added to the pizza.
+This time we check each requested item before adding it to the pizza. The code checks to see if the person requested green peppers, and displays a message informing them they can't have green peppers. The `else` block ensures all other toppings will be added to the pizza.
 
 ``` markdown
 Adding mushrooms.
@@ -551,11 +551,11 @@ As an example, let's check whether the list of requested toppings is empty befor
 requested_toppings = []
 
 if requested_toppings:
-    for requested_topping in requested_toppings:
-        print(f"Adding {requested_topping}.")
-    print("\nFinished making your pizza!")
+for requested_topping in requested_toppings:
+print(f"Adding {requested_topping}.")
+print("\nFinished making your pizza!")
 else:
-    print("Are you sure you want a plain pizza?")
+print("Are you sure you want a plain pizza?")
 ```
 
 Python returns `False` because it is an empty list. Since the conditional test fails, we print a message asking the customer if they really want a plain pizza. If *requested_toppings* passes the conditional test, we run the same `for` loop in the previous example.
@@ -568,7 +568,7 @@ If the list is not empty, the output will show each requested topping being adde
 
 ## Using Multiple Lists
 
-What if a customer actually wants french fries on their pizza? You can use lists and `if` statements to make sure input makes sense bfore you act on it.
+What if a customer actually wants french fries on their pizza? You can use lists and `if` statements to make sure input makes sense before you act on it.
 
 Let's watch out for unusual topping requests before we build a pizza. The following example defines two lists. The first is a list of available toppings at the pizzeria, and the second is the list of toppings that the user has requested. This time, each item in *requested_toppings* is checked against the list of available toppings before it's added to the pizza:
 
@@ -578,10 +578,10 @@ available_toppings = ['mushrooms', 'olives', 'green peppers', 'pepperoni', 'pine
 requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
 
 for requested_topping in requested_toppings:
-    if requested_topping in available_toppings:
-        print(f"Adding {requested_topping}.")
-    else:
-        print(f"Sorry, we don't have {requested_topping}.")
+if requested_topping in available_toppings:
+print(f"Adding {requested_topping}.")
+else:
+print(f"Sorry, we don't have {requested_topping}.")
 
 print("\nFinished making your pizza!")
 ```
@@ -635,3 +635,4 @@ What we learned in this chapter:
 * Write simple `if` statements, `if-else` chains, and `if-elif-else` chains.
 * Identify particular conditions needed to test and known when those conditions have been met in programs.
 * Handle certain items in a list differently than all other items while continuing to utilize the efficiency of a `for` loop.
+
