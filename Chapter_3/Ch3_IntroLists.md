@@ -13,7 +13,7 @@ print(bicycles)
 
 Returns `['trek', 'cannondale', 'redline', 'specialized']`.
 
-## Accessing Elements in a List
+### Accessing Elements in a List
 
 Lists are ordered collections, so you can access any element in a list by telling Python the position, or *index*, of the item desired. To access an element in a list, write the name of the list followed by the index of the item enclosed in square brackets. Let's pull out the first bicycle in the list of `bicycles`:
 
@@ -28,7 +28,7 @@ The use of string methods will work on any element in the list to have a clean, 
 
 `print(bicycles[0].title())` will capitalize the word to `Trek`.
 
-## Index Positions Start at 0, Not 1
+### Index Positions Start at 0, Not 1
 
 Python considers the first item in a list to be at position 0, not position 1. This is true for most programming languages because of how list operations are implemented at a lower level.
 
@@ -40,7 +40,7 @@ Python has a special syntax for accessing the last element in a list. At index -
 
 This convention also extends to other negative index values as well. At index -2, returns the second item from the end of the list, and index -* 3 returns the third item from the end, and so on.
 
-## Using Individual Values from a List
+### Using Individual Values from a List
 
 You can use individual values from a list just as you would with any other variable. For example, use f-strings to create a message based on a value from a list.
 
@@ -78,7 +78,7 @@ to print a series of statements about these items, such as “I would like to ow
 
 Most lists created will be dynamic, meaning a built list and then add and remove elements as program runs its course. For example, a game in which a player has to shoot aliens out of the sky. You could store the initial set of aliens in a list and then remove an alien from the list each time one is shot down. Each time a new alien appears on screen, you add it to the list. The list of aliens will increase and decrease in length throughout the game.
 
-## Modifying Elements in a List
+### Modifying Elements in a List
 
 The syntax for modifying an element is similar to the syntax for accessing an element in a list. To change an element, use the name of the list followed by the index of the element you want to change, and then provide the new value. For example, a list of motorcycles, and the first item in the list is `honda`. How could we change it?
 
@@ -92,11 +92,11 @@ print(motorcycles)
 
 The original list with `honda` in the first element is now replaced with `ducati`. The rest of the list stays the same. You can change the value of any item in the list, not just the first item.
 
-## Adding Elements to a List
+### Adding Elements to a List
 
 You might want to add a new element to a list for many reasons. For example, make aliens appear in a game, add new data to a visualization, or add new registered users to a website. Python provides several ways to add new data to existing lists.
 
-## Appending Elements to End of a List
+### Appending Elements to End of a List
 
 The simplest way to add a new element to a list is to `append` the item to the list. When an item is append to a list, the new element is added to the end of the list.
 
@@ -131,7 +131,7 @@ The resulting list looks exactly the same: `['honda', 'yamaha', 'suzuki']`.
 
 Building lists this way is very common, because you often won't know the data users want to store in a program until after the program is running. To put users in control, start defining an empty list that will the users' values. Finally, append each new value provided to the list just created.
 
-## Inserting Elements into a List
+### Inserting Elements into a List
 
 You can add a new element at any position in a list by using the `insert()` method. This is achieved by specifying the index of the new element and the value of the new item.
 
@@ -150,7 +150,7 @@ The code inserts the value `ducati` at the beginning of the list. The `insert()`
 
 Often, you will want to remove an item or a set of items from a list. For example, when a player shoots down an alien from the sky, most likely want to remove it from the list of active aliens. Or when a user decides to cancel their account on a web application, you will want to remove that user from the list of active users. You can remove an item according to its position in the list or according to its position in the list or according to its value.
 
-## Removing an Item Using the del Statement
+### Removing an Item Using the del Statement
 
 If you the position of the item you want to remove from the list, you can use the `del` statement.
 
@@ -171,7 +171,7 @@ The code uses `del` to remove the first item, `honda`, from the list of motorcyc
 
 You can remove an item from any position in a list using the `del` statement if you know its index.
 
-## Removing an Item Using the pop() Method
+### Removing an Item Using the pop() Method
 
 Sometimes, you will want to use the value of an item after you remove it from a list. For example, get the x and y position of an alien that was just shot down to draw an explosion at that position. In a web application, you might want to remove a user from a list of active members and then add that user to a list of inactive members.
 
@@ -196,7 +196,7 @@ print(f"The last motorcycle I owned was a {last_owned.title()}.")
 
 `The last motorcycle I owned was a Suzuki.` A simple sentence about the most recent motorcycle we owned.
 
-## Popping Items from any Position in a List
+### Popping Items from any Position in a List
 
 You can use `pop()` to remove an item from any position in a list by including the index of the item you want to remove in parentheses.
 
@@ -213,7 +213,7 @@ Remember, each time `pop()` is used, the item is no longer stored in the list.
 
 If unsure whether to use `del` statement or `pop()` method, use `del` when to delete an item from a list and not use that item in any way. If you want to use an item as you remove it, use the `pop()` method instead.
 
-## Removing an Item by Value
+### Removing an Item by Value
 
 Sometimes, the position of the value you want to remove from a list is unknown. The `remove()` method is used if you only know the value of the item you want to remove. For example, we want to remove the value 'ducati' from the list of motorcycles:
 
@@ -282,7 +282,7 @@ Use del to remove the last two names from your list, so you have an empty list. 
 
 Often, list will be created in an unpredictable order, because it is not possible to always control the order in which users provide their data. Sometimes, information is best presented in a particular order or preserve the original order of the list. Other times, changing the original order is useful. Python provides a number of different ways to organize a list, depending on the situation.
 
-## Sorting a List Permanently with the sort() Method
+### Sorting a List Permanently with the sort() Method
 
 Python's `sort()` method makes it relatively easy to sort a list. Imagine a list of cars and want to change the order of list to store them alphabetically. To keep the task simple, let's assume that all the values in the list are lowercase.
 
@@ -304,7 +304,7 @@ print(cars)
 
 `['toyota', 'subaru', 'bmw', 'audi']`. Again, the order of the list is permanently changed.
 
-## Sorting a List Temporarily with the sorted() Function
+### Sorting a List Temporarily with the sorted() Function
 
 To maintain the original order of a list but present it in a sorted order, the `sorted()` function is used. This allows to display a list in a particular order but doesn't affect the actual order of the list.
 
@@ -326,7 +326,7 @@ lowercase. There are several ways to interpret capital letters when determining 
 order, and specifying the exact order can be more complex than we want to deal with
 at this time.***
 
-## Printing a List in Reverse Order
+### Printing a List in Reverse Order
 
 To reverse the original order of a list, the `reverse()` method is used. If we originally stored the list of cars in chronological order according to when we owned them, we could easily rearrange the list into reverse chronological order:
 
@@ -347,7 +347,7 @@ Notice `reverse()` doesn't sort backward alphabetically; it simply reverse the o
 
 The method changes the order of a list permanently, but can revert to the original order anytime by applying `reverse()` to the same list a second time.
 
-## Finding the Length of a List
+### Finding the Length of a List
 
 The `len()` function is used to quickly find the length of a list. The list in this example has four item, so its length is 4:
 
@@ -425,4 +425,3 @@ What we learned in this chapter:
 * Sort lists permanently and temporarily for display purposes.
 
 * Find the length of a list and how to avoid index errors.
-

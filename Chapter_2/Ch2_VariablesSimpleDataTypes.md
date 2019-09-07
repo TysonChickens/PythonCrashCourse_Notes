@@ -28,7 +28,9 @@ Hello Python Crash Course world!
 
 You can change the value of a variable in your program at any time, and Python will always keep track of its current value.
 
-## Naming and Using Variables
+## Variables
+
+### Naming and Using Variables
 
 When using variables in Python, there are a few rules and guidelines to follow. Breaking some of these rules will cause errors; other guidelines just help you write code that's easier to read and understand. Here are the rules to keep in mind:
 
@@ -37,15 +39,14 @@ When using variables in Python, there are a few rules and guidelines to follow. 
 * Spaces are not allowed in variable names, but underscores can be used to separate words in variable names. For example, *greeting_message* works, but *greeting message* will cause errors.
 
 * Avoid using Python keywords and function names as variable names. Python has words reserved for particular programmatic purpose, such as the word `print`.
-  * Here is a list:
-  
-    ![Python Functions](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/PythonKeywordFunctions.png)
+* Here is a list:
+![Python Functions](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/PythonKeywordFunctions.png)
 
 * Variable names should be short but descriptive. For example, *name* is better than *n, student_name* is better than *s_n*, and *name_length* is better than *length_of_persons_name*.
 
 ***Python variables at this point should be lowercase to reduce the amount of errors with uppercase letters. Variable name with uppercase letters have special meanings that are discussed in later chapters.***
 
-## Avoiding Name Errors When Using Variables
+### Avoiding Name Errors When Using Variables
 
 Every programmer makes mistakes, and most make mistakes every day. Here is a simple error to make and learn how to fix it. The following code has a misspelled word *mesage* inside *print()*.
 
@@ -88,7 +89,7 @@ This flexibility allows you to use quotes and apostrophes within your strings:
 "One of Python's strengths is its diverse and supportive community."
 ```
 
-## Changing Case in a String with Methods
+### Changing Case in a String with Methods
 
 One of the simplest tasks to do with strings is change the case of the words in a string.
 
@@ -118,7 +119,7 @@ ada lovelace
 
 The `lower()` method is particularly useful for storing data because you won't want to trust the capitalization that users provide. Therefore, you will have to convert strings to lowercase before storing them.
 
-## Using Variables in Strings
+### Using Variables in Strings
 
 In some situations, you will want to use a variable's value inside a string. For example, you might want two variables to represent a first name and a last name respectively, and then combine those values to display someone's full name:
 
@@ -166,9 +167,9 @@ listed in parentheses in the order provided:***
 
 `full_name = "{} {}".format(first_name, last_name)`
 
-## Adding Whitespace to Strings with Tabs or Newlines
+### Adding Whitespace to Strings with Tabs or Newlines
 
-In programming, *whitespace* refers to any nonprinting character, such as spaces, tabs, and end-of-line symbols. You can use whitespace to organize your output so it's easier for users to read.
+In programming, *whitespace* refers to any non printing character, such as spaces, tabs, and end-of-line symbols. You can use whitespace to organize your output so it's easier for users to read.
 
 ``` python
 # To add a tab to your text, use the character combination `\t`:
@@ -184,7 +185,7 @@ print("Languages: \n\tPython\n\tC\n\tJavascript")
 
 Newlines and tabs will be useful in the next two chapters when you start to produce many lines of output from just a few lines of code.
 
-## Stripping Whitespace
+### Stripping Whitespace
 
 Extra whitespace can be confusing in programs. `"python"` and `"python "` may look the same, but to a program, they are two different strings. Python detects the extra space in `"python "` and considers it significant unless tell it otherwise.
 
@@ -194,7 +195,7 @@ Python can look for extra whitespace on the right and left sides of a string. To
 
 ``` python
 favorite_language = "python "
-favorite_langauge = favorite_langauge.rstrip()
+favorite_language = favorite_language.rstrip()
 favorite_language
 ```
 
@@ -202,14 +203,14 @@ To remove the whitespace from the string, we strip the whitespace from the right
 
 ``` python
 favorite_language = " python "
-favorite_langauge.rstrip() # " python"
+favorite_language.rstrip() # " python"
 favorite_language.lstrip() # "python "
 favorite_language.strip() # "python"
 ```
 
 In the real world, these stripping functions are used most often to clean up user input before it's stored in a program.
 
-## Avoiding Syntax Errors with Strings
+### Avoiding Syntax Errors with Strings
 
 An error commonly seen is a syntax error. A *syntax error* is where Python doesn't recognize a section of your program as valid Python code. For example, if you use an apostrophe within single quotes, you'll produce an error. This happens because Python interpreters everything between the first single quote and the apostrophe as a string. How to use single and double quotes correctly:
 
@@ -255,7 +256,7 @@ Print the name once, so the whitespace around the name is displayed. Then print 
 
 Numbers are used often in programming to keep score in games, represent data in visualizations, store information in web applications, and so on. Python treats numbers in several different ways, depending on how they're being used.
 
-## Integers
+### Integers
 
 You can add (+), subtract (-), multiply (*), and divide (/) integers in Python.
 
@@ -279,7 +280,7 @@ Python also supports the order of operations, so you can use multiple operations
 20
 ```
 
-## Floats
+### Floats
 
 Python calls any number with a decimal point a *float*. This term is used in most programming languages, and it refers that a decimal point can appear at any position in a number. Every programming language must be carefully designed to properly manage decimal numbers so numbers behave appropriately.
 
@@ -307,7 +308,7 @@ Sometimes you get an arbitrary number of decimal places in your answer:
 
 This happens in all languages and is of little concern. Python tries to find a way to represent the result as precisely as possible, which is sometimes difficult given how computers have to represent numbers internally.
 
-## Integers and Floats
+### Integers and Floats
 
 When you divide any two numbers, even if they are integers that result in a whole number, the result will always be a float:
 
@@ -326,7 +327,7 @@ Mixing an integer and a float, you'll get a float value as well:
 
 Python defaults to a float in any operation that uses a float, even if the output is a whole number.
 
-## Underscores in Numbers
+### Underscores in Numbers
 
 When writing long numbers, you can group digits using underscores to make large numbers more readable:
 
@@ -338,7 +339,7 @@ When printing a number with underscores, Python will print only the digits:
 
 To Python, 1000 is the same as 1_000, which is the same as 10_00. Python ignores the underscores when storing these kinds of values. This feature only works for integers and floats and only available in Python 3.6 and later.
 
-## Multiple Assignments
+### Multiple Assignments
 
 You can assign values to more than one variable using just a single line. This can help shorten programs and make them easier to read; a technique used most often when initializing a set of numbers. For example, here is how you can initialize multiple variables:
 
@@ -346,7 +347,7 @@ You can assign values to more than one variable using just a single line. This c
 
 You need to separate the variable names with commas, and do the same with the values. Python will assign each value to its respective positioned variable and match them up correctly.
 
-## Constants
+### Constants
 
 A *constant* is like a variable whose value stays the same throughout the life of a program. Python does not have built-in constant types, but Python programmers use all capital letters to indicate a variable should be treated as a constant and never be changed:
 

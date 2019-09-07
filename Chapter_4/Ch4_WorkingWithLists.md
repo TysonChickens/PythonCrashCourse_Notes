@@ -32,7 +32,7 @@ for item in list_of_items:
 
 These naming conventions can help follow the action being done on each item within a `for` loop. Using singular and plural names can help identify whether a section of code is working with a single element from the list or the entire list.
 
-## Doing More Work Within a for Loop
+### Doing More Work Within a for Loop
 
 You can do just about anything with each item in a `for` loop. Let's build on the previous example by printing a message to each magician, telling them that they performed a great trick:
 
@@ -52,7 +52,7 @@ Carolina, that was a great trick!
 
 There can be many lines of code inside the `for` loop. Every indented line following the line for *magician in magicians* is considered **inside the loop**, and each indented line is executed once for each value in the list. Therefore, we can add as many lines to do work with each value in the list.
 
-## Doing Something After a for Loop
+### Doing Something After a for Loop
 
 What happens once a `for` loop has finishing executing? Usually, it is best to summarize the block of output or move on to other work that the program must accomplish.
 
@@ -87,7 +87,7 @@ Python uses indentation to determine how a line, or group of lines, is related t
 
 When code written relies on proper indentation, we need to watch for a few common ***indentation errors***. For example, people sometimes indent lines of code that don't need to be indented or forget to indent lines that need to be indented. Here are some examples of these errors to avoid them in the future and correct them when they do appear in programs.
 
-## Forgetting to Indent
+### Forgetting to Indent
 
 Always indent the line after the `for` statement in a loop. If you forget, Python will remind you:
 
@@ -108,7 +108,7 @@ IndentationError: expected an indented block
 
 This can usually be resolved by indenting the line or lines immediately after the `for` statement.
 
-## Forgetting to Indent Additional Lines
+### Forgetting to Indent Additional Lines
 
 Sometimes a loop will run without any errors but won't produce the expected result. This can happen when trying to do several tasks in a loop and forget to indent some of its lines.
 
@@ -132,7 +132,7 @@ I can't wait to see your next trick, Carolina.
 
 This is a *logical error*. The syntax is valid Python code, but the code does not produce the desired result because a problem occurs in its logic.
 
-## Indenting Unnecessarily
+### Indenting Unnecessarily
 
 If you accidentally indent a line that doesn't need to be indented, Python will inform you about the unexpected indent:
 
@@ -147,7 +147,7 @@ There is no need to indent the `print()` call, because it is not part of a loop.
 
 Avoid indentation errors by indenting only when there is a specific reason to do so. At this point, the only lines to indent are actions to be repeated for each item in a `for` loop.
 
-## Forgetting the Colon
+### Forgetting the Colon
 
 The colon at the end of a `for` statement tells Python to interpret the next line as the start of a loop. If the colon is missing, there will be a syntax error because Python does not understand.
 
@@ -172,7 +172,7 @@ Many reasons exist to store a set of numbers. For example, it is sometimes neces
 
 Lists are ideal for storing sets of numbers, and Python provides a variety of tools to help work efficiently.
 
-## Using the range() Function
+### Using the range() Function
 
 Python's `range()` function makes it easy to generate a series of numbers like this:
 
@@ -204,7 +204,7 @@ To print the numbers from 1 to 5, a `range(1, 6)` is used. This time the output 
 
 If the output is different than expected, try adjusting the end value by 1. The `range()` argument can also pass one argument, and it will start the sequence of numbers at 0. For example, `range(6)` would return the numbers from 0 to 5.
 
-## Using range() to Make a List of Numbers
+### Using range() to Make a List of Numbers
 
 To make a list of numbers, convert the results of `range()` directly into a list using the `list()` function. The `list()` around a call to the `range()` function will output a list of numbers.
 
@@ -263,7 +263,7 @@ print(squares)
 
 The code does the same work as the previous example. Sometimes using a temporary variable makes code easier to read; other times it makes the code unnecessarily long. Focus first on writing code that is easy to understand and works properly. Then look for more efficient approaches when review over code.
 
-## Simple Statistics with a List of Numbers
+### Simple Statistics with a List of Numbers
 
 A few Python functions are helpful when working with lists of numbers. For example, you can easily find the minimum, maximum, and sum of a list of numbers:
 
@@ -277,7 +277,7 @@ A few Python functions are helpful when working with lists of numbers. For examp
 45
 ```
 
-## List Comprehension
+### List Comprehension
 
 Earlier, we generated the list *squares* using three or four lines of code. A *list comprehension* allows to generate the same list in just one line of code. A *list comprehension* combines a `for` loop and the creation of new elements into one line, and automatically appends each new element.
 
@@ -318,7 +318,7 @@ The result is:
 
 In chapter 3, we learned how to access single elements in a list, and will now learn how to work through all the elements in a list. In Python, there is something called a *slice* to work with a specific group of items in a list.
 
-## Slicing a List
+### Slicing a List
 
 To make a slice, specify the index of the first and last elements to work with similar to the `range()` function. When slicing, Python stops one item before the second index specified. To output the first three elements in a list, indices 0 through 3 would return elements 0, 1, and 2.
 
@@ -379,7 +379,7 @@ This prints the names of the last three players and would continue to work as th
 
 ***When slicing, a third value can be included in the brackets. If a third value is included, this tells Python how many items to skip between items in the specified range.***
 
-## Looping Through a Slice
+### Looping Through a Slice
 
 Use a slice in a `for` loop if want to loop through a subset of the elements in a list. In the next example, we loop through the first players and print their names as part of a simple roster:
 
@@ -403,7 +403,7 @@ Michael
 
 Slices are very useful in a number of situations. For instance, when creating a game, adding a player's final score to a list every time that player finishes playing. Then retrieve a top a player's top three scores by sorting the list in decreasing order and taking a slice that includes just the first three scores. When working with data, the use of slices to process data in chunks of specific size to display appropriate amount of information.
 
-## Copying a List
+### Copying a List
 
 Often, starting with an existing list and making an entirely new list based on the first one is useful in situations.
 
@@ -456,7 +456,7 @@ If we assign *friend_foods* equal to *my_foods*, both variables will point to th
 
 ---
 
-## Define a Tuple
+## Tuples
 
 Lists work well for storing collections of items that can change throughout the life of a program. The ability to modify lists can be important when working with a list of users on a website or a list of characters in a game. However, sometimes a list of items that cannot change is wanted. Tuples allows Python to refer values that cannot change as *immutable*, and an immutable list is called a *tuple*.
 
@@ -492,7 +492,7 @@ The code tries to change the value of the first dimension, but Python returns a 
 
 ***It doesn't often make sense to build a tuple with one element, but this can happen when tuples are generated automatically.***
 
-## Looping Through All Values in a Tuple
+### Looping Through All Values in a Tuple
 
 Like a list, a `for` loop can be used to loop over all the values in a tuple:
 
@@ -505,7 +505,7 @@ print(dimension)
 
 Python returns all the elements in the tuple: `200` `50`.
 
-## Writing over a Tuple
+### Writing over a Tuple
 
 Even though a tuple can't be modified, it is possible to assign a new value to a variable that represents a tuple. To change our dimensions, redefine the entire tuple:
 
@@ -537,7 +537,7 @@ When compared with lists, tuples are simple data structures. Use tuples when to 
 
 ---
 
-## TRY IT YOURSELF: Tuples
+### TRY IT YOURSELF: Tuples
 
 * **4-13. Buffet**: A buffet-style restaurant offers only five basic foods. Think of five simple foods, and store them in a tuple.
 
