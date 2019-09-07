@@ -402,12 +402,13 @@ favorite_languages = {
     }
 
 friends = ['phil', 'sarah']
+
 for name in favorite_languages.keys():
     print(name.title())
 
-if name in friends:
-    language = favorite_languages[name].title()
-    print(f"\t{name.title()}, I see you love {language}!")
+    if name in friends:
+        language = favorite_languages[name].title()
+        print(f"\t{name.title()}, I see you love {language}!")
 ```
 
 We check whether the *name* is in the list of *friends*. If it is, we determine the person's favorite language using the name of the dictionary and the current value of *name* as the key. Then, print a special greeting, including a reference to their language of choice.
@@ -499,15 +500,15 @@ This approach pulls all the values from the dictionary without checking for repe
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 print("The following languages have been mentioned:")
 for language in set(favorite_languages.values()):
-print(language.title())
+    print(language.title())
 ```
 
 When we wrap `set()` around a list that contains duplicate items, Python identifies the unique items in the list and builds a set from those items.
