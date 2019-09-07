@@ -201,10 +201,10 @@ A dictionary can also store information about many objects. For example, a poll 
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python'
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python'
 }
 ```
 
@@ -212,10 +212,10 @@ To use this dictionary, given the name of a person who took the poll, we can eas
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
 }
 
 language = favorite_languages['sarah'].title()
@@ -294,24 +294,24 @@ Let's consider a new dictionary designed to store information about a user on a 
 
 ``` python
 user_0 = {
-    'username': 'efermi',
-    'first': 'enrico',
-    'last': 'fermi'
-    }
+'username': 'efermi',
+'first': 'enrico',
+'last': 'fermi'
+}
 ```
 
 If we wanted to see everything stored in this user's dictionary, loop through the dictionary using a `for` loop:
 
 ``` python
 user_0 = {
-    'username': 'efermi',
-    'first': 'enrico',
-    'last': 'fermi',
-    }
+'username': 'efermi',
+'first': 'enrico',
+'last': 'fermi',
+}
 
 for key, value in user_0.items():
-    print(f"\nKey: {key}")
-    print(f"Value: {value}")
+print(f"\nKey: {key}")
+print(f"Value: {value}")
 ```
 
 To write a `for` loop for a dictionary, create names for the two variables that will hold the key and value in each key-value pair. Any names can be used for these two variables. This code would work just as well if we used abbreviations for variable names:
@@ -335,14 +335,14 @@ Looping through all key-value pairs works well for dictionaries in a previous ex
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
-    }
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
 
 for name, language in favorite_languages.items():
-    print(f"{name.title()}'s favorite language is {language.title()}.")
+print(f"{name.title()}'s favorite language is {language.title()}.")
 ```
 
 The code tells Python to loop through each key-value pair in the dictionary. As it works through each pair the key is assigned to the variable *name*, and the value is assigned to the variable *language*.
@@ -362,14 +362,14 @@ They `keys()` method is useful when we don't need to work with all of the values
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
-    }
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
 
 for name in favorite_languages.keys():
-    print(name.title())
+print(name.title())
 ```
 
 Python pulls all the keys from the dictionary *favorite_languages* and assign them one at a time to the variable *name*. The output shows the names of everyone who took the poll:
@@ -381,7 +381,7 @@ Edward
 Phil
 ```
 
-Looping through the keys is actually the default behvaior when looping through a dictionary. The output would be the same:
+Looping through the keys is actually the default behavior when looping through a dictionary. The output would be the same:
 
 `for name in favorite_languages:`
 
@@ -395,19 +395,19 @@ We can access the value associated with any key inside the loop by using the cur
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
-    }
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
 
 friends = ['phil', 'sarah']
 for name in favorite_languages.keys():
-    print(name.title())
+print(name.title())
 
-    if name in friends:
-        language = favorite_languages[name].title()
-        print(f"\t{name.title()}, I see you love {language}!")
+if name in friends:
+language = favorite_languages[name].title()
+print(f"\t{name.title()}, I see you love {language}!")
 ```
 
 We check whether the *name* is in the list of *friends*. If it is, we determine the person's favorite language using the name of the dictionary and the current value of *name* as the key. Then, print a special greeting, including a reference to their language of choice.
@@ -417,24 +417,24 @@ Everyone's name is printed, but our friends receive a special message:
 ``` markdown
 Hi Jen.
 Hi Sarah.
-    Sarah, I see yhou love C!
+Sarah, I see you love C!
 Hi Edward.
 Hi Phil.
-    Phil, I see you love Python!
+Phil, I see you love Python!
 ```
 
-We can also use the `keys()` method to find out if a prticular person was polled. Let's find out if Erin took the poll:
+We can also use the `keys()` method to find out if a particular person was polled. Let's find out if Erin took the poll:
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
-    }
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
 
 if 'erin' not in favorite_languages.keys():
-    print("Erin, please take our poll!")
+print("Erin, please take our poll!")
 ```
 
 The `keys()` method isn't just for looping: it actually returns a list of all the keys, and simply checks if 'erin' is in this list. Because she is not, a message is printed inviting her to take the poll:
@@ -449,11 +449,11 @@ One way is to sort the keys as they are returned in the `for` loop. Use the `sor
 
 ``` python
 favorite_languages = {
-    'jen': 'python',
-    'sarah': 'c',
-    'edward': 'ruby',
-    'phil': 'python',
-    }
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
 for name in sorted(favorite_languages.keys()):
 print(f"{name.title()}, thank you for taking the poll.")
 ```
@@ -467,3 +467,86 @@ Phil, thank you for taking the poll.
 Sarah, thank you for taking the poll.
 ```
 
+## Looping Through All Values in a Dictionary
+
+We can use `values()` method to return a list of values without any keys. For example, say we simply want a list of all languages chosen in our programming language poll without the name of the person:
+
+``` python
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+print("The following languages have been mentioned:")
+for language in favorite_languages.values():
+print(language.title())
+```
+
+The `for` statement pulls each value from the dictionary and assigns it to the variable *language*.
+
+``` markdown
+The following languages have been mentioned:
+Python
+C
+Python
+Ruby
+```
+
+This approach pulls all the values from the dictionary without checking for repeats. That might work fine with small number of values, but in a poll with a large number of respondents, this would result in a repetitive list. To see each language chosen without repetition, we can use a set. A `set` is a collection in which each item must be unique:
+
+``` python
+favorite_languages = {
+'jen': 'python',
+'sarah': 'c',
+'edward': 'ruby',
+'phil': 'python',
+}
+
+print("The following languages have been mentioned:")
+for language in set(favorite_languages.values()):
+print(language.title())
+```
+
+When we wrap `set()` around a list that contains duplicate items, Python identifies the unique items in the list and builds a set from those items.
+
+The result is a non repetitive list of languages that have been mentioned by the poll:
+
+``` markdown
+The following languages have been mentioned:
+Python
+C
+Ruby
+```
+
+***We can build a set directly using braces and separating the elements with commas:***
+
+``` python
+>>> languages = {'python', 'ruby', 'c'}
+>>> languages
+{'ruby', 'python', 'c'}
+```
+
+***It is easy to mistake sets for dictionaries because they're both wrapped in braces. When there is no key-value pairs, it is most likely a set. Unlike lists and dictionaries, sets do not retain items in any specific order.***
+
+---
+
+**6-4. Glossary 2**: Now that you know how to loop through a dictionary, clean up the code from Exercise 6-3 (page 99) by replacing your series of print() calls with a loop that runs through the dictionary’s keys and values. When you’re sure that your loop works, add five more Python terms to your glossary.
+When you run your program again, these new words and meanings should automatically be included in the output.
+
+**6-5. Rivers**: Make a dictionary containing three major rivers and the country
+each river runs through. One key-value pair might be 'nile': 'egypt'.
+
+* Use a loop to print a sentence about each river, such as The Nile runs through Egypt.
+* Use a loop to print the name of each river included in the dictionary.
+* Use a loop to print the name of each country included in the dictionary.
+
+**6-6. Polling**: Use the code in favorite_languages.py (page 97).
+
+* Make a list of people who should take the favorite languages poll. Include some names that are already in the dictionary and some that are not.
+* Loop through the list of people who should take the poll. If they have
+already taken the poll, print a message thanking them for responding.
+If they have not yet taken the poll, print a message inviting them to take the poll.
+
+---
