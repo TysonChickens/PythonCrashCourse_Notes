@@ -294,24 +294,24 @@ Let's consider a new dictionary designed to store information about a user on a 
 
 ``` python
 user_0 = {
-'username': 'efermi',
-'first': 'enrico',
-'last': 'fermi'
-}
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi'
+    }
 ```
 
 If we wanted to see everything stored in this user's dictionary, loop through the dictionary using a `for` loop:
 
 ``` python
 user_0 = {
-'username': 'efermi',
-'first': 'enrico',
-'last': 'fermi',
-}
+    'username': 'efermi',
+    'first': 'enrico',
+    'last': 'fermi',
+    }
 
 for key, value in user_0.items():
-print(f"\nKey: {key}")
-print(f"Value: {value}")
+    print(f"\nKey: {key}")
+    print(f"Value: {value}")
 ```
 
 To write a `for` loop for a dictionary, create names for the two variables that will hold the key and value in each key-value pair. Any names can be used for these two variables. This code would work just as well if we used abbreviations for variable names:
@@ -335,14 +335,14 @@ Looping through all key-value pairs works well for dictionaries in a previous ex
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 for name, language in favorite_languages.items():
-print(f"{name.title()}'s favorite language is {language.title()}.")
+    print(f"{name.title()}'s favorite language is {language.title()}.")
 ```
 
 The code tells Python to loop through each key-value pair in the dictionary. As it works through each pair the key is assigned to the variable *name*, and the value is assigned to the variable *language*.
@@ -362,14 +362,14 @@ They `keys()` method is useful when we don't need to work with all of the values
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 for name in favorite_languages.keys():
-print(name.title())
+    print(name.title())
 ```
 
 Python pulls all the keys from the dictionary *favorite_languages* and assign them one at a time to the variable *name*. The output shows the names of everyone who took the poll:
@@ -395,19 +395,19 @@ We can access the value associated with any key inside the loop by using the cur
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 friends = ['phil', 'sarah']
 for name in favorite_languages.keys():
-print(name.title())
+    print(name.title())
 
 if name in friends:
-language = favorite_languages[name].title()
-print(f"\t{name.title()}, I see you love {language}!")
+    language = favorite_languages[name].title()
+    print(f"\t{name.title()}, I see you love {language}!")
 ```
 
 We check whether the *name* is in the list of *friends*. If it is, we determine the person's favorite language using the name of the dictionary and the current value of *name* as the key. Then, print a special greeting, including a reference to their language of choice.
@@ -427,14 +427,14 @@ We can also use the `keys()` method to find out if a particular person was polle
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 if 'erin' not in favorite_languages.keys():
-print("Erin, please take our poll!")
+    print("Erin, please take our poll!")
 ```
 
 The `keys()` method isn't just for looping: it actually returns a list of all the keys, and simply checks if 'erin' is in this list. Because she is not, a message is printed inviting her to take the poll:
@@ -449,13 +449,14 @@ One way is to sort the keys as they are returned in the `for` loop. Use the `sor
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
+
 for name in sorted(favorite_languages.keys()):
-print(f"{name.title()}, thank you for taking the poll.")
+    print(f"{name.title()}, thank you for taking the poll.")
 ```
 
 This `for` statement is like other `for` statements except it is wrapped inside the `sorted()` function with *dictionary.keys()* method. This tells Python to list all keys in the dictionary and sort that list before looping through it. The output shows everyone who took the poll, with the names displayed in order:
@@ -473,15 +474,15 @@ We can use `values()` method to return a list of values without any keys. For ex
 
 ``` python
 favorite_languages = {
-'jen': 'python',
-'sarah': 'c',
-'edward': 'ruby',
-'phil': 'python',
-}
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
 
 print("The following languages have been mentioned:")
 for language in favorite_languages.values():
-print(language.title())
+    print(language.title())
 ```
 
 The `for` statement pulls each value from the dictionary and assigns it to the variable *language*.
