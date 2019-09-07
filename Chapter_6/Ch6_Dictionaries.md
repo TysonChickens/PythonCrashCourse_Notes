@@ -297,7 +297,7 @@ user_0 = {
     'username': 'efermi',
     'first': 'enrico',
     'last': 'fermi'
-}
+    }
 ```
 
 If we wanted to see everything stored in this user's dictionary, loop through the dictionary using a `for` loop:
@@ -307,7 +307,7 @@ user_0 = {
     'username': 'efermi',
     'first': 'enrico',
     'last': 'fermi',
-}
+    }
 
 for key, value in user_0.items():
     print(f"\nKey: {key}")
@@ -339,7 +339,7 @@ favorite_languages = {
     'sarah': 'c',
     'edward': 'ruby',
     'phil': 'python',
-}
+    }
 
 for name, language in favorite_languages.items():
     print(f"{name.title()}'s favorite language is {language.title()}.")
@@ -356,4 +356,114 @@ Phil's favorite language is Python.
 
 Looping would work even if our dictionary stored the results from polling a thousand or even a million people.
 
+## Looping Through All the Keys in a Dictionary
+
+They `keys()` method is useful when we don't need to work with all of the values in a dictionary. Let's loop through the *favorite_languages* dictionary and print the names of everyone who took the poll:
+
+``` python
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
+
+for name in favorite_languages.keys():
+    print(name.title())
+```
+
+Python pulls all the keys from the dictionary *favorite_languages* and assign them one at a time to the variable *name*. The output shows the names of everyone who took the poll:
+
+``` markdown
+Jen
+Sarah
+Edward
+Phil
+```
+
+Looping through the keys is actually the default behvaior when looping through a dictionary. The output would be the same:
+
+`for name in favorite_languages:`
+
+compared to:
+
+`for name in favorite_languages.keys():`
+
+Use the `keys()` method explicitly if it makes code easier to read, or omit it.
+
+We can access the value associated with any key inside the loop by using the current key. We will loop through the names in the dictionary, and display a message about their favorite language when name matches one of our friends:
+
+``` python
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
+
+friends = ['phil', 'sarah']
+for name in favorite_languages.keys():
+    print(name.title())
+
+    if name in friends:
+        language = favorite_languages[name].title()
+        print(f"\t{name.title()}, I see you love {language}!")
+```
+
+We check whether the *name* is in the list of *friends*. If it is, we determine the person's favorite language using the name of the dictionary and the current value of *name* as the key. Then, print a special greeting, including a reference to their language of choice.
+
+Everyone's name is printed, but our friends receive a special message:
+
+``` markdown
+Hi Jen.
+Hi Sarah.
+    Sarah, I see yhou love C!
+Hi Edward.
+Hi Phil.
+    Phil, I see you love Python!
+```
+
+We can also use the `keys()` method to find out if a prticular person was polled. Let's find out if Erin took the poll:
+
+``` python
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
+
+if 'erin' not in favorite_languages.keys():
+    print("Erin, please take our poll!")
+```
+
+The `keys()` method isn't just for looping: it actually returns a list of all the keys, and simply checks if 'erin' is in this list. Because she is not, a message is printed inviting her to take the poll:
+
+`Erin, please take our poll!`
+
+## Looping Through a Dictionary's Keys in a Particular Order
+
+Starting in Python 3.7, looping through a dictionary returns the items in the same order they were inserted. Sometimes, we want to loop through a dictionary in a different order.
+
+One way is to sort the keys as they are returned in the `for` loop. Use the `sorted()` function to get a copy of the keys in order:
+
+``` python
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    }
+for name in sorted(favorite_languages.keys()):
+print(f"{name.title()}, thank you for taking the poll.")
+```
+
+This `for` statement is like other `for` statements except it is wrapped inside the `sorted()` function with *dictionary.keys()* method. This tells Python to list all keys in the dictionary and sort that list before looping through it. The output shows everyone who took the poll, with the names displayed in order:
+
+``` markdown
+Edward, thank you for taking the poll.
+Jen, thank you for taking the poll.
+Phil, thank you for taking the poll.
+Sarah, thank you for taking the poll.
+```
 
