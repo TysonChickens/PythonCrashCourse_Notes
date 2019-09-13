@@ -673,3 +673,71 @@ alien['points] = '15
 ```
 
 It is common to store a number of dictionaries in a list when each dictionary contains many kinds of information about one object. For example, we might create a dictionary for each user on a website. All of the dictionaries in the list should have an identical structure so it is possible to loop through the list and work with each dictionary object in the same way.
+
+### A List in a Dictionary
+
+Rather than putting a dictionary inside a list, it is sometimes useful to put a list inside a dictionary. For example, consider how to describe a pizza that someone is ordering. If were to use only a list, the only item to store is a list of the pizza's toppings. With a dictionary, a list of toppings can be just one aspect of the pizza.
+
+In the following example, two kinds of information are stored for each pizza: type of crust and a list of toppings. The list of toppings is a value associated with the key 'toppings'. Instead of returning a single value, we get a list of toppings:
+
+``` python
+# Store information about a pizza being ordered.
+pizza = {
+'crust': 'thick',
+'toppings': ['mushrooms', 'extra cheese'],
+}
+
+# Summarize the order.
+print(f"You ordered a {pizza['crust']}-crust pizza with the following toppings:")
+
+for topping in pizza['toppings']:
+print("\t" + topping)
+```
+
+We begin with a dictionary that holds information about a pizza that has been ordered. One key in the dictionary is 'crust', and the associated value is the string 'thick'. The next key, 'toppings', has a list as its value that stores all requested toppings. To print the toppings, we write a `for` loop to access the list of the key 'toppings'. The output summarizes the pizza that we plan to build:
+
+``` markdown
+You ordered a thick-crust pizza with the following toppings:
+mushrooms
+extra cheese
+```
+
+We can nest a list inside a dictionary any time we want more than one value to be associated with a single key in a dictionary. In the earlier example of favorite programming languages, we could store more than one favorite language for each person's responses. When we loop through the dictionary, the value associated with each person would be a list of languages. Inside the dictionary's `for` loop, we use another `for` loop to run through the list of languages associated with each person:
+
+``` python
+favorite_languages = {
+'jen': ['python', 'ruby'],
+'sarah': ['c'],
+'edward': ['ruby', 'go'],
+'phil': ['python', 'haskell'],
+}
+
+for name, languages in favorite_languages.items():
+print(f"\n{name.title()}'s favorite languages are:")
+for language in languages:
+print(f"\t{language.title()}")
+```
+
+Now each person can list as many favorite languages as they like:
+
+``` markdown
+Jen's favorite languages are:
+Python
+Ruby
+
+Sarah's favorite languages are:
+C
+
+Edward's favorite languages are:
+Ruby
+Go
+
+Phil's favorite languages are:
+Python
+Haskell
+```
+
+To refine this program even further, an `if` statement at the beginning of the dictionary's `for` loop to see whether reach person has more than one favorite language by examining the value of `len(languages)`.
+
+
+### A Dictionary in a Dictionary
