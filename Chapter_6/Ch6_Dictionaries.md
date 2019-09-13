@@ -40,7 +40,7 @@ The simplest dictionary has exactly one key-value pair:
 
 This dictionary stores one piece of information about *alien_0* of the alien's color. The string 'color' is a key in this dictionary, and its associated value is 'green'.
 
-## Accessing Values in a Dictionary
+### Accessing Values in a Dictionary
 
 To get the value associated with a key, give the name of the dictionary and then place the key inside a set of square brackets:
 
@@ -72,7 +72,7 @@ Once the dictionary has been defined, the code pulls the value associated with k
 
 If we run this code every time an alien is hot down, the alien's point value will be retrieved.
 
-## Adding New Key-Value Pairs
+### Adding New Key-Value Pairs
 
 Dictionaries are dynamic structures, and we can add new key-value pairs to a dictionary at any time. To add a new key-value pair, give the name of the dictionary followed by the new key in square brackets along with the new value.
 
@@ -98,7 +98,7 @@ The final version of the dictionary contains four key-value pairs. The original 
 
 ***As of Python 3.7, dictionaries retain the order in which they were defined. When we print a dictionary or loop through its elements, we see the elements in the same order in which they were added to the dictionary.***
 
-## Starting with an Empty Dictionary
+### Starting with an Empty Dictionary
 
 It is sometimes convenient, or even necessary, to start with an empty dictionary and then add each new item to it. To start filling an empty dictionary, define a dictionary with an empty set of braces and then add each key-value pair on its own line. For example, build the *alien_0* dictionary:
 
@@ -117,7 +117,7 @@ We define an empty *alien_0* dictionary, and then add color and point values to 
 
 Typically, empty dictionaries are used when storing user-supplied data in a dictionary or when writing code that generates a large number of key-value pairs automatically.
 
-## Modifying Values in a Dictionary
+### Modifying Values in a Dictionary
 
 To modify a value in a dictionary, give the name of the dictionary with the key in square brackets and then the new value associated with that key. For example, consider an alien that changes from green to yellow as a game progresses:
 
@@ -172,7 +172,7 @@ By changing one value in the alien's dictionary, we can the overall behavior of 
 
 The `if-elif-else` block would then assign a larger value to *x_increment* the next time the code runs.
 
-## Removing Key-Value Pairs
+### Removing Key-Value Pairs
 
 When a piece of information is no longer needed in a dictionary, use the `del` statement to completely remove a key-value pair. All `del` needs is the name of the dictionary and the key to remove.
 
@@ -195,7 +195,7 @@ The `del` statement deletes the key 'points' from the dictionary *alien_0* and t
 
 ***Be aware that deleted key-value pair is removed permanently.***
 
-## A Dictionary of Similar Objects
+### A Dictionary of Similar Objects
 
 A dictionary can also store information about many objects. For example, a poll of number of people and ask them what their favorite programming language is. A dictionary is useful for storing the results of a simple poll:
 
@@ -232,7 +232,7 @@ We use this syntax to pull Sarah's favorite language from the dictionary and ass
 
 This same syntax can be used for any individual represented in the dictionary.
 
-## Using get() to Access Values
+### Using get() to Access Values
 
 Using keys in square brackets to retrieve the value from a dictionary might cause one potential problem: if the key doesn't exist, an error will occur.
 
@@ -271,7 +271,7 @@ If the key 'points' exists in the dictionary, it will return the corresponding v
 
 ---
 
-## TRY IT YOURSELF: Working with Dictionaries
+### TRY IT YOURSELF: Working with Dictionaries
 
 **6-1. Person**: Use a dictionary to store information about a person you know. Store their first name, last name, age, and the city in which they live. You should have keys such as first_name , last_name , age , and city . Print each piece of information stored in your dictionary.
 
@@ -288,7 +288,7 @@ If the key 'points' exists in the dictionary, it will return the corresponding v
 
 A single Python dictionary can contain just a few key-value pairs or millions of pairs. Python lets us loop through a dictionary with large amounts of data. We can loop through all of a dictionary's key-values pairs, through its keys, or through its values.
 
-## Looping Through All Key-Value Pairs
+### Looping Through All Key-Value Pairs
 
 Let's consider a new dictionary designed to store information about a user on a website. The following dictionary would store one person's username, first name, and last name:
 
@@ -356,7 +356,7 @@ Phil's favorite language is Python.
 
 Looping would work even if our dictionary stored the results from polling a thousand or even a million people.
 
-## Looping Through All the Keys in a Dictionary
+### Looping Through All the Keys in a Dictionary
 
 They `keys()` method is useful when we don't need to work with all of the values in a dictionary. Let's loop through the *favorite_languages* dictionary and print the names of everyone who took the poll:
 
@@ -442,7 +442,7 @@ The `keys()` method isn't just for looping: it actually returns a list of all th
 
 `Erin, please take our poll!`
 
-## Looping Through a Dictionary's Keys in a Particular Order
+### Looping Through a Dictionary's Keys in a Particular Order
 
 Starting in Python 3.7, looping through a dictionary returns the items in the same order they were inserted. Sometimes, we want to loop through a dictionary in a different order.
 
@@ -469,7 +469,7 @@ Phil, thank you for taking the poll.
 Sarah, thank you for taking the poll.
 ```
 
-## Looping Through All Values in a Dictionary
+### Looping Through All Values in a Dictionary
 
 We can use `values()` method to return a list of values without any keys. For example, say we simply want a list of all languages chosen in our programming language poll without the name of the person:
 
@@ -533,6 +533,8 @@ Ruby
 ***It is easy to mistake sets for dictionaries because they're both wrapped in braces. When there is no key-value pairs, it is most likely a set. Unlike lists and dictionaries, sets do not retain items in any specific order.***
 
 ---
+
+### TRY IT YOURSELF: Looping Through a Dictionary
 
 **6-4. Glossary 2**: Now that you know how to loop through a dictionary, clean up the code from Exercise 6-3 (page 99) by replacing your series of print() calls with a loop that runs through the dictionary’s keys and values. When you’re sure that your loop works, add five more Python terms to your glossary.
 When you run your program again, these new words and meanings should automatically be included in the output.
