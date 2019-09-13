@@ -739,5 +739,66 @@ Haskell
 
 To refine this program even further, an `if` statement at the beginning of the dictionary's `for` loop to see whether reach person has more than one favorite language by examining the value of `len(languages)`.
 
-
 ### A Dictionary in a Dictionary
+
+We can nest a dictionary inside another dictionary, but code can get complicated quickly. For exmaple, if we have several users for a website, each with a unique username, we can use the usernames as the keys in a dictionary. Then store information about each user by using a dictionary as the value associated with their username. We store three pieces of information about each user:
+
+* First name
+* Last name
+* Location
+
+We can access this information by looping through the usernames and the dictionary of information associated with each username:
+
+``` python
+users = {
+    'aeinstein': {
+        'first': 'albert',
+        'last': 'einstein',
+        'location': 'princeton',
+    },
+
+    'mcurie': {
+        'first': 'marie',
+        'last': 'curie',
+        'location': 'paris',
+    },
+}
+
+for username, user_info in users.items():
+    print(f"\nUsername: {username}")
+    full_name = f"{user_info['first']} {user_info['last']}"
+    location = user_info['location']
+
+    print(f"\tFull name: {full_name.title()}")
+    print(f"\tLocation: {location.title()}")
+```
+
+We first define a dictionary called *users* with two keys: one each of the usernames *'aeinstein'* and *'mcurie'*. The value associated with each key is a dictionary that includes each user's first name, last name, and location. We loop through the *users* dictionary where Python assigns each key to the variable *username*. The dictionary associated with each username is assigned to the variable *user_info*. Once inside the `for` loop, we start accessing the inner dictionary which contains the user information to generate a summary about each user.
+
+``` markdown
+Username: aeinstein
+    Full name: Albert Einstein
+    Location: Princeton
+
+Username: mcurie
+    Full name: Marie Curie
+    Location: Paris
+```
+
+---
+
+### TRY IT YOURSELF: Nesting
+
+**6-7. People**: Start with the program you wrote for Exercise 6-1 (page 99). Make two new dictionaries representing different people, and store all three dictionaries in a list called people. Loop through your list of people. As you loop through the list, print everything you know about each person.
+
+**6-8. Pets**: Make several dictionaries, where each dictionary represents a different pet. In each dictionary, include the kind of animal and the owner’s name. Store these dictionaries in a list called pets . Next, loop through your list and as you do, print everything you know about each pet.
+
+**6-9. Favorite Places**: Make a dictionary called favorite_places . Think of three names to use as keys in the dictionary, and store one to three favorite places for each person. To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. Loop through the dictionary, and print each person’s name and their favorite places.
+
+**6-10. Favorite Numbers**: Modify your program from Exercise 6-2 (page 99) so each person can have more than one favorite number. Then print each person’s name along with their favorite numbers.
+
+**6-11. Cities**: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city. The keys for each city’s dictionary should be something like country , population , and fact . Print the name of each city and all of the information you have stored about it.
+
+**6-12. Extensions**: We’re now working with examples that are complex enough that they can be extended in any number of ways. Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program or improving the formatting of the output.
+
+---
