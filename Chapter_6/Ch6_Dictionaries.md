@@ -671,4 +671,3 @@ alien['points] = '15
 ```
 
 It is common to store a number of dictionaries in a list when each dictionary contains many kinds of information about one object. For example, we might create a dictionary for each user on a website. All of the dictionaries in the list should have an identical structure so it is possible to loop through the list and work with each dictionary object in the same way.
-
