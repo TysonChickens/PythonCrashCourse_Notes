@@ -28,3 +28,33 @@ Hello everyone!
 ```
 
 ### Writing Clear Prompts
+
+Each time the `input()` function is used, it should include a clear, easy-to-follow prompt that tells the user exactly what kind of information we are looking for. Any statement that tells the user what to enter should work. For example:
+
+``` python
+name = input("Please enter your name: ")
+print(f"\nHello, {name}!")
+```
+
+Add a space at the end of prompts (after the colon) to separate the prompt from the user's response and to make it clear to the user where to enter their text.
+
+Sometimes, a prompt might be longer than one line. For example, we might want to tell the user why we're asking for certain input. We can assign a prompt to a variable and pass that variable to the `input()` function. This allows to build our prompt over several lines, when write a clean `input()` statement.
+
+``` python
+prompt = "If you tell us who you are, we can personalize the messages you see."
+prompt += "\nWhat is your first name? "
+
+name = input(prompt)
+print(f"\nHello, {name}!")
+```
+
+This example shows one way to build a multi-line string. The first line assigns the first part of the message to the variable *prompt*. In the second line, the operator += takes the string that was assigned to *prompt* and adds the new string onto the end.
+
+The prompt now spans two lines with space after the question mark for clarity:
+
+``` markdown
+If you tell us who you are, we can personalize the messages you see.
+What is your first name? Eric
+
+Hello, Eric!
+```
