@@ -58,3 +58,59 @@ What is your first name? Eric
 
 Hello, Eric!
 ```
+
+### Using int() to Accept Numerical Input
+
+Python interprets everything the user enters as a string when we use the `input()` function.
+
+``` python
+>>> age = input("How old are you? ")
+How old are you? 21
+>>> age
+'21'
+```
+
+The user enters the number 21, when we ask Python for value of age, it returns '21', the string representation of the numerical value entered. We know Python interpreted the input as a string because the number is now enclosed in quotes. If we want try to use the input as a number, we will get an error:
+
+``` python
+>>> age = input("How old are you? ")
+How old are you? 21
+>>> age >= 18
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '>' not supported between instances of 'str' and 'int'
+```
+
+When trying to do a numerical comparison, Python produces an error because it can't compare a string to an integer.
+
+This issue can be resolved with the `int()` function, which tells Python to treat the input as a numerical value. The `int()`function converts a string representation of a number to a numerical representation:
+
+``` python
+>>> age input("How old are you? ")
+How old are you? 21
+>>> age = int(age)
+>>> age >= 18
+True
+```
+
+Now, Python can run the conditional test since the value is converted to a numerical value. We compare age to see if greater than or equal to 18. This test evaluates to True.
+
+We can use the `int()` function in a program that determines whether people are tall enough to ride a roller coaster:
+
+``` python
+height = input("How tall are you, in inches? ")
+height = int(height)
+
+if height >= 48:
+    print("\nYou're tall enough to ride!")
+else:
+    print("\nYou'll be able to ride when you're a little older.")
+```
+
+This program can compare *height* to *48* because *height = int(height)* converts the input value to a numerical representation before the comparison is made.
+
+When using numerical input to do calculations and comparisons, be sure to convert the input value to a numerical first.
+
+### The Modulo Operator
+
+
