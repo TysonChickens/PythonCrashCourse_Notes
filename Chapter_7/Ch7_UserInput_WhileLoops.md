@@ -159,3 +159,46 @@ The number 42 is even.
 **7-3. Multiples of Ten**: Ask the user for a number, and then report whether the number is a multiple of 10 or not.
 
 ---
+
+## Introducing while Loops
+
+The `for` loop takes a collection of items and executes a block once for each item in the the collection. In contrast, the `while` loop runs as long as, or *while*, a certain condition is true.
+
+### The while Loop in Action
+
+A `while` loop can be used to count up through a series of numbers. For example, this loop counts from 1 to 5:
+
+``` python
+current_number = 1
+while current_number <= 5:
+  print(current_number)
+  current_number += 1
+```
+
+Python repeats the loop as long as the condition *current_number <= 5* is true. Because 1 is less than 5, Python prints 1 and then adds 1 until the value of *current_number* is greater than 5, and the loops stops running:
+
+``` markdown
+1
+2
+3
+4
+5
+```
+
+The programs we use every day most likely contain `while` loops. For example, a game needs a `while` loop to keep running as long to keep playing, and so it can stop running as soon we ask to quit out. Programs would not be fun to use if they stopped running before we told them to or kept running after we wanted to quit.
+
+### Letting the User Choose When to Quit
+
+We can define a *quit value* and then keep the program running as long as the user has not entered the quit value:
+
+``` python
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+
+message = ""
+while message != 'quit':
+  message = input(prompt)
+  print(message)
+```
+
