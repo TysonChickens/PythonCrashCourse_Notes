@@ -113,4 +113,49 @@ When using numerical input to do calculations and comparisons, be sure to conver
 
 ### The Modulo Operator
 
+A useful tool for working with numerical information is the *modulo operator (%)*, which divides one number by another number and returns the remainder:
 
+``` python
+>>> 4 % 3
+1
+>>> 5 % 3
+2
+>>> 6 % 3
+0
+>>> 7 % 3
+1
+```
+
+The modulo operator tells us what the remainder is of a number being divided.
+
+When one number is divisible by another number, the remainder is 0, so the modulo operator always returns 0. This is useful to determine if a number is even or odd:
+
+``` python
+number = input("Enter a number, and I'll tell you if it's even or odd: ")
+number = int(number)
+
+if number % 2 == 0:
+  print(f"\nThe number {number} is even.")
+else:
+  print(f"\nThe number {number} is odd.")
+```
+
+Even numbers are always divisible by two, so if the modulo of a number and two is zero, the number is even. Otherwise, it's odd.
+
+``` markdown
+Enter a number, and I'll tell you if it's even or odd: 42
+
+The number 42 is even.
+```
+
+---
+
+### TRY IT YOURSELF: Input() Function
+
+**7-1. Rental Car**: Write a program that asks the user what kind of rental car they would like. Print a message about that car, such as “Let me see if I can find you a Subaru.”
+
+**7-2. Restaurant Seating**: Write a program that asks the user how many people are in their dinner group. If the answer is more than eight, print a message saying they’ll have to wait for a table. Otherwise, report that their table is ready.
+
+**7-3. Multiples of Ten**: Ask the user for a number, and then report whether the number is a multiple of 10 or not.
+
+---
