@@ -202,3 +202,182 @@ while message != 'quit':
   print(message)
 ```
 
+Python will keep running the loop as long as the value of *message* is not 'quit'. The first time through the loop, *message* is a just an empty string so Python compare the value. Python displays the prompt and waits for the user to enter their input. As long as the user has not entered the word 'quit', the prompt is displayed again and Python waits for more input. When the user finally enters 'quit', Python stops executed the `while` loop and the program ends:
+
+``` markdown
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. Hello everyone!
+Hello everyone!
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. Hello again.
+Hello again.
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. quit
+quit
+
+```
+
+This program works well, except that it prints the word 'quit' as if it were an actual message. A simple `if` test fixes this:
+
+``` python
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+
+message = ""
+while message != 'quit':
+  message = input(prompt)
+  print(message)
+
+  if message != 'quit':
+    print(message)
+```
+
+Now the program makes a quick check before displaying the message and only prints the message if it does not match the quit value:
+
+``` markdown
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. Hello everyone!
+Hello everyone!
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. Hello again.
+Hello again.
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program. quit
+```
+
+### Using a Flag
+
+A program that should run only as long as many conditions are true, we can define one variable that determines whether or not the entire program is active. A ***flag*** acts as a signal to the program. We can write programs so they run while the flag is set to True and stop running when any of several events sets the value of the flag to False. The flag we will be called *active* (can be called anything), will monitor whether or not the program should continue running:
+
+``` python
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program. "
+
+active = True
+while active:
+  message = input(prompt)
+
+  if message == 'quit':
+    active = False
+  else:
+    print(message)
+```
+
+The variable *active* is set to `True` so the program starts in an active state. This makes the while statement simpler because no comparison is made in the statement itself. As long as the *active* variable remains `True`, the loop will continue running. In the `if` statement, we check the value of *message* once the user enters their input. If the user enters 'quit', we set *active* to `False`, and the `while` loop stops.
+
+This program has the same output as the previous example where we placed the conditional test directly in the `while` statement. But now that we have a flag to indicate whether the overall program is an active state, it would be easy to add more tests (such as `elif` statements) for events that should cause *active* to become `False`. This is useful in complicated programs like games in which there may be many events that should each make the program stop running. When any of these events causes the *active* flag to become `False`, the main game loop will exit, a Game Over message can be displayed, and the player can be given the option to play again.
+
+### Using break to Exit a Loop
+
+To exit a `while` loop immediately without running any remaining code in the loop, regardless of the results of any conditional test, use the ***break*** statement. The ***break*** statement directs the flow of the program; can use it to control which lines of code are executed and which are ignored.
+
+For example, consider a program that asks the user about places they've visited. We can stop the `while` loop in this program by calling `break` as soon as the user enters the 'quit' value:
+
+``` python
+prompt = "\nPlease enter the name of a city you have visited:"
+prompt += "\nEnter 'quit' to end the program. "
+
+while True:
+  city = input(prompt)
+
+  if city == 'quit':
+    break
+  else:
+    print(f"I would love to go to {city.title()}!")
+```
+
+A loop that starts with `while True` will run forever unless it reaches a `break` statement. The loop will continue asking the user to enter the names of cities until they enter 'quit'.
+
+``` markdown
+Please enter the name of a city you have visited:
+(Enter 'quit' when you are finished.) New York
+I'd love to go to New York!
+
+Please enter the name of a city you have visited:
+(Enter 'quit' when you are finished.) San Francisco
+I'd love to go to San Francisco!
+
+Please enter the name of a city you have visited:
+(Enter 'quit' when you are finished.) quit
+```
+
+***The `break` statement can be used in any of Python's loops. For example, `break` can be used to quit a `for` loop that's working through a list or a dictionary.***
+
+### Using continue in a Loop
+
+Rather than breaking out of a loop entirely without executing the rest of its code, we can use the `continue` statement to return to the beginning of the loop based on the result of a conditional test. For example, consider a loop that ocunts from 1 to 10 but prints only the odd numbers in that range:
+
+``` python
+current_number = 0
+while current_number < 10:
+  current_number += 1
+  if current_number % 2 == 0:
+    continue
+
+  print(current_number)
+```
+
+The `continue` statement tells Python to ignore the rest of the loop and return to the beginning. If the current number is not divisible by 2, the rest of the loop is executed and Python prints the current number:
+
+``` markdown
+1
+3
+5
+7
+9
+```
+
+### Avoiding Infinite Loops
+
+Every `while` loops needs a way to stop running so it won't continue to run forever. For example, this counting loop should count from 1 to 5:
+
+``` python
+x = 1
+while x <= 5:
+  print(x)
+  x += 1
+```
+
+If we accidentally omit the line `x += 1`, the loop will run forever:
+
+``` python
+# This loop runs forever
+x = 1
+while x <= 5:
+  print(x)
+```
+
+The value of *x* will start 1 but never change:
+
+``` markdown
+1
+1
+1
+1
+--snip--
+```
+
+If a program gets in an infinite loop, press *CTRL + C* or close the terminal window displaying the program's output. To avoid writing infinite loops, test every `while` loop to make sure the loop's condition can be `False` or reach a `break` statement.
+
+---
+
+### TRY IT YOURSELF: while Loops
+
+**7-4. Pizza Toppings**: Write a loop that prompts the user to enter a series of pizza toppings until they enter a 'quit' value. As they enter each topping, print a message saying you’ll add that topping to their pizza.
+
+**7-5. Movie Tickets**: A movie theater charges different ticket prices depending on a person’s age. If a person is under the age of 3, the ticket is free; if they are between 3 and 12, the ticket is $10; and if they are over age 12, the ticket is $15. Write a loop in which you ask users their age, and then tell them the cost of their movie ticket.
+
+**7-6. Three Exits**: Write different versions of either Exercise 7-4 or Exercise 7-5 that do each of the following at least once:
+
+* Use a conditional test in the while statement to stop the loop.
+* Use an active variable to control how long the loop runs.
+* Use a break statement to exit the loop when the user enters a 'quit' value.
+
+**7-7. Infinity**: Write a loop that never ends, and run it. (To end the loop, press Ctrl -C or close the window displaying the output.)
+
+---
