@@ -523,4 +523,3 @@ What we learned in this chapter:
 * Use a `while` loop to move items from one list to another.
 * How to remove all instances of a value from a list.
 * How `while` loops can be used with dictionaries.
-
