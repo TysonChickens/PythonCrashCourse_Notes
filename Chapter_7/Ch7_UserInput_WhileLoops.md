@@ -1,43 +1,4 @@
-## Introducing while Loops
-
-The `for` loop takes a collection of items and executes a block once for each item in the the collection. In contrast, the `while` loop runs as long as, or *while*, a certain condition is true.
-
-### The while Loop in Action
-
-A `while` loop can be used to count up through a series of numbers. For example, this loop counts from 1 to 5:
-
-``` python
-current_number = 1
-while current_number <= 5:
-print(current_number)
-current_number += 1
-```
-
-Python repeats the loop as long as the condition *current_number <= 5* is true. Because 1 is less than 5, Python prints 1 and then adds 1 until the value of *current_number* is greater than 5, and the loops stops running:
-
-``` markdown
-1
-2
-3
-4
-5
-```
-
-The programs we use every day most likely contain `while` loops. For example, a game needs a `while` loop to keep running as long to keep playing, and so it can stop running as soon we ask to quit out. Programs would not be fun to use if they stopped running before we told them to or kept running after we wanted to quit.
-
-### Letting the User Choose When to Quit
-
-We can define a *quit value* and then keep the program running as long as the user has not entered the quit value:
-
-``` python
-prompt = "\nTell me something, and I will repeat it back to you:"
-prompt += "\nEnter 'quit' to end the program. "
-
-message = ""
-while message != 'quit':
-message = input(prompt)
-print(message)
-```# Python Crash Course Chapter 7: User Input and While Loops
+# Python Crash Course Chapter 7: User Input and While Loops
 
 Most programs are written to solve an end user's problem. First, we need to get some information from the user. For example, let's say someone wants to find out whether they're old enough to vote. We need to write a program to answer this question, and know the user's age before provide an answer. The program will need to ask the user to enter, or *input*, their age; the program can compare it to the voting age to determine if the user is old enough and then report the result.
 
@@ -562,3 +523,4 @@ What we learned in this chapter:
 * Use a `while` loop to move items from one list to another.
 * How to remove all instances of a value from a list.
 * How `while` loops can be used with dictionaries.
+
