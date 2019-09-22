@@ -231,7 +231,7 @@ while message != 'quit':
   message = input(prompt)
   print(message)
 
-  if message != 'quit':
+  if message == 'quit':
     print(message)
 ```
 
@@ -381,3 +381,4 @@ If a program gets in an infinite loop, press *CTRL + C* or close the terminal wi
 **7-7. Infinity**: Write a loop that never ends, and run it. (To end the loop, press Ctrl -C or close the window displaying the output.)
 
 ---
+
