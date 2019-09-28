@@ -8,8 +8,8 @@ Here is a simple named *greet_user* that prints a greeting:
 
 ``` python
 def greet_user():
-    """Display a simple greeting."""
-    print("Hello!")
+"""Display a simple greeting."""
+print("Hello!")
 
 greet_user()
 ```
@@ -23,3 +23,39 @@ The only code in the function is the line *print("Hello!")*. To use this functio
 ``` markdown
 Hello!
 ```
+
+### Passing Information to a Function
+
+The function *greet_user()* can tell the user `Hello!` by name with slight modification. For the function to do this, add *username* in the parentheses of the function's definition. Adding it inside the parentheses of the function allows to accept any value specified. The function now expects a provided value for *username* each time it is called. When we call *greet_user()*, pass it a name, such as 'jesse', inside the parentheses:
+
+``` python
+def greet_user(username):
+"""Display a simple greeting."""
+print(f"Hello, {username.title()}!")
+
+greet_user('jesse')
+```
+
+The function accepts the name and displays the greeting for that name:
+
+``` markdown
+Hello, Jesse!
+```
+
+We can call the function as often we want and pass it any name to produce a predictable output every time.
+
+### Arguments and Parameters
+
+Earlier, we defined *greet_user()* to require a value for the variable *username*. Once we called the function and gave it the information (a person's name), it printed the right greeting.
+
+The variable *username* in the definition of *greet_user()* is an example of a ***parameter***, a piece of information that's passed from a function call to a function. When we call the function, we place the value we want the function work with in the parentheses. In this case the argument 'jesse' was passed to the function *greet_user()*, and the value was assigned to the parameter *username*.
+
+---
+
+### TRY IT YOURSELF: Defining a Function
+
+**8-1. Message**: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. Call the function, and make sure the message displays correctly.
+
+**8-2. Favorite Book**: Write a function called favorite_book() that accepts one parameter,title. The function should print a message, such as One of my favorite books is Alice in Wonderland. Call the function, making sure to include a book title as an argument in the function call.
+
+---
