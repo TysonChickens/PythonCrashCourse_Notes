@@ -245,8 +245,8 @@ describe_pet()
 Python recognizes some information is missing from the function call, and the traceback tells us:
 
 ``` markdown
-Traceback (most recent call last): 
-File "pets.py", line 6, in <module> 
+Traceback (most recent call last):
+File "pets.py", line 6, in <module>
 describe_pet()
 TypeError: describe_pet() missing 2 required positional arguments: 'animal_type' and 'pet_name'
 ```
