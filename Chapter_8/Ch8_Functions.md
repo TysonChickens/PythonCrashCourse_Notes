@@ -246,8 +246,8 @@ Python recognizes some information is missing from the function call, and the tr
 
 ``` markdown
 Traceback (most recent call last):
-File "pets.py", line 6, in <module>
-describe_pet()
+    File "pets.py", line 6, in <module>
+        describe_pet()
 TypeError: describe_pet() missing 2 required positional arguments: 'animal_type' and 'pet_name'
 ```
 
@@ -266,3 +266,105 @@ Python is helpful in that it reads the function's code for us and tells us the n
 **8-5. Cities**: Write a function called describe_city() that accepts the name of a city and its country. The function should print a simple sentence, such as Reykjavik is in Iceland. Give the parameter for the country a default value. Call your function for three different cities, at least one of which is not in the default country.
 
 ---
+
+## Return Values
+
+A function does not always have to display its output directly. Instead, it can process some data and then return a value or set of values. The value the function returns is called a ***return value***. The ***return*** statement takes a value from inside a function and sends it back to the line that called the function.
+
+### Returning a Simple Value
+
+Here is a function that takes a first and last name to return a formatted full name:
+
+``` python
+def get_formatted_name(first_name, last_name):
+    """Return a full name, neatly formatted."""
+    full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('jimi', 'hendrix')
+print(musician)
+```
+
+The definition of *get_formatted_name()* takes as parameters a first and last name. The function combines these two names, and assigns them to a variable *full_name*. The value of *full_name* is converted to title case, and then returned to the calling line.
+
+When we call a function that returns a value, we need to provide a variable that the return value can be assigned to at *musician*. The output shows a formatted name made from parts of a person's name:
+
+`Jimi Hendrix`
+
+Functions can be helpful when working with a large program that needs to store many first and last names separately. We can call our previous function whenever we need to display a full name.
+
+## Making an Argument Optional
+
+Sometimes it makes sense to make an argument optinoal so that people using the function can choose to provide extra information only if they want to. We can use default values to make an argument optional.
+
+For example, we want to expand *get_formatted_name()* to handle middle names as well. A first attempt may look like this:
+
+``` python
+def get_formatted_name(first_name, middle_name, last_name):
+    """Return a full name, neatly formatted."""
+    full_name = f"{first_name} {middle_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('john', 'lee', 'hooker')
+print(musician)
+```
+
+This function works when given a first, middle, and last name. The function takes all three parts of a name and then builds a string out of them.
+
+`John Lee Hooker`
+
+Sometimes middle names are not always needed, and this function would not work if we tried to call it with only a first name and a lst name. To make the middle name optional, we can give the *middle_name* argument an empty default value and ignore the agument unless the user provides a value. We set the default value of *middle_name* to an empty string and move it to the end of the list of parameters:
+
+``` python
+def get_formatted_name(first_name, last_name, middle_name=''):
+    """Return a full name, neatly formatted."""
+    if middle_name:
+        full_name = f"{first_name} {middle_name} {last_name}"
+    else:
+        full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('jimi', 'hendrix')
+print(musician)
+
+musician = get_formatted_name('john', 'hooker', 'lee')
+print(musician)
+```
+
+In the body of the function, we check to see if a middle name has been provided. Python interprets non-empty strings as `True`, so *if middle_name* evaluates to `True` if a middle name argument is in the function call. If no middle name is provided, the empty string fails the `if` test and the `else` block runs. The full name is made with just a first and last name, and the formatted name is returned to the calling line assigned to *musician* and printed.
+
+We have to make sure the middle name is the last argument passed so Python will match up the positional arguments correctly.
+
+This modified version of our function works for people with just a first and last name, and it works for people who have am iddle name as well:
+
+``` markdown
+Jimi Hendrix
+John Lee Hooker
+```
+
+Optional values allow functions to handle a wide range of use cases while letting function calls remain as simple as possible.
+
+## Returning a Dictionary
+
+A function can return any kind of value, including more complicated data structures like lists and dictionaries. For example, the following function takes in parts of a name and returns a dictionary representing a person:
+
+``` python
+def build_person(first_name, last_name):
+    """Return a dictionary of information about a person."""
+    person = {'first': first_name, 'last': last_name}
+    return person
+
+musician = build_person('jimi', 'hendrix')
+print(musician)
+```
+
+The function *build_person()* takes in a first and last name, and puts these values into a dictionary. The value of *first_name* is stored with the key 'first', and the value of *last_name* is stored with the key 'last'. The entire dictionary representing the person is returned at the last line of body function. The return value is printed in the last line of the program with the original two pieces of information now stored in a dictionary:
+
+`{'first': 'jimi', 'last': 'hendrix'}`
+
+This function takes in simple textural information and puts it into more meaningful data structure that allows us to work with information beyond printing it. We can extend this function to accept optional values like a middle name, an age, an occupation, or any other information we want to store about a person. For example, the following change allows to store a person's age as well:
+
+``` python
+def build_person(first_name, last_name, age=None):
+    """Return a dictionary of information about a person."""
+    
