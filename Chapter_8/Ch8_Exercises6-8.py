@@ -35,7 +35,7 @@ print(album)
 
 
 # 8-8: User Albums: From the previous program from 8-7, write a while loop that allows user to enter album title and artist.
-def make_album(artist, album_title, songs=None):
+def user_make_album(artist, album_title, songs=None):
     """Builds a dictionary describing a music album with artist and an album title."""
     music_album = {
         'album title': album_title.title(), 
@@ -59,7 +59,7 @@ while True:
     if artist == 'quit':
         break
 
-    album = make_album(artist, title)
+    album = user_make_album(artist, title)
     print(album)
 
 print("\nThanks for the response!")
