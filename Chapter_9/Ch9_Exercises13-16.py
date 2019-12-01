@@ -13,6 +13,7 @@ class Die:
         results = []
 
         for num in range(10):
+            num += 1
             result = randint(1, self.sides)
             results.append(result)
         return(results)
