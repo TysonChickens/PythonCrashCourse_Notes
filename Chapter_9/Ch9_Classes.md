@@ -996,3 +996,68 @@ Keep the code structure simple in one file and once everything is working, try t
 **9-12. Multiple Modules**: Store the User class in one module, and store the Privileges and Admin classes in a separate module. In a separate file, create an Admin instance and call *show_privileges()* to show that everything is still working correctly.
 
 ---
+
+## The Python Standard Library
+
+The ***Python Standard Library*** is a set of modules included with every Python installation. We can use any function or class in the standard library by including a simple `import` statement at the top of the file. Let's look at one module, *random*, which can be useful in modeling many real-world situations.
+
+An interesting function from the random module is `randint()`. This function takes two integer arguments and returns a randomly selected integer between (and including) those numbers.
+
+Here is how to generate a random number between 1 and 6:
+
+``` python
+from random import randint
+
+randint(1, 6)
+```
+
+Another useful function is `choice()` to take in a list or tuple and returns a randomly chosen element:
+
+``` python
+from random import choice
+
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+first_up = choice(players)
+
+first_up
+```
+
+The `random` module shouldn't be used when building security-related applications, but good enough for fun and interesting projects.
+
+*Download modules from external sources to complete each in project in Part II.*
+
+---
+
+### TRY IT YOURSELF: Python Library
+
+**9-13. Dice**: Make a class Die with one attribute called sides, which has a default value of 6. Write a method called *roll_die()* that prints a random number between 1 and the number of sides the die has. Make a 6-sided die and roll it 10 times. Make a 10-sided die and a 20-sided die. Roll each die 10 times.
+
+**9-14. Lottery**: Make a list or tuple containing a series of 10 numbers and five letters. Randomly select four numbers or letters from the list and print a message saying that any ticket matching these four numbers or letters wins a prize.
+
+**9-15. Lottery Analysis**: You can use a loop to see how hard it might be to win the kind of lottery you just modeled. Make a list or tuple called *my_ticket*. Write a loop that keeps pulling numbers until your ticket wins. Print a message reporting how many times the loop had to run to give you a winning ticket.
+
+**9-16. Python Module of the Week**: One excellent resource for exploring the Python standard library is a site called Python Module of the Week. Go to https://pymotw.com/ and look at the table of contents. Find a module that looks interesting to you and read about it, perhaps starting with the random module.
+
+---
+
+## Styling Classes
+
+Class names should be written in *CamelCase*. To do this, capitalize the first letter of each word in the name, and don't use underscores. Instance and module names should be written in lowercase with underscores between words.
+
+Every class should have a docstring immediately following the class definition. The docstring should be brief description of the purpose of the class. Each module should also have a docstring describing what the classes in a module can be used for.
+
+Use blank lines to organize code. Single blank line between methods and two blank lines to separate classes in a module.
+
+If import a module from the standard library and a custom module, place the import statement for the standard library module first. Then add a blank line and the import statement for the written module.
+
+## Summary
+
+What we learned in this chapter:
+
+* Write classes and how to store information inside a class using attributes and methods as behaviors.
+* Write `__init__()` methods that create instances from classes with exactly the same attributes.
+* How to modify the attributes of an instance directly and through methods.
+* Use inheritance to simplify the creation of classes related to each other and use instances one class as attributes in another class.
+* Storing classes in modules and importing classes needed into files to keep projects organized.
+* The Python Standard Library based on example of the *random* module.
+* How to style classes using Python conventions.
