@@ -8,13 +8,13 @@ Here is a simple named *greet_user* that prints a greeting:
 
 ``` python
 def greet_user():
-"""Display a simple greeting."""
-print("Hello!")
+    """Display a simple greeting."""
+    print("Hello!")
 
 greet_user()
 ```
 
-This example shows the simplest structure of a function. We use the keyword on the first line, `def`, to inform Python that we are defining a function. This is the ***function definition***, which tells Python the name of the function and if applicable, what kind of information the function needs to do its job. In this case, the parentheses are empty because it needs no information to do its job. Finally, the definition ends in a colon.
+This example shows the simplest structure of a function. We use the keyword on the first line `def`, to inform Python that we are defining a function. This is the ***function definition***, which tells Python the name of the function and if applicable, what kind of information the function needs to do its job. In this case,                       the parentheses are empty because it needs no information to do its job. Finally, the definition ends in a colon.
 
 Any indented lines that follow *def greet_user():* make up the ***body*** of the function. The text in triple quotes is called a ***docstring***, which describes what the function does.
 
@@ -30,8 +30,8 @@ The function *greet_user()* can tell the user `Hello!` by name with s
 
 ``` python
 def greet_user(username):
-"""Display a simple greeting."""
-print(f"Hello, {username.title()}!")
+    """Display a simple greeting."""
+    print(f"Hello, {username.title()}!")
 
 greet_user('jesse')
 ```
@@ -48,7 +48,7 @@ We can call the function as often we want and pass it any name to�
 
 Earlier, we defined *greet_user()* to require a value for the variable *username*. Once we called the function and gave it the information (a person's name), it printed the right greeting.
 
-The variable *username* in the definition of *greet_user()* is an example of a ***parameter***, a piece of information that's passed from a function call to a function. When we call the function, we place the value we want the function work with in the parentheses. In this case the argument 'jesse' was passed to the function *greet_user()*, and the value was assigned to the parameter *username*.
+The variable *username* in the definition of *greet_user()* is an example of a ***parameter***, a piece of information that's passed from a function call to a function. When we call the function, we place the value we want the function work with in the parentheses. In this case the argument 'jesse' was passed to the function *greet_user()*, and the value was assigned to the parameter *username*.
 
 ---
 
@@ -92,9 +92,9 @@ We can call a function as many times as needed. To describe a secon
 
 ``` python
 def describe_pet(animal_type, pet_name):
-"""Display information about a pet."""
-print(f"\nI have a {animal_type}.")
-print(f"My {animal_type}'s name is {pet_name.title()}.")
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
 
 describe_pet('hamster', 'harry')
 describe_pet('dog', 'willie')
@@ -120,9 +120,9 @@ Unexpected results will happen if the order of the arguments are mixe
 
 ``` python
 def describe_pet(animal_type, pet_name):
-"""Display information about a pet."""
-print(f"\nI have a {animal_type}.")
-print(f"My {animal_type}'s name is {pet_name.title()}.")
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
 
 describe_pet('harry', 'hamster')
 ```
@@ -142,9 +142,9 @@ A ***keyword argument*** is a name-value pair that pass to a function
 
 ``` python
 def describe_pet(animal_type, pet_name):
-"""Display information about a pet."""
-print(f"\nI have a {animal_type}.")
-print(f"My {animal_type}'s name is {pet_name.title()}.")
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
 
 describe_pet(animal_type='hamster', pet_name='harry')
 ```
@@ -168,9 +168,9 @@ For example, if we notice most calls to *describe_pet()* are being us
 
 ``` python
 def describe_pet(pet_name, animal_type='dog'):
-"""Display information about a pet."""
-print(f"\nI have a {animal_type}.")
-print(f"My {animal_type}'s name is {pet_name.title()}.")
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
 
 describe_pet(pet_name='willie')
 ```
@@ -235,9 +235,9 @@ Unmatched arguments error occur when we provide fewer or more argument
 
 ``` python
 def describe_pet(pet_name, animal_type='dog'):
-"""Display information about a pet."""
-print(f"\nI have a {animal_type}.")
-print(f"My {animal_type}'s name is {pet_name.title()}.")
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
 
 describe_pet()
 ```

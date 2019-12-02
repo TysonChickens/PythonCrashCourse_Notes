@@ -102,9 +102,9 @@ height = input("How tall are you, in inches? ")
 height = int(height)
 
 if height >= 48:
-print("\nYou're tall enough to ride!")
+  print("\nYou're tall enough to ride!")
 else:
-print("\nYou'll be able to ride when you're a little older.")
+  print("\nYou'll be able to ride when you're a little older.")
 ```
 
 This program can compare *height* to *48* because *height = int(height)* converts the input value to a numerical representation before the comparison is made.
@@ -135,9 +135,9 @@ number = input("Enter a number, and I'll tell you if it's even or odd: ")
 number = int(number)
 
 if number % 2 == 0:
-print(f"\nThe number {number} is even.")
+  print(f"\nThe number {number} is even.")
 else:
-print(f"\nThe number {number} is odd.")
+  print(f"\nThe number {number} is odd.")
 ```
 
 Even numbers are always divisible by two, so if the modulo of a number and two is zero, the number is even. Otherwise, it's odd.
@@ -171,8 +171,8 @@ A `while` loop can be used to count up through a series of numbers. For example,
 ``` python
 current_number = 1
 while current_number <= 5:
-print(current_number)
-current_number += 1
+  print(current_number)
+  current_number += 1
 ```
 
 Python repeats the loop as long as the condition *current_number <= 5* is true. Because 1 is less than 5, Python prints 1 and then adds 1 until the value of *current_number* is greater than 5, and the loops stops running:
@@ -197,8 +197,8 @@ prompt += "\nEnter 'quit' to end the program. "
 
 message = ""
 while message != 'quit':
-message = input(prompt)
-print(message)
+  message = input(prompt)
+  print(message)
 ```
 
 Python will keep running the loop as long as the value of *message* is not 'quit'. The first time through the loop, *message* is a just an empty string so Python compare the value. Python displays the prompt and waits for the user to enter their input. As long as the user has not entered the word 'quit', the prompt is displayed again and Python waits for more input. When the user finally enters 'quit', Python stops executed the `while` loop and the program ends:
@@ -226,11 +226,11 @@ prompt += "\nEnter 'quit' to end the program. "
 
 message = ""
 while message != 'quit':
-message = input(prompt)
-print(message)
+  message = input(prompt)
+  print(message)
 
 if message == 'quit':
-print(message)
+  print(message)
 ```
 
 Now the program makes a quick check before displaying the message and only prints the message if it does not match the quit value:
@@ -258,12 +258,12 @@ prompt += "\nEnter 'quit' to end the program. "
 
 active = True
 while active:
-message = input(prompt)
+  message = input(prompt)
 
 if message == 'quit':
-active = False
+  active = False
 else:
-print(message)
+  print(message)
 ```
 
 The variable *active* is set to `True` so the program starts in an active state. This makes the while statement simpler because no comparison is made in the statement itself. As long as the *active* variable remains `True`, the loop will continue running. In the `if` statement, we check the value of *message* once the user enters their input. If the user enters 'quit', we set *active* to `False`, and the `while` loop stops.
@@ -281,12 +281,12 @@ prompt = "\nPlease enter the name of a city you have visited:"
 prompt += "\nEnter 'quit' to end the program. "
 
 while True:
-city = input(prompt)
+  city = input(prompt)
 
 if city == 'quit':
-break
+  break
 else:
-print(f"I would love to go to {city.title()}!")
+  print(f"I would love to go to {city.title()}!")
 ```
 
 A loop that starts with `while True` will run forever unless it reaches a `break` statement. The loop will continue asking the user to enter the names of cities until they enter 'quit'.
@@ -313,9 +313,9 @@ Rather than breaking out of a loop entirely without executing the rest of its co
 ``` python
 current_number = 0
 while current_number < 10:
-current_number += 1
-if current_number % 2 == 0:
-continue
+  current_number += 1
+  if current_number % 2 == 0:
+  continue
 
 print(current_number)
 ```
@@ -337,8 +337,8 @@ Every `while` loops needs a way to stop running so it won't continue to run fore
 ``` python
 x = 1
 while x <= 5:
-print(x)
-x += 1
+  print(x)
+  x += 1
 ```
 
 If we accidentally omit the line `x += 1`, the loop will run forever:
@@ -347,7 +347,7 @@ If we accidentally omit the line `x += 1`, the loop will run forever:
 # This loop runs forever
 x = 1
 while x <= 5:
-print(x)
+  print(x)
 ```
 
 The value of *x* will start 1 but never change:
@@ -469,12 +469,12 @@ responses[name] = response
 # Find out if anyone else is going to take the poll.
 repeat = input("Would you like to let another person respond? (yes/ no) ")
 if repeat == 'no':
-polling_active = False
+  polling_active = False
 
 # Polling is complete. Show the results.
 print("\n--- Poll Results ---")
 for name, response in responses.items():
-print(f"{name.title()} would like to climb {response.title()}.")
+  print(f"{name.title()} would like to climb {response.title()}.")
 ```
 
 The program first defines an empty dictionary for responses and sets a flag (polling_active) to indicate that polling is active. As long it is `True`, Python will run the code in the `while` loop.
