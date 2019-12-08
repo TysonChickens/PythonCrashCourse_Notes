@@ -1,0 +1,4 @@
+In Python you can create lists and dictionaries
+In Python you can use a loop to quickly go through loops
+In Python you can define functions and create classes to model real life objects
+In Python you can do a lot more cool stuff, but I am too lazy to list everything
