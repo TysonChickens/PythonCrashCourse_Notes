@@ -1,6 +1,6 @@
 # 10-3 Program that prompts the user for their name and save their response to guest.txt
 
-filename = 'Chapter_10_FileExceptions/guest.txt'
+filename = 'Chapter10_FilesExceptions/guest.txt'
 
 prompt_name = input("Enter your name to be on the guest list: ")
 with open(filename, 'w') as file_object:
@@ -10,7 +10,7 @@ with open(filename, 'w') as file_object:
 
 # 10-4 Write a while loop that prompts the users for name.
 
-filename = 'Chapter_10_FileExceptions/guest_book.txt'
+filename = 'Chapter10_FilesExceptions/guest_book.txt'
 
 prompt = "Enter your name to be on the guest list:"
 prompt += "\nEnter 'quit' to end the program.\n"
@@ -28,7 +28,7 @@ while True:
 
 # 10-5 Programming poll and store all the answers.
 
-filename = 'Chapter_10_FileExceptions/programming_poll.txt'
+filename = 'Chapter10_FilesExceptions/programming_poll.txt'
 
 responses = []
 

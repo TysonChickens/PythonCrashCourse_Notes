@@ -1,6 +1,6 @@
 # 10-1 Learning Python
 
-filename = 'Chapter_10/learning_python.txt'
+filename = 'Chapter10_FilesExceptions/learning_python.txt'
 
 print("Reading the entire file...")
 with open(filename) as file_object:
@@ -23,7 +23,7 @@ for line in lines:
 
 # 10-2 Learning C by using replace() any word in a string with a different word.
 
-with open('Chapter_10/learning_python.txt') as file_object:
+with open('Chapter10_FilesExceptions/learning_python.txt') as file_object:
     lines = file_object.readlines()
 
 for line in lines:

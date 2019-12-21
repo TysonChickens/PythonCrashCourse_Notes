@@ -31,6 +31,6 @@ def open_file(filename):
     else:
         print(contents)
         
-filenames = ['Chapter_10_FilesExceptions/cats.txt', 'Chapter_10_FilesExceptions/dog.txt']
+filenames = ['Chapter10_FilesExceptions/cats.txt', 'Chapter10_FilesExceptions/dogs.txt']
 for filename in filenames:
     open_file(filename)
