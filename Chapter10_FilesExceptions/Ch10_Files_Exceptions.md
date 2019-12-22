@@ -690,4 +690,37 @@ import json
 
 numbers = [2, 3, 5, 7, 11, 13]
 
+filename = 'numbers.json'
+with open(filename, 'w') as f:
+    json.dump(numbers, f)
+```
+
+We first import the json module and then create a list of numbers to work it. We use the file extension *.json* to indicate that the data in the file stored is in the JSON format. Then open the file in write mode which allows the json to write the data to the file. The `json.dump()` function allows to store the list of numbers in the file *numbers.json*.
+
+The program has no output, but we can open the file *numbers.json* and view the data stored:
+
+``` markdown
+[2, 3, ,5 , 7, 11, 13]
+```
+
+Now we'll write a program that uses `json.load()` to read the list back into memory:
+
+``` python
+import json
+
+filename = 'numbers.json'
+with open(filename) as f:
+    numbers = json.load(f)
+
+print(numbers)
+```
+
+We make sure to read from the same file we wrote to. The file is opened in read mode because Python only needs to read from the file. We use `json.load()` function to load the information stored in *numbers.json*, and assign it to the variable *numbers*. We finally print the recovered numbers and it is the same list from *number_writer.py*:
+
+``` markdown
+[2, 3, ,5 , 7, 11, 13]
+```
+
+This is a simple way to share data between two programs.
+
 
