@@ -505,7 +505,7 @@ except FileNotFoundError:
     print(f"Sorry, the file {filename} does not exist.")
 ```
 
-The `try` block produces a *FileNotFoundError*, so Python looks for the `except` block that matches the error and prints the approriate message instead of a traceback:
+The `try` block produces a *FileNotFoundError*, so Python looks for the `except` block that matches the error and prints the appropriate message instead of a traceback:
 
 ``` markdown
 Sorry, the file alice.txt does not exist.
@@ -668,4 +668,26 @@ formatted.
 Write a program that reads the files you found at Project Gutenberg and determines how many times the word 'the' appears in each text. This will be an approximation because it will also count words such as 'then' and 'there'. Try counting 'the ', with a space in the string, and see how much lower your count is.
 
 ---
+
+## Storing Data
+
+Many programs will ask users to input certain kinds of information such as storing preferences in a game or providing data for a visualization. The information users provide in data structures such as lists and dictionaries. When a program closes, we most likely want to save the information. A simple way to store data is using the ***json*** module.
+
+The ***json*** module allows to dump simple Python data structures into a file and load the data from that file the next time the program runs. We can also use it to share data between different Python programs. Also, the JSON data is not specific to Python, so we can share data stored in the JSON format with other people using different programming languages.
+
+***JSON (JavaScript Object Notation) format was originally developed for JavaScript. It has since become a common format used by many languages, including Python.***
+
+### Using `json.dump()` and `json.load()`
+
+The first program is to use `json.dump()` to store the set of numbers, and the second program will use `json.load()`.
+
+The `json.dump()` function takes two arguments: a piece of data to store and a file object it can use to store the data. Here how we can use `json.dump()` to store a list of numbers:
+
+number_writer.py
+
+``` python
+import json
+
+numbers = [2, 3, 5, 7, 11, 13]
+
 
