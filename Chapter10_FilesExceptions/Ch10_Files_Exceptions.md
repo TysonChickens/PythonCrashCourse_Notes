@@ -448,7 +448,7 @@ while True:
         print(answer)
 ```
 
-We tell Python on how to respond in case the division operation runs to an error with the *ZeroDivsionError*, or what to do when the code is successful with the `else` block.
+We tell Python on how to respond in case the division operation runs to an error with the *ZeroDivisionError*, or what to do when the code is successful with the `else` block.
 
 ``` markdown
 Give me two numbers, and I'll divide them.
@@ -723,4 +723,186 @@ We make sure to read from the same file we wrote to. The file is opened in read 
 
 This is a simple way to share data between two programs.
 
+### Saving and Reading User-Generated Data
 
+Saving data with **json** is useful when working with user-generated data, because if we don't store user's information, we lost it when the program stops running. Here is an example where we prompt the user for their name the first time they run a program and then remember their name when the program is run again.
+
+remember_me.py
+
+First store the user's name:
+
+``` python
+import json
+
+username = input("What is your name? ")
+
+filename = 'username.json'
+with open(filename, 'w') as f:
+    json.dump(username, f)
+    print(f"We'll remember you when you come back, {username}!")
+```
+
+We prompt for a username to store. Next, we use `json.dump()`, passing it a username and a file object, to store the username in a file. Then we print a message informing the user that we've stored their information:
+
+``` markdown
+What is your name? **Eric**
+We'll remember you when you come back, Eric!
+```
+
+Now write a new program that greets a user whose name has already been stored:
+
+greet_user.py
+
+``` python
+import json
+
+filename = 'username.json'
+with open(filename) as f:
+    username = json.load(f)
+    print(f"Welcome back, {username}!")
+```
+
+We use `json.load()` to read the information stored in *username.json* and assign it to the variable *username*. Now we have the name, we can welcome them back:
+
+``` markdown
+Welcome back, Eric!
+```
+
+We need to combine these two programs into one file. We want to retrieve a username from *remember_me.py* if possible; therefore, we start with a `try` block that attempts to recover the username. If the file *username.json* does not exist, we have the `except` block prompt for a username and store it in *username.json* for next time:
+
+remember_me.py
+
+``` python
+import json
+
+# Load the username, if it has been stored previously.
+#   Otherwise, prompt for the username and store it.
+filename = 'username.json'
+try:
+    with open(filename) as f:
+        username = json.load(f)
+except FileNotFoundError:
+    username = input("What is your name? ")
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+        print(f"We'll remember you when you come back, {username}!")
+else:
+    print(f"Welcome back, {username}!")
+```
+
+There is no new code here; blocks of code from the last two examples just combined into one file with `try-except-else` blocks.
+
+### Refactoring
+
+There will be a point where code will work, but recognize that improvements can be made by breaking it up into a series of functions that have specific jobs. This process is called ***refactoring***. Refactoring makes code cleaner, easier to understand, and easier to extend.
+
+We can refactor *remember_me.py* by moving the bulk of its logic into one or more functions. The focus is on greeting the user, so we can move all of our existing code into a function called *greet_user()*:
+
+remember_me.py
+
+``` python
+import json
+
+def greet_user():
+    """Greet the user by name."""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        username = input("What is your name? ")
+        with open(filename, 'w') as f:
+            json.dump(username, f)
+            print(f"We'll remember you when you come back, {username}!")
+    else:
+        print(f"Welcome back, {username}!")
+
+greet_user()
+```
+
+Now that it is a function, we update the comments with a docstring to reflect how the program works. This file is a bit cleaner, but the function *greet_user()* is doing more than greeting the user.
+
+We can refactor so it's not doing so many different tasks. We start by moving the code for retrieving a stored username to a separate function:
+
+``` python
+import json
+
+def get_stored_username():
+    """Get stored username if available."""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+
+def greet_user():
+    """Greet the user by name."""
+    username = get_stored_username()
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = input("What is your name? ")
+        with open(filename, 'w') as f:
+            json.dump(username, f)
+            print(f"We'll remember you when you come back, {username}!")
+
+greet_user()
+```
+
+In the new function of *get_stored_username()*, it retrieves a stored username and returns the username if it finds one. If the file *username.json* does not exist, the function returns `None`. This is good practice: a function should either return the value expecting, or it should return `None`. In the function of *greet_user()*, we print a welcome back message to the user if the attempt to retrieve a username was successful, and if not, we prompt for a new username.
+
+We should factor one more block of code out of *greet_user()*. If the username does not exist, we should move the code that prompts for a new username to a function dedicated to that purpose:
+
+``` python
+import json
+
+def get_stored_username():
+    """Get stored username if available."""
+    --snip--
+
+def get_new_username():
+    """Prompt for a new username."""
+    username = input("What is your name? ")
+    filename = 'username.json'
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+    return username
+
+def greet_user():
+    """Greet the user by name."""
+    username = get_stored_username()
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = get_new_username()
+        print(f"We'll remember you when you come back, {username}!")
+
+greet_user()
+```
+
+Each function in this final version of *remember_me.py* has a single, clear purpose. We call *greet_user()*, and that fun function prints an appropriate message: welcomes back an existing user, or greets a new user. It does this by calling *get_stored_username()*, which is responsible only for retrieving a stored username if it exists. Finally *greet_user()* calls *get_new_username()* if necessary, which is only responsible for getting a new username and storing it. This work is essential part of writing clear code that will be easy to maintain and extend.
+
+---
+
+### TRY IT YOURSELF: Refactoring
+
+**10-11. Favorite Number**: Write a program that prompts for the user’s favorite number. Use json.dump() to store this number in a  le. Write a separate pro- gram that reads in this value and prints the message, “I know your favorite number! It’s _____.”
+
+**10-12. Favorite Number Remembered**: Combine the two programs from Exercise 10-11 into one  le. If the number is already stored, report the favorite number to the user. If not, prompt for the user’s favorite number and store it in a  le. Run the program twice to see that it works.
+
+**10-13. Verify User**: The  nal listing for remember_me.py assumes either that the user has already entered their username or that the program is running for the  rst time. We should modify it in case the current user is not the person who last used the program.
+
+* Before printing a welcome back message in greet_user(), ask the user if this is the correct username. If it’s not, call get_new_username() to get the correct username.
+
+---
+
+## Summary
+
+What we learned in this chapter:
+
+* How to work with files by reading through a file's contents one line at a time and writing to a file.
+* About exceptions and how to handle them in programs.
+* Store Python data structures to save information users provide, preventing them to start over each time they run the program.
