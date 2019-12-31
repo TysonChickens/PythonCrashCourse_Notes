@@ -49,10 +49,52 @@ Python provides an efficient way to automate the testing of a function's output.
 The module `unittest` from the Python standard library provides tools for testing code.
 
 * ***Unit test*** verifies that one specific aspect of a function's behavior is correct.
-* ***Test case*** is a collection of unit tests that together prove that a function behaves as it's supposed to, within the full range of situations to handle. A good test case considers all the possible kinds of input a function could receive and includes test to represents each of these situations. 
+* ***Test case*** is a collection of unit tests that together prove that a function behaves as it's supposed to, within the full range of situations to handle. A good test case considers all the possible kinds of input a function could receive and includes test to represents each of these situations.
 * A test case with ***full coverage*** includes a full range of unit tests covering all the possible ways to use a function.
 
 It is often good enough to write tests for code's critical behaviors and then aim for full coverage only if the project starts to see widespread use.
 
 ### A Passing Test
 
+The syntax for setting up a test case takes getting used to, but it is straightforward to add more unit tests for functions later. To write a test case for a function, import the `unittest` module and function to test. Then create a class that inherits from `unittest.TestCase`, and write a series of methods to test different aspects of function's behavior.
+
+Here is a test case with one method that verifies that the function *get_formatted_name()* works correctly when given a first and last name:
+
+test_name_function.py
+
+``` python
+import unittest
+from name_function import get_formatted_name
+
+class NamesTestCase(unittest.TestCase):
+    """Tests for 'name_function.py'"""
+
+    def test_first_last_name(self):
+        """Do names like 'Janis Joplin' work?"""
+        formatted_name = get_formatted_name('janis', 'joplin')
+        self.assertEqual(formatted_name, 'Janis Joplin')
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+First we import `unittest` and the function we want to test, *get_formatted_name()*. We create a class called *NamesTestCase*, which will contain a series of unit tests for *get_formatted_name()*. We can name the class anything, but is best to call it something related to the function about to test and to use the word Test in the class name. This class must inherit from the class *unittest.TestCase* so Python knows how to run the tests.
+
+*NamesTestCase* contains a single method that tests one aspect of *get_formatted_name()*. We call this method *test_first_last_name()* to verify that names with only first and last name are formatted correctly. Any method that stats with *test_* will be run automatically when we run *test_name_function.py*. Within this test method, we call the function we want to test. In this example, we call *get_formatted_name()* with the arguments 'janis' and 'joplin', and assign the result to *formatted_name*.
+
+One of `unittest`'s most useful features: an `assert` method. Assert methods verify that result received matches the result expected to receive. To verify the result of the formatted name, `self.assertEqual(formatted_name, 'Janis Joplin')` compares the string if they are equal. If it doesn't match, it will let us know.
+
+When a file is imported, the interpreter executes the file as it is being imported. The `if` block looks at a special variable, `__name__`, which is set when the program is executed. If this file is being run as the main program, the value of `__name__` is set to `__main__`. In this case, we call `unittest.main()`, which runs the test case. When a testing framework imports this file, the value of `__name__` won't be `__main__` and this block will not be executed.
+
+When we run *test_name_function.py*, we get the following input:
+
+``` markdown
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+OK
+```
+
+The dot on the first line output tells us that a single test passed. The next line tells use that Python ran one test, and it took less than 0.001 seconds to run. The final **OK** tells us that all unit tests in the test case passed.
+
+### A Failing Test
