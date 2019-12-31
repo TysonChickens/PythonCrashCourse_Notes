@@ -98,3 +98,37 @@ OK
 The dot on the first line output tells us that a single test passed. The next line tells use that Python ran one test, and it took less than 0.001 seconds to run. The final **OK** tells us that all unit tests in the test case passed.
 
 ### A Failing Test
+
+Let's modify *get_formatted_name()*, so it can handle middle names, but purposefully break the function for names with just a first and last name, like Janis Joplin.
+
+Here's a new version of *get_formatted_name()*, that requires a middle name argument:
+
+name_function.py
+
+``` python
+def get_formatted_name(first, middle, last):
+    """Generate a neatly formatted full name."""
+    full_name = f"{first} {middle} {last}"
+    return full_name.title()
+```
+
+This version should work for people with middle names, but when we test it, the function is broken for people only with just a first and last name. Running the file gives this output:
+
+``` markdown
+E
+======================================================================
+ERROR: test_first_last_name (__main__.NamesTestCase) ----------------------------------------------------------------------
+Traceback (most recent call last):
+    File "test_name_function.py", line 8, in test_first_last_name
+       formatted_name = get_formatted_name('janis', 'joplin')
+   TypeError: get_formatted_name() missing 1 required positional argument: 'last'
+---------------------------------------------------------------------- Ran 1 test in 0.000s
+FAILED (errors=1)
+```
+
+The first item in the output is a single E, which tells us one unit test in the test case resulted in an error. Next, we see that *test_first_last_name()* in *NamesTestCase* caused an error. We see a standard traceback, which reports that the function call `get_formatted_name('janis', 'joplin')` no longer works because it is missing a required positional argument.
+
+There is a summary of information about the overall test case to quickly find out how many tests failed.
+
+### Responding to a Failed Test
+
