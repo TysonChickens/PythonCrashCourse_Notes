@@ -212,3 +212,5 @@ Now we know that the function still works for all names that include first and l
 * Write a second test called *test_city_country_population()* that veri-  es you can call your function with the values 'santiago', 'chile', and 'population=5000000'. Run test_cities.py again, and make sure this new test passes.
 
 ---
+
+## Testing a Class
