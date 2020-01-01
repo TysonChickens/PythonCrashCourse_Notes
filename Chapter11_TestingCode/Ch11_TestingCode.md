@@ -132,3 +132,33 @@ There is a summary of information about the overall test case to quickly find ou
 
 ### Responding to a Failed Test
 
+When a test fails, don't change the test. Instead, fix the code that caused the test to fail. Examine the changes made to the function, and understand how those changes broke the desired behavior.
+
+In this case *get_formatted_name()* used to require only two parameters: a first and a last name. Now it requires a first name, middle name, and last name. The addition of the mandatory middle name parameter broke the desired behavior. The best option here is to make the middle name optional. If it passes, we will move on to making sure the function handles middle names properly.
+
+To make middle names optional, we move the parameter *middle* to the end of the parameter list in the function definition and give it an empty default value. We also add an `if` test that builds the full name properly, depending on a middle is provided:
+
+name_function.py
+
+``` python
+def get_formatted_name(first, last, middle=''):
+    """Generate a neatly formatted full name."""
+    if middle:
+        full_name = f"{first} {middle}, {last}"
+    else:
+        full_name = f"{first} {last}"
+    return full_name.title()
+```
+
+This new version of *get_formatted_name()*, the middle name is optional. Now the function should work for both kinds of names. To find out if the function still works for names like Janis Joplin, let's run *test_name_function.py* again:
+
+``` markdown
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+OK
+```
+
+The test case passes now. This means the function works for names including middle names. Fixing our function was easy because the failed test helped us identify the new code tha broke existing behavior.
+
+### Adding New Tests
