@@ -162,3 +162,43 @@ OK
 The test case passes now. This means the function works for names including middle names. Fixing our function was easy because the failed test helped us identify the new code tha broke existing behavior.
 
 ### Adding New Tests
+
+Now we know *get_formatted_name()* works for simple names, we can write a second test for people include a middle name by adding another method to the class *NamesTestCase*:
+
+``` python
+--snip--
+
+class NamesTestCase(unittest.TestCase):
+    """Tests for 'name_function.py'."""
+
+    def test_first_last_name(self):
+        --snip--
+
+    def test_first_last_middle_name(self):
+        """Do names like 'Wolfgang Amadeus Mozart' work?"""
+        formatted_name = get_formatted_name('wolfgang', 'mozart', 'amadeus')
+        self.assertEqual(formatted_name, 'Wolfgang Amadeus Mozart')
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+We name this new method *test_first_last_middle_name()*. The method name must start with `test_` so the method runs automatically when we run *test_name_function.py*. Long method names is helpful because they need to be more descriptive to make sense of the output when tests fail.
+
+To test the function, we call *get_formatted_name()* with a first, last, and middle name, and then we ues `assertEqual()` to check that the returned full name matches the full name (first, middle, and last) that we expect.
+
+Both tests pass when we run *test_name_function.py*:
+
+```markdown
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+OK
+```
+
+Now we know that the function still works for all names that include first and last names, including middle names.
+
+---
+
+### TRY IT YOURSELF: Testing a Function
+
