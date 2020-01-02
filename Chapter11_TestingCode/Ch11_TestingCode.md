@@ -214,3 +214,33 @@ Now we know that the function still works for all names that include first and l
 ---
 
 ## Testing a Class
+
+We can write tests for a class like we did for a single function.
+
+### A Variety of Assert Methods
+
+Python provides a number of assert methods in the `unittest.TestCase` class. Assert methods test whether a condition is true at a specific point in code. If the condition is true as expected, assumption about how that part of program behaves is confirmed; we can be confident that no errors exist. If not true, Python raises an exception.
+
+#### Table 11-1 Assert Methods Available from the `unittest` Module
+
+| Method                  | Use                             |
+|-------------------      | ----------------------          |
+| assertEqual(a, b)       | Verify that a == b              |
+| assertNotEqual(a, b)    | Verify that a != b              |
+| assertTrue(x)           | Verify that x is True           |
+| assertFalse(x)          | Verify that x is False          |
+| assertIn(item, list)    | Verify that item is in list     |
+| assertNotIn(item, list) | Verify that item is not in list |
+
+These are six commonly used assert methods to verify that returned values equal or do not equal expected values. These methods are only used in class that inherits from `unittest.TestCase`.
+
+### A Class to Test
+
+Testing a class similar to testing a function - testing the behavior of the methods in the class with a few differences.
+
+A class that helps administer anonymous surveys:
+
+survey.py
+
+``` python
+
