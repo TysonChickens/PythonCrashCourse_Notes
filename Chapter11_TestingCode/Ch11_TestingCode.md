@@ -243,4 +243,156 @@ A class that helps administer anonymous surveys:
 survey.py
 
 ``` python
+class AnonymousSurvey:
+    """Collect anonymous answers to a survey question."""
 
+    def __init__(self, question):
+        """Store a question, and prepare to store the responses."""
+        self.question = question
+        self.responses = []
+
+    def show_question(self):
+        """Show the survey question."""
+        print(self.question)
+
+    def store_response(self, new_response):
+        """Store a single response to the survey."""
+        self.responses.append(new_response)
+
+    def show_results(self):
+        """Show all the responses that have been given."""
+        print("Survey results:")
+        for response in self.responses:
+            print(f"- {response}")
+```
+
+1. This class starts with a survey question and includes an empty list to store responses.
+2. Has a method to print the survey question.
+3. Add a new response to the response list.
+4. Print all the responses stored in the list.
+
+To show that the *AnonymousSurvey* class works, write a program that uses the class:
+
+language_survey.py
+
+``` python
+from survey import AnonymousSurvey
+
+# Define a question, and make a survey.
+question = "What language did you first learn to speak?"
+my_survey = AnonymousSurvey(question)
+
+# Show the question, and store responses to the question.
+my_survey.show_question()
+print("Enter 'q' at any time to quit.\n")
+while True:
+    response = input("Language: ")
+    if response == 'q':
+        break
+    my_survey.store_response(response)
+
+# Show the survey results.
+print("\nThank you to everyone who participated in the survey!")
+my_survey.show_results()
+```
+
+This program defines a question and creates an *AnonymousSurvey* object with that question. The program calls *show_question()* to display the question and then prompts for responses. Each response is stored as it is received. When all responses have been entered (q to quit), *show_results()* prints the survey results:
+
+``` markdown
+What language did you first learn to speak?
+Enter 'q' at any time to quit.
+
+Language: English
+Language:Spanish
+Language: English
+Language: Mandarin
+Language: q
+
+Thank you to everyone who participated in the survey!
+Survey results:
+- English
+- Spanish
+- English
+- Mandarin
+```
+
+Implementing changes to allow each user to enter multiple responses could accidentally change how single responses are handled. To ensure we do not break existing behavior as we develop this module, we can write tests for the class.
+
+### Testing the AnonymousSurvey Class
+
+Write a test that verifies one aspect of the way *AnonymousSurvey* behaves to verify that a single response to the survey question is properly stored. We use the `assertIn()` method to verify that the response is in the list of responses after it has been stored:
+
+test_survey.py
+
+``` python
+import unittest
+from survey import AnonymousSurvey
+
+class TestAnonymousSurvey(unittest.TestCase):
+    """Tests for the class AnonymousSurvey."""
+
+    def test_store_single_response(self):
+        """Test that a single response is stored properly."""
+        question = "What language did you first learn to speak?"
+        my_survey = AnonymousSurvey(question)
+        my_survey.store_response('English')
+        self.assertIn('English', my_survey.responses)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+We start by importing the `unittest` module and the class we want to test, *AnonymousSurvey*, which is inherited from `unittest.TestCase`.
+
+To test the behavior of a class, we need to make an instance of the class. We create an instance called *my_survey* with the question "What language did you first learn to speak?" We store a single response, English, using the *store_response()* method. Then we verify that the response was stored correctly by asserting that English is in the list of *my_survey.responses*.
+
+When we run *test_survey.py*, the test passes:
+
+``` markdown
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+OK
+```
+
+A single response pass the test, and now we can test multiple responses to the survey by adding another method to *TestAnonymousSurvey*:
+
+``` python
+import unittest
+from survey import AnonymousSurvey
+
+class TestAnonymousSurvey(unittest.TestCase):
+    """Tests for the class AnonymousSurvey."""
+
+    def test_store_single_response(self):
+        --snip--
+
+    def test_store_three_responses(self):
+        """Test that three individual responses are stored properly."""
+        question = "What language did you first learn to speak?"
+        my_survey = AnonymousSurvey(question)
+        responses = ['English', 'Spanish', 'Mandarin']
+        for response in responses:
+            my_survey.store_response(response)
+
+        for response in responses:
+            self.assertIn(response, my_survey.responses)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+We call the new method *test_store_three_responses()* with a list defined containing three different responses. Once the responses have been stored, we write another loop and assert that each response is now in *my_survey.responses*.
+
+Both tests pass for single and for three responses:
+
+``` markdown
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+OK
+```
+
+It works but these tests are a bit repetitive. We will use another feature of `unittest` to make them more efficient.
+
+### The setUp() Method
