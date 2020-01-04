@@ -396,3 +396,69 @@ OK
 It works but these tests are a bit repetitive. We will use another feature of `unittest` to make them more efficient.
 
 ### The setUp() Method
+
+In *test_survey.py* we created a new instance of *AnonymousSurvey* in each test method, and created new responses in each method. The `unittest.TestCase` class has a `setUp()` method that allows to create these objects once and then use them in each of test methods. Python runs the `setUp()` method before running each method starting with *test_*. Any objects created in the `setUp()` method are then available in each test method.
+
+Use `setUp()` to create a survey instance and a set of responses that can be used in *test_store_single_response()* and *test_store_three_responses()*:
+
+``` python
+import unittest
+from survey import AnonymousSurvey
+
+class TestAnonymousSurvey(unittest.TestCase):
+    """Tests for the class AnonymousSurvey."""
+
+    def setUp(self):
+        """Create a survey and a set of responses for use in all test methods."""
+        question = "What language did you first learn to speak?"
+        self.my_survey = AnonymousSurvey(question)
+        self.responses = ['English', 'Spanish', 'Mandarin']
+
+    def test_store_single_response(self):
+        """Test that a single response is stored properly."""
+        self.my_survey.store_response(self.responses[0])
+        self.assertIn(self.response[0], self.my_survey.responses)
+
+    def test_store_three_responses(self):
+        """Test that three individual responses are stored properly."""
+        for response in self.responses:
+            self.my_survey.store_response(response)
+        for response in self.responses:
+            self.assertIn(response, self.my_survey.responses)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+The method `setUp()` does two things:
+
+1. Create a survey instance.
+2. Create a list of responses.
+
+Each is prefixed by *self*, so they can be used anywhere in the class. This makes the two test methods simpler, because neither one has to make a survey instance or response.
+
+When testing classes, the `setUp()` method can make test methods easier to write. Make one set of instances and attributes in `setUp()` and then use these instances in all test methods.
+
+---
+
+### TRY IT YOURSELF: Testing a Class
+
+**11-3. Employee**: Write a class called Employee. The `__init__()` method should
+take in a first name, a last name, and an annual salary, and store each of these
+as attributes. Write a method called *give_raise()* that adds $5,000 to the
+annual salary by default but also accepts a different raise amount.
+
+* Write a test case for Employee. Write two test methods, *test_give_default
+_raise()* and *test_give_custom_raise()*. Use the `setUp()` method so you don’t
+have to create a new employee instance in each test method. Run your test
+case, and make sure both tests pass.
+
+---
+
+## Summary
+
+What we learned in this chapter:
+
+* Write tests for functions and classes using tools in the `unittest` module.
+* Write a class that inherits from `unittest.TestCase`
+* Use the `setUp()` method to efficiently create instances and attributes from classes to be used in all the test methods for a class.
