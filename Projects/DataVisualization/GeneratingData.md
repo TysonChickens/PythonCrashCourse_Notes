@@ -29,7 +29,7 @@ ax.plot(squares)
 plt.show()
 ```
 
-![Unedited plot](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/original.png)
+![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/original.png "Basic plot line graph")
 
 
 1. Import the `pyplot` module using the alias *plt*. The pyplot module contains a number of functions that generate charts and plots.
@@ -61,7 +61,7 @@ ax.tick_params(axis='both', labelsize=14)
 plt.show()
 ```
 
-![Updated plot with title and labeled axes.](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/originalV2.png)
+![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/originalV2.png "Updated plot with title and labeled axes.")
 
 1. The *linewidth* parameter controls the thickness of the line that `plot()` generates.
 
