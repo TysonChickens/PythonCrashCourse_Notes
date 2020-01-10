@@ -23,7 +23,7 @@ x_5000 = list(range(1, 5001))
 y_values = [x**3 for x in x_5000]
 
 axs[1].plot(x_5000, y_values)
-plt.scatter(x_5000, y_values, c=y_values, cmap=plt.cm.Greens)
+plt.scatter(x_5000, y_values, c=y_values, cmap=plt.cm.plasma)
 plt.axis([0, 5100, 0, 5100**3])
 
 plt.show()
