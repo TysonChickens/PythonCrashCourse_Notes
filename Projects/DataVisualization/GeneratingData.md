@@ -29,7 +29,7 @@ ax.plot(squares)
 plt.show()
 ```
 
-![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/original.png "Basic plot line graph")
+![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/original.png "Basic plot line graph")
 
 1. Import the `pyplot` module using the alias *plt*. The pyplot module contains a number of functions that generate charts and plots.
 
@@ -60,7 +60,7 @@ ax.tick_params(axis='both', labelsize=14)
 plt.show()
 ```
 
-![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/originalV2.png "Updated plot with title and labeled axes.")
+![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/originalV2.png "Updated plot with title and labeled axes.")
 
 1. The *linewidth* parameter controls the thickness of the line that `plot()` generates.
 
@@ -353,7 +353,7 @@ plt.show()
 
 2. Feed the walk's x- and y-values to `scatter()` and choose an appropriate dot size.
 
-![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/FirstRandomWalk.png "Random walk.")
+![First random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/FirstRandomWalk.png "A random walk.")
 
 ### Generating Multiple Random Walks
 
@@ -416,7 +416,7 @@ while True:
 
 We use `range()` to generate a list of numbers equal to the number of points in the walk. Then we store them in the list of *point_numbers* to the *c* argument, use *Blues* colormap, and then pass `edgecolors='none'` to get rid of the black outline around each point with a light to dark blue gradient.
 
-![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/ColorRandomWalk.png "Random walk with style and colors.")
+![A cool random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/ColorRandomWalk.png "Random walk with style and colors.")
 
 #### Plotting the Starting and Ending Points
 
@@ -485,7 +485,7 @@ while True:
 
 This example creates a random walk with 50,000 points (to mirror real-world data) and plots each point at size `s=1`.
 
-![alt text](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/50000RandomWalk.png "Random walk of 50,000 points start/end and colors.")
+![More plot points in a random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/50000RandomWalk.png "Random walk of 50,000 points start/end and colors.")
 
 #### Altering the Size to Fill the Screen
 
@@ -534,3 +534,274 @@ then calculate the step. You should end up with two calls to *get_step()* in
 This refactoring should reduce the size of *fill_walk()* and make the method easier to read and understand.
 
 ---
+
+## Rolling Dice with Plotly
+
+Python package Plotly to produce interactive visualizations. They are useful in browsers since visualizations will automatically scale to fit the viewer's screen.
+
+We can analyze the results of rolling two six-sided die with Plotly to determine which numbers are most likely to occur by generating a data set. Then we will plot the results of a large number of rolls to determine which results are more likely than others.
+
+### Installing Plotly
+
+Install Plotly via `pip` with:
+
+``` markdown
+python -m pip install --user plotly
+```
+
+### Creating the Die Class
+
+We create the following *Die*class to simulate the roll of one die:
+
+die.py
+
+``` python
+from random import randint
+
+class Die:
+    """A class representing a single die."""
+
+    def __init__(self, num_sides=6):
+        """Assume a six-sided die."""
+        self.num_sides = num_sides
+
+    def roll(self):
+        """Return a random value between 1 and number of sides."""
+        return randint(1, self.num_sides)
+```
+
+1. The `__init__()` method takes one optional argument and the default value of *num_sides* is 6 if no argument is included.
+
+2. The `roll()` method uses the `randint()` function to return a random number between 1 and the number of sides.
+
+### Rolling the Die
+
+Before creating a visualization based on the Die class, let's roll a D6 to see if it works:
+
+die_visual.py
+
+``` python
+from die import Die
+
+# Create a D6
+die = Die()
+
+# Make some rolls, and store the results in a list.
+results = []
+for roll_num in range(100):
+    result = die.roll()
+    results.append(result)
+
+print(results)
+```
+
+1. Create an instance of *Die* with the default six sides.
+
+2. Roll the die 100 times and store the results of each roll in the list *results*.
+
+Here is a sample set of results:
+
+``` markdown
+[1, 6, 1, 5, 6, 5, 6, 6, 2, 3, 5, 2, 4, 5, 1, 1, 5, 6, 1, 1, 1, 2, 2, 4, 3, 1, 5, 2, 3, 5, 2, 4, 3, 4, 4, 1, 6, 4, 2, 5, 5, 2, 3, 1, 5, 4, 5, 5, 6, 3, 2, 3, 4, 6, 1, 2, 5, 6, 1, 4, 1, 2, 2, 6, 3, 1, 5, 5, 2, 2, 3, 3, 5, 2, 1, 3, 1, 4, 4, 4, 4, 1, 2, 3, 3, 1, 5, 1, 3, 2, 5, 4, 5, 5, 6, 1, 5, 1, 5, 1]
+```
+
+The results shows the *Die* class is correctly returning the appropriate values ranging from 1 to 6.
+
+### Analyzing the Results
+
+We analyze the results of rolling one D6 by counting how many times we roll each number:
+
+die_visual.py
+
+``` python
+--snip--
+# Make some rolls, and store the results in a list.
+results = []
+for roll_num in range(1000):
+    result = die.roll()
+    results.append(result)
+
+# Analyze the results.
+frequencies = []
+for value in range(1, die.num_sides+1):
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+print(frequencies)
+```
+
+1. Increase the number of simulated rolls to 1000 and analyze the rolls stored in the empty list of *frequencies* created.
+
+2. We loop through the possible values in *results* (1 through 6) and count how many times each numbers appears in *results*.
+
+3. Then append this value to the *frequencies* list and finally print the list.
+
+``` markdown
+[177, 158, 173, 174, 155, 163]
+```
+
+The results shown are six frequencies, one for each possible number when rolling a six-sided die. Now we can start a visualization for these results.
+
+### Making a Histogram
+
+With a list of frequencies, we can make a histogram of the results:
+
+die_visual.py
+
+``` python
+from plotly.graph_objs import Bar, Layout
+from plotly import offline
+
+from die import Die
+--snip--
+
+# Analyze the results.
+frequencies = []
+for value in range(1, die.num_sides+1):
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+# Visualize the results.
+x_values = list(range(1, die.num_sides+1))
+data = [Bar(x=x_values, y=frequencies)]
+
+x_axis_config = {'title': 'Result'}
+y_axis_config = {'title': 'Frequency of Result'}
+my_layout = Layout(title='Results of rolling one D6 1000 times',
+    xaxis=x_axis_config, yaxis=y_axis_config)
+offline.plot({'data': data, 'layout': my_layout}, filename='d6.html')
+```
+
+To make a histogram we need a bar for each possible result.
+
+1. Store the results in a list called *x_values*, which starts at 1 and ends at the number of sides on the die. Plotly does not accept the results of the `range()` function directly, so we need to convert the range to a list using the `list()` function.
+
+2. The Plotly class `Bar()` represents a data set that will be formatted as a bar chart. This class needs a list of x-values, and a list of y-values.
+
+3. Each axis can be configured in a number of ways, and each option is stored as entry in a dictionary. We only set the title of each axis.
+
+4. The `Layout()` class returns an object that specifies the layout and configuration of the graph as a whole with a title and x- and y-axis configurations.
+
+5. To generate the plot, we call the `offline.plot()` function that needs a dictionary containing the data and layout objects, and also accepts the name for the file where the graph will be saved as *d6.html*.
+
+Running the program *die_visual.py* will open a browser of 'd6.html' with a bar chart displayed.
+
+Plotly has made the chart interactive so we can hover our mouse cursor over any bar to display associated data, pan around, and zoom in on the visualization, and more via the controls in the top-right corner.
+
+![Histogram](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6.png "Rolling a six-sided die.")
+
+### Rolling Two Dice
+
+Rolling two dice results in a larger numbers an different distribution of results. It is time to modify our code to create two D6 dice to simulate the way we roll a pair of dice. Each time we roll the pair, we add the two numbers from each die and store the sum in *results*.
+
+``` python
+from die import Die
+
+from plotly.graph_objs import Bar, Layout
+from plotly import offline
+
+# Create two D6 dice.
+die_1 = Die()
+die_2 = Die()
+
+# Make some rolls, and store the results in a list.
+results = []
+for roll_num in range(1000):
+    result = die_1.roll() + die_2.roll()
+    results.append(result)
+
+# Analyze the results.
+frequencies = []
+max_result = die_1.num_sides + die_2.num_sides
+for value in range(2, max_result+1):
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+# Visualize the results.
+x_values = list(range(2, max_result+1))
+data = [Bar(x=x_values, y=frequencies)]
+
+x_axis_config = {'title': 'Result', 'dtick': 1}
+y_axis_config = {'title': 'Frequency of Result'}
+my_layout = Layout(title='Results of rolling two D6 dice 1000 times',
+    xaxis=x_axis_config, yaxis=y_axis_config)
+offline.plot({'data': data, 'layout': my_layout}, filename='d6_d6.html')
+```
+
+1. After creating two instances of *Die*, we roll the dice and calculate the sum of the two dice for each roll.
+
+2. The largest possible result (12) is the sum of the largest number on both dice, which we store in *max_result*. The smallest possible result (2) is the sum of the smallest number on both dice.
+
+3. When we analyze the results, we count the number of results for each value between 2 and *max_result*. We could have used `range(2, 13)` but only would work for two D6 dice. When modeling real-world situations, write code that can easily model a variety of situations.
+
+4. When creating the chart, we include the `dtick` key in the *x_axis_config* dictionary to control the spacing between tick marks on the x-axis. Since we have more bars on the histogram, `'dtick': 1` setting tells Plotly to label every tick mark. We also update the title of the chart and change the output filename as well.
+
+![Histogram for two dice](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6_D6.png "Rolling two six-sided dice.")
+
+### Rolling Dice of Different Sizes
+
+Create a six-sided die and a ten-sided die, and see what happens when we roll them 50,000 times:
+
+dice_visual.py
+
+``` python
+from die import Die
+
+from plotly.graph_objs import Bar, Layout
+from plotly import offline
+
+# Create a D6 and D10.
+die_1 = Die()
+die_2 = Die(10)
+
+# Make some rolls, and store the results in a list.
+results = []
+for roll_num in range(50_000):
+    result = die_1.roll() + die_2.roll()
+    results.append(result)
+
+# Analyze the results.
+--snip--
+
+# Visualize the results.
+x_values = list(range(2, max_result+1))
+data = [Bar(x=x_values, y=frequencies)]
+
+x_axis_config = {'title': 'Result', 'dtick': 1}
+y_axis_config = {'title': 'Frequency of Result'}
+my_layout = Layout(title='Results of rolling a D6 and a D10 50000 times',
+    xaxis=x_axis_config, yaxis=y_axis_config)
+offline.plot({'data': data, 'layout': my_layout}, filename='d6_d10.html')
+```
+
+1. To make a D10, we pass the argument 10 when creating the second *Die* instance and change the first loop to simulate 50,000 rolls.
+
+2. Update the title of the graph and output filename.
+
+![Histogram for two dice of a different size](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6_D10.png "D6 and D10.")
+
+The ability to use Plotly to model the rolling of dice gives us freedom in exploring large amounts of data or number of rolls in minutes.
+
+---
+
+### TRY IT YOURSELF: Rolling Dice
+
+**15-6. Two D8s**: Create a simulation showing what happens when you roll two eight-sided dice 1000 times. Try to picture what you think the visualization will look like before you run the simulation; then see if your intuition was correct. Gradually increase the number of rolls until you start to see the limits of your system’s capabilities.
+
+**15-7. Three Dice**: When you roll three D6 dice, the smallest number you can roll is 3 and the largest number is 18. Create a visualization that shows what happens when you roll three D6 dice.
+
+**15-8. Multiplication**: When you roll two dice, you usually add the two numbers together to get the result. Create a visualization that shows what happens if you multiply these numbers instead.
+
+**15-9. Die Comprehensions**: For clarity, the listings in this section use the long form of for loops. If you’re comfortable using list comprehensions, try writing a comprehension for one or both of the loops in each of these programs.
+
+**15-10. Practicing with Both Libraries**: Try using Matplotlib to make a die-rolling visualization, and use Plotly to make the visualization for a random walk. (You’ll need to consult the documentation for each library to complete this exercise.)
+
+---
+
+## Summary
+
+What we learned:
+
+* Generate data sets and create visualizations of data.
+* Create simple plots with Matplotlib and used a scatter plot to explore random walks.
+* Create a histogram with Plotly and used it to explore the results of rolling dice.
