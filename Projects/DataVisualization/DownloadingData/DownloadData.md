@@ -446,3 +446,110 @@ From the United States Geological Survey's earthquake data feed at <https://eart
 ### Examining JSON Data
 
 Opening the file of *eq_1_day_m1.json* is hard to read because the file is formatted more for machines to interpret than humans. We also see that it contains dictionaries, and information such as earthquake magnitudes and locations.
+
+The `json` module provides a variety of tools for exploring and working with JSON data. Some tools will help freformat the file to look at the raw data more easily before we begin to work with it programmatically.
+
+First, load the data and display it in a format easier to read by rewriting the data to a new file. Then we can open and swift through the data:
+
+eq_explore_data.py
+
+``` python
+import json
+
+# Explore the structure of the data.
+filename = 'Projects/DataVisualization/DownloadingData/JSON_Format/data/eq_data_1_day_m1.json'
+with open(filename) as f:
+    all_eq_data = json.load(f)
+
+readable_file = 'Projects/DataVisualization/DownloadingData/JSON_Format/data/readable_eq_data.json'
+with open(readable_file, 'w') as f:
+    json.dump(all_eq_data, f, indent=4)
+```
+
+1. Import the `json` module to load the data properly from the file, and then store the entire data set in *all_eq_data*. The `json.load()` function converts the data into a format Python can work with (a giant dictionary).
+
+2. Create a file to write this same data into a more readable format. The `json.dump()` function takes JSON data object and file object, and writes the data to that file.
+
+3. The `indent=4` arguments tells `dump()` to format the data using indentation that matches the data structure.
+
+Looking at the data in *readable_eq_data.json*, here is the first part:
+
+``` markdown
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1550361461000,
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_day.geojson",
+        "title": "USGS Magnitude 1.0+ Earthquakes, Past Day",
+        "status": 200,
+        "api": "1.7.0",
+        "count": 158
+    },
+    "features": [
+    --snip--
+```
+
+The first part of the file includes a section with the key 'metadata' to tell us when the data file was generated and where to find the data online. It also provides a readable title and the number of earthquakes included in the file: 24 hour period, 158 earthquakes recorded.
+
+The *geoJSON* file has a structure that's helpful for location-based data. The earthquake data is structured with much information for geologists to allow more data in a dictionary about each earthquake in one big list.
+
+Here is a dictionary representing a single earthquake:
+
+readable_eq_data.py
+
+``` markdown
+--snip--
+
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 0.96,
+                "place": "8km NE of Aguanga, CA",
+                "time": 1550360775470,
+                "updated": 1550360993593,
+                "tz": -480,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci37532978",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci37532978.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 14,
+                "net": "ci",
+                "code": "37532978",
+                "ids": ",ci37532978,",
+                "sources": ",ci,",
+                "types": ",geoserve,nearby-cities,origin,phase-data,",
+                "nst": 32,
+                "dmin": 0.02648,
+                "rms": 0.15,
+                "gap": 37,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.0 - 8km NE of Aguanga, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.7941667,
+                    33.4863333,
+                    3.22
+                ]
+            },
+            "id": "ci37532978"
+        },
+```
+
+1. The key "properties" contains a lot of information about each earthquake. The magnitude of each quake, which is associated with the key "mag".
+
+2. The title of each earthquake, which provides a nice summary of its magnitude and location.
+
+3. The key "geometry" provides information where the earthquake occurred.
+
+4. Longitude and latitude for each earthquake in a list associated with the key "coordinates".
+
+### Making a List of All Earthquakes
+
