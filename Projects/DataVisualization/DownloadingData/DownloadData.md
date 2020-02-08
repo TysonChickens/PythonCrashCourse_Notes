@@ -434,3 +434,15 @@ Comparing the weather data to Sitka, AK, we notice Death Valley is warmer overal
 **16-5. Explore**: Generate a few more visualizations that examine any other weather aspect you’re interested in for any locations you’re curious about.
 
 ---
+
+## Mapping Global Data Sets: JSON Format
+
+Start mapping the location of these earthquakes and how significant each one was from a data via JSON format. The `json` module is used for files in JSON format. With Plotly's beginner-friendly mapping tool for location-based data, we can create visualization that show the global distributions of earthquake.
+
+### Download Earthquake Data
+
+From the United States Geological Survey's earthquake data feed at <https://earthquake.usgs.gov/earthquakes/feed/>. Earthquakes are categorized by their magnitude on the Richter scale. The file *eq_1_day_m1.json* includes data for all earthquakes with a magnitude M1 or greater that took place in the last 24 hours.
+
+### Examining JSON Data
+
+Opening the file of *eq_1_day_m1.json* is hard to read because the file is formatted more for machines to interpret than humans. We also see that it contains dictionaries, and information such as earthquake magnitudes and locations.
