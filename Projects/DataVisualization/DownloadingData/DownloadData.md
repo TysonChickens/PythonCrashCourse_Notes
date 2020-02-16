@@ -138,7 +138,7 @@ plt.show()
 
 2. Specify formatting details, such as the title, font size, and labels. Since there are no dates yet, we won't label the x-axis.
 
-![sitka high](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/July2018_sitka_highs.png "High temperatures July 2018 for Sitka.")
+![sitka high](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs.png "High temperatures July 2018 for Sitka.")
 
 ### The datetime Module
 
@@ -223,9 +223,9 @@ plt.show()
 
 4. Call `fig.autofmt_xdate()` draws the date labels diagonally to prevent them from overlapping.
 
-![sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/July2018_sitka_highs_dates.png "High temperatures July 2018 for Sitka with date.")
+![sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs_dates.png "High temperatures July 2018 for Sitka with date.")
 
-### Plotting a Longer Timeframe
+### Plotting a Longer Time frame
 
 Now we can generate a graph for the entire year's weather of data with *sitka_weather_2018_simple.csv*.
 
@@ -246,7 +246,7 @@ plt.xlabel('', fontsize=16)
 
 2. Update the title of plot to reflect the change in content.
 
-![2018 sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/2018_sitka_highs_dates.png "High temperatures year 2018 for Sitka with date.")
+![2018 sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_dates.png "High temperatures year 2018 for Sitka with date.")
 
 ### Plotting a Second Data Series
 
@@ -285,7 +285,7 @@ plt.title("Daily Low and High Temperatures - 2018", fontsize=24)
 --snip--
 ```
 
-1. Add the empty list of *lows* to hold low temperatures. 
+1. Add the empty list of *lows* to hold low temperatures.
 
 2. Then extract and store the low temperature for each row position (row[6]).
 
@@ -293,7 +293,7 @@ plt.title("Daily Low and High Temperatures - 2018", fontsize=24)
 
 4. Update the title to represent the new graph.
 
-![2018 sitka high and low temps with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/2018_sitka_highs_lows.png "High and low temperatures year 2018 for Sitka with date.")
+![2018 sitka high and low temps with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows.png "High and low temperatures year 2018 for Sitka with date.")
 
 ### Shading an Area in the Chart
 
@@ -316,10 +316,7 @@ plt.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 2. Pass the `fill_between()` the list dates for the x-values and then the two y-value series *highs* and *lows*. The facecolor argument determines the color of the shaded region; a low alpha value of 0.1 so the shaded region connects the two data series without distraction.
 
-
-
-
-![2018 sitka high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/2018_sitka_highs_lows_shade.png "High and low temperatures year 2018 for Sitka with shading.")
+![2018 sitka high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows_shade.png "High and low temperatures year 2018 for Sitka with shading.")
 
 The shading helps visualize the range between the two data.
 
@@ -415,7 +412,7 @@ Missing data for 2018-02-18 00:00:00
 
 Because the error is handled appropriately, the code is able to generate a plot, which skips over the missing data.
 
-![2018 death valley high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/2018_death_valley_highs_lows.png "High and low temperatures year 2018 for Death Valley.")
+![2018 death valley high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_death_valley_highs_lows.png "High and low temperatures year 2018 for Death Valley.")
 
 Comparing the weather data to Sitka, AK, we notice Death Valley is warmer overall. The range of temperatures each day is greater in the desert.
 
@@ -423,13 +420,13 @@ Comparing the weather data to Sitka, AK, we notice Death Valley is warmer overal
 
 ### TRY IT YOURSELF: Download CSV Files
 
-**16-1. Sitka Rainfall**: Sitka is in a temperate rainforest, so it gets a fair amount of rainfall. In the data file *sitka_weather_2018_simple.csv* is a header called *PRCP*, which represents daily rainfall amounts. Make a visualization focusing on the data in this column. You can repeat the exercise for Death Valley if you’re curious how little rainfall occurs in a desert.
+**16-1. Sitka Rainfall**: Sitka is in a temperate rain forest, so it gets a fair amount of rainfall. In the data file *sitka_weather_2018_simple.csv* is a header called *PRCP*, which represents daily rainfall amounts. Make a visualization focusing on the data in this column. You can repeat the exercise for Death Valley if you’re curious how little rainfall occurs in a desert.
 
 **16-2. Sitka–Death Valley Comparison**: The temperature scales on the Sitka and Death Valley graphs reflect the different data ranges. To accurately compare the temperature range in Sitka to that of Death Valley, you need identical scales on the y-axis. Change the settings for the y-axis on one or both of the charts in Figures 16-5 and 16-6. Then make a direct comparison between temperature ranges in Sitka and Death Valley (or any two places you want to compare).
 
 **16-3. San Francisco**: Are temperatures in San Francisco more like temperatures in Sitka or temperatures in Death Valley? Download some data for San Francisco, and generate a high-low temperature plot for San Francisco to make a comparison.
 
-**16-4. Automatic Indexes**: In this section, we hardcoded the indexes corresponding to the TMIN and TMAX columns. Use the header row to determine the indexes for these values, so your program can work for Sitka or Death Valley. Use the station name to automatically generate an appropriate title for your graph as well.
+**16-4. Automatic Indexes**: In this section, we hard coded the indexes corresponding to the TMIN and TMAX columns. Use the header row to determine the indexes for these values, so your program can work for Sitka or Death Valley. Use the station name to automatically generate an appropriate title for your graph as well.
 
 **16-5. Explore**: Generate a few more visualizations that examine any other weather aspect you’re interested in for any locations you’re curious about.
 
@@ -447,7 +444,7 @@ From the United States Geological Survey's earthquake data feed at <https://eart
 
 Opening the file of *eq_1_day_m1.json* is hard to read because the file is formatted more for machines to interpret than humans. We also see that it contains dictionaries, and information such as earthquake magnitudes and locations.
 
-The `json` module provides a variety of tools for exploring and working with JSON data. Some tools will help freformat the file to look at the raw data more easily before we begin to work with it programmatically.
+The `json` module provides a variety of tools for exploring and working with JSON data. Some tools will help pre-format the file to look at the raw data more easily before we begin to work with it programmatically.
 
 First, load the data and display it in a format easier to read by rewriting the data to a new file. Then we can open and swift through the data:
 
@@ -595,7 +592,7 @@ for eq_dict in all_eq_dicts:
 print(mags[:10])
 ```
 
-1. Make an empty list to store the magnitudes, and then loop through the dictionary *all_eq_dicts*. 
+1. Make an empty list to store the magnitudes, and then loop through the dictionary *all_eq_dicts*.
 
 2. Inside the loop, each earthquake is represented by the dictionary *eq_dict*. Each earthquake's magnitude is stored in the 'properties' section of the dictionary and the key 'mag'.
 
@@ -843,11 +840,11 @@ append it to the appropriate list in one line. Doing so should shorten the body 
 
 **16-7. Automated Title**: In this section, we specified the title manually when defining my_layout,which means we have to remember to update the title every time the source file changes. Instead, you can use the title for the data set in the metadata part of the JSON file. Pull this value, assign it to a variable, and use this for the title of the map when you’re defining my_layout.
 
-**16-8. Recent Earthquakes**: You can find data files containing information about the most recent earthquakes over 1-hour, 1-day, 7-day, and 30-day periods online. Go to https://earthquake.usgs.govearthquakes/feed/v1.0/geojson.php and you’ll see a list of links to data sets for various time periods, focusing on earthquakes of different magnitudes. Download one of these data sets, and ­create a visualization of the most recent earthquake activity.
+**16-8. Recent Earthquakes**: You can find data files containing information about the most recent earthquakes over 1-hour, 1-day, 7-day, and 30-day periods online. Go to <https://earthquake.usgs.govearthquakes/feed/v1.0/geojson.php> and you’ll see a list of links to data sets for various time periods, focusing on earthquakes of different magnitudes. Download one of these data sets, and ­create a visualization of the most recent earthquake activity.
 
-**16-9. World Fires**: In the resources for this chapter, you’ll find a file called world_fires_1_day.csv. This file contains information about fires burning in different locations around the globe, including the latitude and longitude, and the brightness of each fire. Using the data processing work from the first part of this chapter and the mapping work from this section, make a map that shows which parts of the world are affected by fires. 
+**16-9. World Fires**: In the resources for this chapter, you’ll find a file called world_fires_1_day.csv. This file contains information about fires burning in different locations around the globe, including the latitude and longitude, and the brightness of each fire. Using the data processing work from the first part of this chapter and the mapping work from this section, make a map that shows which parts of the world are affected by fires.
 
-* You can download more recent versions of this data at https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data/. You can find links to the data in CSV format in the TXT section.
+* You can download more recent versions of this data at <https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data/>. You can find links to the data in CSV format in the TXT section.
 
 ---
 
