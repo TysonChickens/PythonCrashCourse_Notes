@@ -553,3 +553,312 @@ readable_eq_data.py
 
 ### Making a List of All Earthquakes
 
+First, we make a list that contains all the information about every earthquake that occurred.
+
+eq_explore_data.py
+
+``` python
+import json
+
+# Explore the structure of the data.
+filename = 'Projects/DataVisualization/DownloadingData/JSON_Format/data/eq_data_1_day_m1.json'
+with open(filename) as f:
+    all_eq_data = json.load(f)
+
+all_eq_dicts = all_eq_data['features']
+print(len(all_eq_dicts))
+```
+
+We take the data with the key 'features' and store in *all_eq_dicts*. We know the contains records about 158 earthquakes, and the output verifies all of the earthquakes in the file:
+
+``` markdown
+158
+```
+
+In just a few lines, we read over 6,000 lines of all the data and store it in a Python list.
+
+### Extracting Magnitudes
+
+With the list about each earthquake data, we can loop through it and extract any information we want such as the magnitude:
+
+eq_explore_data.py
+
+``` python
+--snip--
+all_eq_dicts = all_eq_data['features']
+
+mags = []
+for eq_dict in all_eq_dicts:
+    mag = eq_dict['properties']['mag']
+    mags.append(mag)
+
+print(mags[:10])
+```
+
+1. Make an empty list to store the magnitudes, and then loop through the dictionary *all_eq_dicts*. 
+
+2. Inside the loop, each earthquake is represented by the dictionary *eq_dict*. Each earthquake's magnitude is stored in the 'properties' section of the dictionary and the key 'mag'.
+
+3. Store each magnitude in the variable *mag*, and then append it to the list of *mags*.
+
+4. Print the first 10 magnitudes to see if the data is correct.
+
+``` markdown
+[0.96, 1.2, 4.3, 3.6, 2.1, 4, 1.06, 2.3, 4.9, 1.8]
+```
+
+### Extracting Location Data
+
+The location data is stored under the key "geometry". Inside the dictionary is a "coordinates" key, and the first two values in the list are longitude and latitude.
+
+eq_explore_data.py
+
+``` python
+--snip--
+
+mags, lons, lats  = [], [], []
+for eq_dict in all_eq_dicts:
+    mag = eq_dict['properties']['mag']
+    lon = eq_dict['geometry']['coordinates'][0]
+    lat = eq_dict['geometry']['coordinates'][1]
+    mags.append(mag)
+    lons.append(lon)
+    lats.append(lat)
+
+print(mags[:10])
+print(longs[:5])
+print(lats[:5])
+```
+
+1. Make empty lists for the longitudes and latitudes. The code *eq_dict['geometry'] accesses the dictionary representing the geometry element of the earthquake. The second key, 'coordinates', pulls values from the associated 'coordinates' at index 0 for longitude and index 1 for latitude.
+
+The print for the first five longitudes and latitudes:
+
+``` markdown
+[-116.7941667, -148.9865, -74.2343, -161.6801, -118.5316667]
+[33.4863333, 64.6673, -12.1025, 54.2232, 35.3098333]
+```
+
+### Building a World Map
+
+With the information so far, we can build a simple world map.
+
+eq_world_map.py
+
+``` python
+import json
+
+from plotly.graph_objs import Scattergeo, Layout
+from plotly import offline
+
+# Explore the structure of the data.
+filename = 'Projects/DataVisualization/DownloadingData/JSON_Format/data/eq_data_1_day_m1.json'
+with open(filename) as f:
+    all_eq_data = json.load(f)
+
+all_eq_dicts = all_eq_data['features']
+print(len(all_eq_dicts))
+
+mags, lons, lats  = [], [], []
+for eq_dict in all_eq_dicts:
+    mag = eq_dict['properties']['mag']
+    lon = eq_dict['geometry']['coordinates'][0]
+    lat = eq_dict['geometry']['coordinates'][1]
+    mags.append(mag)
+    lons.append(lon)
+    lats.append(lat)
+
+# Map the earthquakes.
+data = [Scattergeo(lon=lons, lat=lats)]
+my_layout = layout(title='Global Earthquakes')
+
+fig = {'data': data, 'layout': my_layout}
+offline.plot(fig, filename='global_earthquakes.html')
+```
+
+1. Import the Scattergeo chart type and the Layout class, and then import the offline module to render the map.
+
+2. Define a list called data and create the *Scattergeo* object inside this list to plot more than one data set on any visualization. Scattergeo is the simplest chart type to overlay a scatter plot of geographic data on a map of longitudes and latitudes.
+
+3. Give the chart an appropriate title and create a dictionary called *fig* that contains the data and the layout.
+
+4. Finally pass *fig* to the *plot()* function along with a descriptive filename for the output.
+
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map.png "Basic earthquake data.")
+
+### A Different Way of Specifying Chart Data
+
+Before configure the chart, there is a different way to specify the data for a Plotly chart. Currently, the *data* list is defined in one line:
+
+``` python
+data = [Scattergeo(lon=lons, lat=lats)]
+```
+
+An alternative way to define the data to make it more customized:
+
+``` python
+data = [{
+    'type': 'scattergeo',
+    'lon': lons,
+    'lat': lats,
+}]
+```
+
+This way, all the information about the data is structured as key-value paris in a dictionary. This format allows to specify customizations more easily than the previous format.
+
+### Customizing Marker Size
+
+The current map shows the location of each earthquake, but it doesn't communicate the severity of any earthquake.
+
+To do this, change the size of markers depending on the magnitude of each earthquake:
+
+eq_world_map.py
+
+``` python
+import json
+--snip--
+# Map the earthquakes.
+data = [{
+    'type': 'scattergeo',
+    'lon': lons,
+    'lat': lats,
+    'marker': {
+        'size': [5*mag for mag in mags],
+    },
+}]
+my_layout = Layout(title='Global Earthquakes')
+--snip--
+```
+
+Plotly offers a huge variety of customization to a data series, each can be expressed as key-value pair.
+
+1. The key 'marker' to specify how big each marker on the map should be. A nested dictionary is used as the value associated with 'marker', to specify a number of settings for all the markers in a series.
+
+2. To correspond to the magnitude of each earthquake, we need to multiply the magnitude by a scale factor to get an appropriate marker size. A list comprehension is used to generate an appropriate marker size for each value in the *mags* list.
+
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_size.png "Earthquake data with custom marker sizes.")
+
+### Customizing Marker Colors
+
+We can use Plotly's colorscales to color each marker to provide classification to the severity of each earthquake. Copy the file *eq_data_30_day_m1.json* to data directory. The file includes earthquake data for a 30-day period, and the map will be more interesting with a larger data set.
+
+eq_world_map.py
+
+``` python
+--snip--
+filename = 'Projects/DataVisualization/DownloadingData/JSON_Format/data/eq_data_30_day_m1.json'
+--snip--
+# Map the earthquakes.
+data = [{
+    --snip--
+    'marker': {
+        'size': [5*mag for mag in mags],
+        'color': mags,
+        'colorscale': 'Viridis',
+        'reversescale': True,
+        'colorbar': {'title': 'Magnitude'},
+    },
+}]
+--snip--
+```
+
+1. Update the filename to use the 30-day data set.
+
+2. Most changes occur in the 'marker' dictionary for their appearance. The 'color' setting tells Plotly what values it should use to determine where each marker falls on the colorscale.
+
+3. Use the *mags* list to determine the color that is used. The 'colorscale' setting tells Plotly which range of colors to use: *'Viridis'* is a colorscale that ranges from dark blue to bright yellow.
+
+4. 'reversescale' set to True because we want to use bright yellow for the lowest values and dark blue for the most severe earthquakes.
+
+5. The 'colorbar' setting allows to control the appearance of the colorscale shown on the side of the map with a title 'Magnitude' to make it clear what the colors represent.
+
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_markers.png "Earthquake data with custom marker sizes and colors.")
+
+### Other Colorscales
+
+To see the available colorscales, save the program as *show_color_scales.py*:
+
+show_color_scales.py
+
+``` python
+from plotly import colors
+
+for key in colors.PLOTLY_SCALES.keys():
+    print(key)
+```
+
+Plotly stores the colorscales in the `colors` module defined in the dictionary PLOTLY_SCALES. The names of the colorscales serve as the keys in the dictionary:
+
+``` markdown
+Greys
+YlGnBu
+Greens
+--snip--
+Viridis
+```
+
+### Adding Hover Text
+
+To complete the map, we can add more informative text that appears when hover over the marker on each earthquake. We can show the magnitude and provide a description of the approximate location along with coordinates.
+
+eq_world_map.py
+
+``` python
+--snip--
+mags, lons, lats, hover_texts = []. []. []. []
+for eq_dict in all_eq_dicts:
+    --snip--
+    lat = eq_dict['properties']['title']
+    mags.append(mag)
+    lons.append(lon)
+    lats.append(lat)
+    hover_texts.append(title)
+--snip--
+
+# Map the earthquakes.
+data = [{
+    'type': 'scattergeo',
+    'lon': lons,
+    'lat': lats,
+    'text': hover_texts,
+    'marker': {
+        --snip--
+    },
+}]
+--snip--
+```
+
+1. Make a list called *hover_texts* to store the label to use for each marker. The 'title' section of the earthquake data contains a descriptive name of the magnitude and location of each earthquake. Pull the information and assign it to the variable *title*, and then append it to the list *hover_texts*.
+
+2. Include the key 'text' in the data object for Plotly to use value as a label for each marker when the viewer hovers over any marker. When we pass a list that matches the number of markers, Plotly pulls an individual label for each marker it generates.
+
+Hovering over any marker now displays a description of where the earthquake took place, and read its exact magnitude.
+
+---
+
+### TRY IT YOURSELF: JSON File
+
+**16-6. Refactoring**: The loop that pulls data from all_eq_dicts uses variables for the magnitude, longitude, latitude, and title of each earthquake before appending these values to their appropriate lists. This approach was chosen for clarity in how to pull data from a JSON file, but it’s not necessary in your code. Instead of using these temporary variables, pull each value from eq_dict and
+append it to the appropriate list in one line. Doing so should shorten the body of this loop to just four lines.
+
+**16-7. Automated Title**: In this section, we specified the title manually when defining my_layout,which means we have to remember to update the title every time the source file changes. Instead, you can use the title for the data set in the metadata part of the JSON file. Pull this value, assign it to a variable, and use this for the title of the map when you’re defining my_layout.
+
+**16-8. Recent Earthquakes**: You can find data files containing information about the most recent earthquakes over 1-hour, 1-day, 7-day, and 30-day periods online. Go to https://earthquake.usgs.govearthquakes/feed/v1.0/geojson.php and you’ll see a list of links to data sets for various time periods, focusing on earthquakes of different magnitudes. Download one of these data sets, and ­create a visualization of the most recent earthquake activity.
+
+**16-9. World Fires**: In the resources for this chapter, you’ll find a file called world_fires_1_day.csv. This file contains information about fires burning in different locations around the globe, including the latitude and longitude, and the brightness of each fire. Using the data processing work from the first part of this chapter and the mapping work from this section, make a map that shows which parts of the world are affected by fires. 
+
+* You can download more recent versions of this data at https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data/. You can find links to the data in CSV format in the TXT section.
+
+---
+
+## Summary
+
+What we learned in this chapter:
+
+* Process CSV and JSON files from real-world data sets and extract the data.
+
+* Use Matplotlib to work with historical weather data, including using `datetime` module to plot multiple data series on one chart.
+
+* Use Plotly to style and plot geographical data on a world maps and charts.
+
+* How to analyze most online data sets in either or both formats.
