@@ -1,4 +1,5 @@
-# Refactoring earthquake from all_eq_dicts data with hover texts.
+# Earthquake automated title in my_layout from JSON metadata.
+
 
 import json
 
@@ -34,7 +35,9 @@ data = [{
         'colorbar': {'title': 'Magnitude'},
     },
 }]
-my_layout = Layout(title='Global Earthquakes')
+
+title = all_eq_data['metadata']['title']
+my_layout = Layout(title=title)
 
 fig = {'data': data, 'layout': my_layout}
 offline.plot(fig, filename='Projects/DataVisualization/DownloadingData/JSON_Format/global_earthquakes.html')
