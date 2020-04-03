@@ -39,6 +39,7 @@ When using variables in Python, there are a few rules and guidelines to follow. 
 * Spaces are not allowed in variable names, but underscores can be used to separate words in variable names. For example, *greeting_message* works, but *greeting message* will cause errors.
 
 * Avoid using Python keywords and function names as variable names. Python has words reserved for particular programmatic purpose, such as the word `print`.
+
 * Here is a list:
 ![Python Functions](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/PythonKeywordFunctions.png)
 

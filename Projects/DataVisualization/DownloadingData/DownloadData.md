@@ -138,7 +138,7 @@ plt.show()
 
 2. Specify formatting details, such as the title, font size, and labels. Since there are no dates yet, we won't label the x-axis.
 
-![sitka high](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs.png "High temperatures July 2018 for Sitka.")
+![sitka high](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs.png "High temperatures July 2018 for Sitka.")
 
 ### The datetime Module
 
@@ -223,7 +223,7 @@ plt.show()
 
 4. Call `fig.autofmt_xdate()` draws the date labels diagonally to prevent them from overlapping.
 
-![sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs_dates.png "High temperatures July 2018 for Sitka with date.")
+![sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/July2018_sitka_highs_dates.png "High temperatures July 2018 for Sitka with date.")
 
 ### Plotting a Longer Time frame
 
@@ -246,7 +246,7 @@ plt.xlabel('', fontsize=16)
 
 2. Update the title of plot to reflect the change in content.
 
-![2018 sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_dates.png "High temperatures year 2018 for Sitka with date.")
+![2018 sitka high with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_dates.png "High temperatures year 2018 for Sitka with date.")
 
 ### Plotting a Second Data Series
 
@@ -293,7 +293,7 @@ plt.title("Daily Low and High Temperatures - 2018", fontsize=24)
 
 4. Update the title to represent the new graph.
 
-![2018 sitka high and low temps with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows.png "High and low temperatures year 2018 for Sitka with date.")
+![2018 sitka high and low temps with dates](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows.png "High and low temperatures year 2018 for Sitka with date.")
 
 ### Shading an Area in the Chart
 
@@ -316,7 +316,7 @@ plt.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 2. Pass the `fill_between()` the list dates for the x-values and then the two y-value series *highs* and *lows*. The facecolor argument determines the color of the shaded region; a low alpha value of 0.1 so the shaded region connects the two data series without distraction.
 
-![2018 sitka high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows_shade.png "High and low temperatures year 2018 for Sitka with shading.")
+![2018 sitka high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/2018_sitka_highs_lows_shade.png "High and low temperatures year 2018 for Sitka with shading.")
 
 The shading helps visualize the range between the two data.
 
@@ -412,7 +412,7 @@ Missing data for 2018-02-18 00:00:00
 
 Because the error is handled appropriately, the code is able to generate a plot, which skips over the missing data.
 
-![2018 death valley high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/CSV_Format/2018_death_valley_highs_lows.png "High and low temperatures year 2018 for Death Valley.")
+![2018 death valley high and low temps with shading](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/CSV_Format/2018_death_valley_highs_lows.png "High and low temperatures year 2018 for Death Valley.")
 
 Comparing the weather data to Sitka, AK, we notice Death Valley is warmer overall. The range of temperatures each day is greater in the desert.
 
@@ -681,7 +681,7 @@ offline.plot(fig, filename='global_earthquakes.html')
 
 4. Finally pass *fig* to the *plot()* function along with a descriptive filename for the output.
 
-![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map.png "Basic earthquake data.")
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map.png "Basic earthquake data.")
 
 ### A Different Way of Specifying Chart Data
 
@@ -733,7 +733,7 @@ Plotly offers a huge variety of customization to a data series, each can be expr
 
 2. To correspond to the magnitude of each earthquake, we need to multiply the magnitude by a scale factor to get an appropriate marker size. A list comprehension is used to generate an appropriate marker size for each value in the *mags* list.
 
-![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_size.png "Earthquake data with custom marker sizes.")
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_size.png "Earthquake data with custom marker sizes.")
 
 ### Customizing Marker Colors
 
@@ -769,7 +769,7 @@ data = [{
 
 5. The 'colorbar' setting allows to control the appearance of the colorscale shown on the side of the map with a title 'Magnitude' to make it clear what the colors represent.
 
-![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DownloadingData/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_markers.png "Earthquake data with custom marker sizes and colors.")
+![earthquake data](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/DownloadingData/JSON_Format/eq_world_map_custom_markers.png "Earthquake data with custom marker sizes and colors.")
 
 ### Other Colorscales
 

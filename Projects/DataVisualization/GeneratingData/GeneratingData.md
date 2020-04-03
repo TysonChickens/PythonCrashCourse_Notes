@@ -29,7 +29,7 @@ ax.plot(squares)
 plt.show()
 ```
 
-![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/original.png "Basic plot line graph")
+![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/original.png "Basic plot line graph")
 
 1. Import the `pyplot` module using the alias *plt*. The pyplot module contains a number of functions that generate charts and plots.
 
@@ -60,7 +60,7 @@ ax.tick_params(axis='both', labelsize=14)
 plt.show()
 ```
 
-![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/originalV2.png "Updated plot with title and labeled axes.")
+![Basic line graph](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/originalV2.png "Updated plot with title and labeled axes.")
 
 1. The *linewidth* parameter controls the thickness of the line that `plot()` generates.
 
@@ -353,7 +353,7 @@ plt.show()
 
 2. Feed the walk's x- and y-values to `scatter()` and choose an appropriate dot size.
 
-![First random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/FirstRandomWalk.png "A random walk.")
+![First random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RandomWalks/FirstRandomWalk.png "A random walk.")
 
 ### Generating Multiple Random Walks
 
@@ -416,7 +416,7 @@ while True:
 
 We use `range()` to generate a list of numbers equal to the number of points in the walk. Then we store them in the list of *point_numbers* to the *c* argument, use *Blues* colormap, and then pass `edgecolors='none'` to get rid of the black outline around each point with a light to dark blue gradient.
 
-![A cool random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/ColorRandomWalk.png "Random walk with style and colors.")
+![A cool random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RandomWalks/ColorRandomWalk.png "Random walk with style and colors.")
 
 #### Plotting the Starting and Ending Points
 
@@ -485,7 +485,7 @@ while True:
 
 This example creates a random walk with 50,000 points (to mirror real-world data) and plots each point at size `s=1`.
 
-![More plot points in a random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/50000RandomWalk.png "Random walk of 50,000 points start/end and colors.")
+![More plot points in a random walk](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RandomWalks/50000RandomWalk.png "Random walk of 50,000 points start/end and colors.")
 
 #### Altering the Size to Fill the Screen
 
@@ -688,7 +688,7 @@ Running the program *die_visual.py* will open a browser of 'd6.html' with a bar 
 
 Plotly has made the chart interactive so we can hover our mouse cursor over any bar to display associated data, pan around, and zoom in on the visualization, and more via the controls in the top-right corner.
 
-![Histogram](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6.png "Rolling a six-sided die.")
+![Histogram](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RollingDice/D6.png "Rolling a six-sided die.")
 
 ### Rolling Two Dice
 
@@ -736,7 +736,7 @@ offline.plot({'data': data, 'layout': my_layout}, filename='d6_d6.html')
 
 4. When creating the chart, we include the `dtick` key in the *x_axis_config* dictionary to control the spacing between tick marks on the x-axis. Since we have more bars on the histogram, `'dtick': 1` setting tells Plotly to label every tick mark. We also update the title of the chart and change the output filename as well.
 
-![Histogram for two dice](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6_D6.png "Rolling two six-sided dice.")
+![Histogram for two dice](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RollingDice/D6_D6.png "Rolling two six-sided dice.")
 
 ### Rolling Dice of Different Sizes
 
@@ -778,7 +778,7 @@ offline.plot({'data': data, 'layout': my_layout}, filename='d6_d10.html')
 
 2. Update the title of the graph and output filename.
 
-![Histogram for two dice of a different size](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/DataVisualization/Projects/DataVisualization/D6_D10.png "D6 and D10.")
+![Histogram for two dice of a different size](https://raw.githubusercontent.com/TysonNguyen/PythonCrashCourse_Notes/master/Projects/DataVisualization/GeneratingData/RollingDice/D6_D10.png "D6 and D10.")
 
 The ability to use Plotly to model the rolling of dice gives us freedom in exploring large amounts of data or number of rolls in minutes.
 
