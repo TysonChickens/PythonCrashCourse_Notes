@@ -1,6 +1,6 @@
 # Python Crash Course Chapter 3: Introducing Lists
 
-## What Is a List
+## What is a List
 
 A *list* is a collection of items in a particular order. A list consist of letters of the alphabet, the digits from 0-9, or the names of all the people in a family. Any thing can be entered into a list, and items in the list don't have to be related in any particular way. It is good practice to make the name of the list plural, such as **letters**, **digits**, or **names**.
 

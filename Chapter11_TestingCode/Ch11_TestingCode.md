@@ -395,7 +395,7 @@ OK
 
 It works but these tests are a bit repetitive. We will use another feature of `unittest` to make them more efficient.
 
-### The setUp() Method
+## The setUp() Method
 
 In *test_survey.py* we created a new instance of *AnonymousSurvey* in each test method, and created new responses in each method. The `unittest.TestCase` class has a `setUp()` method that allows to create these objects once and then use them in each of test methods. Python runs the `setUp()` method before running each method starting with *test_*. Any objects created in the `setUp()` method are then available in each test method.
 

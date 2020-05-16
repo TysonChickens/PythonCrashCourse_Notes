@@ -450,7 +450,7 @@ First name: q
 
 ---
 
-### Passing a List
+## Passing a List
 
 We can use functions to make working with lists more efficient. The following example sends a list of names to a function called *greet_users()*, which greets each person in the list individually:
 

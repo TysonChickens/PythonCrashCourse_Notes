@@ -792,7 +792,7 @@ else:
 
 There is no new code here; blocks of code from the last two examples just combined into one file with `try-except-else` blocks.
 
-### Refactoring
+## Refactoring
 
 There will be a point where code will work, but recognize that improvements can be made by breaking it up into a series of functions that have specific jobs. This process is called ***refactoring***. Refactoring makes code cleaner, easier to understand, and easier to extend.
 
