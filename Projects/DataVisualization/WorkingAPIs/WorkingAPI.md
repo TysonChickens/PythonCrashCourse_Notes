@@ -560,7 +560,7 @@ for submission_dict in submission_dicts:
     print(f"Comments: {submission_dict['comments']}")
 ```
 
-1. Make an API call, and then print the status of the response. IT returns a list containing the IDs of up to the 500 most popular articles on Hacker News at the time.
+1. Make an API call, and then print the status of the response. It returns a list containing the IDs of up to the 500 most popular articles on Hacker News at the time.
 
 2. Then convert the response object to a Python list to store *submission_ids*. These IDs are used to build as et of dictionaries that each store information about one of the current submissions.
 
