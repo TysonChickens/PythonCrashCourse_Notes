@@ -4,58 +4,70 @@ from plotly.graph_objs import Bar
 from plotly import offline
 
 # Make an API call and store the response.
-url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
-headers = {'Accept': 'application/vnd.github.v3+json'}
-r = requests.get(url, headers=headers)
-print(f"Status code: {r.status_code}")
+def get_response():
+    url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+    headers = {'Accept': 'application/vnd.github.v3+json'}
+    r = requests.get(url, headers=headers)
+    return r
 
-# Store there API response in a variable.
-response_dict = r.json()
-print(f"Total repositories: {response_dict['total_count']}")
+# Retrieve information about the repos.
+def get_repo_dicts(r):
+    response_dict = r.json()
+    repo_dicts = response_dict['items']
+    return repo_dicts
 
-# Process results.
-response_dict = r.json()
-repo_dicts = response_dict['items']
-repo_links, stars, labels = [], [], []
-for repo_dict in repo_dicts:
-  repo_name = repo_dict['name']
-  repo_url = repo_dict['html_url']
-  repo_link = f"<a href='{repo_url}'>{repo_name}</a>"
-  repo_links.append(repo_link)
-  stars.append(repo_dict['stargazers_count'])
+# Return data for each project visualization.
+def get_project_data(repo_dicts):
+    repo_links, stars, labels = [], [], []
+    for repo_dict in repo_dicts:
+        repo_name = repo_dict['name']
+        repo_url = repo_dict['html_url']
+        repo_link = f"<a href='{repo_url}'>{repo_name}</a>"
+        repo_links.append(repo_link)
+        stars.append(repo_dict['stargazers_count'])
 
-  owner = repo_dict['owner']['login']
-  description = repo_dict['description']
-  label = f"{owner}<br /v>{description}"
-  labels.append(label)
+        owner = repo_dict['owner']['login']
+        description = repo_dict['description']
+        label = f"{owner}<br />{description}"
+        labels.append(label)
 
-# Make visualization.
-data = [{
-  'type': 'bar',
-  'x': repo_links,
-  'y': stars,
-  'hovertext': labels,
-  'marker': {
-    'color': 'rgb(60, 100, 150)',
-    'line': {'width': 1.5, 'color': 'rgb(25, 25, 25)'}
-  },
-  'opacity': 0.6,
-}]
+    return repo_links, stars, labels
 
-my_layout = {
-  'title': 'Most-Starred Python Projects on GitHub',
-  'titlefont': {'size': 28},
-  'xaxis': {
-    'title': 'Repository',
-    'titlefont': {'size': 24},
-    'tickfont': {'size': 14},
-  },
-  'yaxis': {
-    'title': 'Stars',
-    'titlefont': {'size': 24},
-    'tickfont': {'size': 14},
-  },
-}
+# Generate visualization
+def create_visualization(repo_links, stars, labels):
+    data = [{
+        'type': 'bar',
+        'x': repo_links,
+        'y': stars,
+        'hovertext': labels,
+        'marker': {
+            'color': 'rgb(60, 100, 150)',
+            'line': {'width': 1.5, 'color': 'rgb(25, 25, 25)'}
+        },
+        'opacity': 0.6,
+    }]
 
-fig = {'data': data, 'layout': my_layout}
-offline.plot(fig, filename='Projects/DataVisualization/WorkingAPIs/python_repos.html')
+    my_layout = {
+        'title': 'Most-Starred Python Projects on GitHub',
+        'titlefont': {'size': 28},
+        'xaxis': {
+            'title': 'Repository',
+            'titlefont': {'size': 24},
+            'tickfont': {'size': 14},
+        },
+        'yaxis': {
+            'title': 'Stars',
+            'titlefont': {'size': 24},
+            'tickfont': {'size': 14},
+            },
+        }
+
+    fig = {'data': data, 'layout': my_layout}
+    offline.plot(fig, filename='Projects/DataVisualization/WorkingAPIs/python_repos.html')
+
+# Call the functions and test the code.
+if __name__ == '__main__':
+    r = get_response()
+    repo_dicts = get_repo_dicts(r)
+    repo_links, stars, labels = get_project_data(repo_dicts)
+    create_visualization(repo_links, stars, labels)
