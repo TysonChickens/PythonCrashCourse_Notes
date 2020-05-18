@@ -3,21 +3,21 @@ import requests
 from plotly.graph_objs import Bar
 from plotly import offline
 
-# Make an API call and store the response.
 def get_response():
+    """Make an API call and store the response."""
     url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
     headers = {'Accept': 'application/vnd.github.v3+json'}
     r = requests.get(url, headers=headers)
     return r
 
-# Retrieve information about the repos.
 def get_repo_dicts(r):
+    """Retrieve information about the repos."""
     response_dict = r.json()
     repo_dicts = response_dict['items']
     return repo_dicts
 
-# Return data for each project visualization.
 def get_project_data(repo_dicts):
+    """Return data for each project visualization."""
     repo_links, stars, labels = [], [], []
     for repo_dict in repo_dicts:
         repo_name = repo_dict['name']
@@ -33,8 +33,8 @@ def get_project_data(repo_dicts):
 
     return repo_links, stars, labels
 
-# Generate visualization
 def create_visualization(repo_links, stars, labels):
+    """Create visualization from project data."""
     data = [{
         'type': 'bar',
         'x': repo_links,
