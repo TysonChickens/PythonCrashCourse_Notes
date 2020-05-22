@@ -65,4 +65,4 @@ A table of contents for each chapter from Python Crash Course Second Edition fro
 * [Testing Code](Chapter11_TestingCode/Ch11_TestingCode.md#Python-Crash-Course-Chapter-11:-Testing-Code)
   * [Testing a Function](Chapter11_TestingCode/Ch11_TestingCode.md#Testing-a-Function)
   * [Testing a Class](Chapter11_TestingCode/Ch11_TestingCode.md#Testing-a-Class)
-  * [The setUp() Method](Chapter11_TestingCode/Ch11_TestingCode.md#The-setUp()-Method)
+  * [The setUp() Method](Chapter11_TestingCode/Ch11_TestingCode.md#The-setUp-Method)
