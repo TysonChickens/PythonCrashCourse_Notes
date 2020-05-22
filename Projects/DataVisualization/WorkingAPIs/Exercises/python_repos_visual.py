@@ -63,9 +63,9 @@ def create_visualization(repo_links, stars, labels):
         }
 
     fig = {'data': data, 'layout': my_layout}
-    offline.plot(fig, filename='Projects/DataVisualization/WorkingAPIs/GitHub/python_repos.html')
+    offline.plot(fig, filename='Projects/DataVisualization/WorkingAPIs/python_repos.html')
 
-# Call the functions and test the code.
+# Call the functions only when run and test the code.
 if __name__ == '__main__':
     r = get_response()
     repo_dicts = get_repo_dicts(r)
